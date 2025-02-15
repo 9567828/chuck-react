@@ -1,0 +1,14 @@
+// config
+@use "./config/_reset.scss" as *;
+@use "./config/_variables.scss" as *;
+
+.loading {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading img {
+  height: 152px;
+}
