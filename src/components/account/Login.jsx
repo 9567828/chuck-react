@@ -31,10 +31,10 @@ function Login() {
         </div>
         <ul className="find-account">
           <li>
-            <a href="/login/find-id">아이디 찾기</a>
+            <Link to="/login/find-id">아이디 찾기</Link>
           </li>
           <li>
-            <a href="/login/find-pw">비밀번호 찾기</a>
+            <Link to="/login/find-pw">비밀번호 찾기</Link>
           </li>
         </ul>
       </div>
