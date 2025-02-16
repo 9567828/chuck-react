@@ -14,7 +14,7 @@ function Join() {
     requireService: true, // 서비스 이용약관 동의 체크
   });
 
-  const { moveToNext } = CustomMove();
+  const { moveToPage } = CustomMove();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +24,7 @@ function Join() {
       setMsg("이름을 입력해주세요.");
       return;
     }
-    moveToNext("/");
+    moveToPage("/join/varify-email");
   };
 
   // 필수 체크박스의 상태를 업데이트하는 함수

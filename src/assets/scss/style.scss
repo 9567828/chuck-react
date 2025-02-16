@@ -10,6 +10,10 @@
 // screen
 @import url("../scss/screen/account/login.scss");
 @import url("../scss/screen/account/join.scss");
+@import url("../scss/screen/account/find-account.scss");
+
+// 반응형
+@import url("../scss/media.scss");
 
 .loading {
   height: 100vh;
