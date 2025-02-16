@@ -1,9 +1,10 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router";
 import Loading from "../components/Loading";
+import joinRouter from "./JoinRouter";
 
-const Login = lazy(() => import("../components/account/Login"));
-const Join = lazy(() => import("../components/account/Join"));
+const LoginPage = lazy(() => import("./../pages/account/LoginPage"));
+const NotFound = lazy(() => import("./../pages/NotFound"));
 
 const root = createBrowserRouter([
   {
@@ -14,18 +15,20 @@ const root = createBrowserRouter([
     path: "/login",
     element: (
       <Suspense fallback={<Loading />}>
-        <Login />
+        <LoginPage />
       </Suspense>
     ),
   },
   {
-    path: "/join",
+    path: "/404",
     element: (
       <Suspense fallback={<Loading />}>
-        <Join />
+        <NotFound />
       </Suspense>
     ),
   },
+  joinRouter.join,
+  joinRouter.varify,
 ]);
 
 export default root;
