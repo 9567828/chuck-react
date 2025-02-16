@@ -2,25 +2,25 @@
 .join-footer { height: 75px; }
 
 .terms-list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
 }
 
 .terms-list li a {
-    color: $gray-700;
+  color: $gray-700;
 }
 
 .terms-list .middle-menu { position: relative; }
 
 .terms-list .middle-menu::before,
 .terms-list .middle-menu::after {
-    position: absolute;
-    content: "";
-    width: 1px;
-    height: 16px;
-    background-color: $gray-700;
+  position: absolute;
+  content: "";
+  width: 1px;
+  height: 16px;
+  background-color: $gray-700;
 }
 
 .terms-list .middle-menu::before { left: -7px; }

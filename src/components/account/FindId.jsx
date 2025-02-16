@@ -1,16 +1,21 @@
 import { Link } from "react-router";
+import style from "../../assets/scss/style.module.scss";
+import ErrorMessage from "./../common/ErrorMessage";
 
 function FindId() {
+  // 결과화면 state훅으로 설정해서 UI 바꿔서 보여주도록
   return (
     <div className="sign-container">
-      <h1 className="title-xl font-bold join find-id-title">아이디 찾기</h1>
+      <h1 className={`${style.titleXl} ${style.fontBold} ${style.mb} find-id-title`}>아이디 찾기</h1>
       <form action="" id="findIdForm" className="find-id-form set-bottom">
         <div className="input-wrap">
           <div className="findId-wrap">
             <label htmlFor="inputFindId"></label>
             <input type="text" name="" id="inputFindId" className="input-box" placeholder="사번입력" />
           </div>
-          <p className="message info">소속된 회사의 사번을 입력해주세요.</p>
+          {/* state훅으로 설정하면 됨 */}
+          <p className={`${style.graySMfont} ${style.info}`}>소속된 회사의 사번을 입력해주세요.</p>
+          <ErrorMessage text={"입력하신 사번이 일치하지 않습니다"} />
         </div>
       </form>
       <button className="primary-btn long" form="findIdForm">

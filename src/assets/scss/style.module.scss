@@ -5,6 +5,16 @@
   padding: 8px 8px 0;
 }
 
+.graySMfont {
+  font-size: $caption-xs-font-size;
+  color: $gray-600;
+}
+
+.info {
+  text-align: left;
+  padding: 8px 8px 0;
+}
+
 // 마진 설정
 .mb {
   margin-bottom: 24px;
