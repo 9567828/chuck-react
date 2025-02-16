@@ -1,0 +1,66 @@
+.error {
+  font-size: $caption-xs-font-size;
+  color: $bg-red;
+  text-align: left;
+  padding: 8px 8px 0;
+}
+
+// 마진 설정
+.mb {
+  margin-bottom: 24px;
+}
+
+.mt {
+  margin-top: 24px;
+}
+
+// 폰트설정
+.fontBold {
+  font-weight: $bold-weight-700;
+}
+
+.fontMedium {
+  font-weight: $medium-weight-500;
+}
+
+.fontRegular {
+  font-weight: $regular-weight-400;
+}
+
+.display  {
+  font-size: $display-font-size;
+  line-height: $linehight-140;
+  letter-spacing: $letterspacing-2 $letterspacing-2;
+}
+
+.titleXl {
+  font-size: $title-xl-font-size;
+  line-height: $linehight-140;
+}
+
+.titleLg {
+  font-size: $title-lg-font-size;
+  line-height: $linehight-140;
+}
+
+.bodyMd {
+  font-size: $body-md-font-size;
+  line-height: $linehight-150;
+  letter-spacing: $letterspacing-2;
+}
+
+.bodySm {
+  font-size: $body-sm-font-size;
+  line-height: $linehight-150;
+  letter-spacing: $letterspacing-2;
+}
+
+.captionXs {
+  font-size: $caption-xs-font-size;
+  line-height: $linehight-150;
+}
+
+.captionXxs {
+  font-size: $caption-xxs-font-size;
+  line-height: $linehight-150;
+}

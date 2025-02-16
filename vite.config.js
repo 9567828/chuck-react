@@ -6,12 +6,20 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 9997,
+    hmr: {
+      overlay: false,
+    },
   },
-  // css: {
-  //   preprocessorOptions: {
-  //     scss: {
-  //       additionalData: `import "src/assets/scss/config/variables.scss"`,
-  //     },
-  //   },
-  // },
+  resolve: {
+    alias: {
+      "@": "/src",
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/assets/scss/config/_variables.scss" as *;`,
+      },
+    },
+  },
 });

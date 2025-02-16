@@ -1,6 +1,15 @@
 // config
-@use "./config/_reset.scss" as *;
-@use "./config/_variables.scss" as *;
+@import url("../scss/config/reset.scss");
+
+// common
+@import url("../scss/common/common.scss");
+
+// component
+@import url("../scss/components/footer.scss");
+
+// screen
+@import url("../scss/screen/account/login.scss");
+@import url("../scss/screen/account/join.scss");
 
 .loading {
   height: 100vh;

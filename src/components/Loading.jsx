@@ -13,7 +13,7 @@ function Loading() {
   if (showFallback) {
     return (
       <div className="loading">
-        <img src="../../img/loading.gif" alt="" />
+        <img src="../../img/loading.gif" alt="로딩이미지" />
       </div>
     );
   }
