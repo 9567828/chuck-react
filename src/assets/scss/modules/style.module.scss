@@ -1,11 +1,11 @@
-.error {
+.red-msg-font {
   font-size: $caption-xs-font-size;
   color: $bg-red;
   text-align: left;
   padding: 8px 8px 0;
 }
 
-.graySMfont {
+.gray-msg-font {
   font-size: $caption-xs-font-size;
   color: $gray-600;
 }
@@ -25,15 +25,15 @@
 }
 
 // 폰트설정
-.fontBold {
+.font-bold {
   font-weight: $bold-weight-700;
 }
 
-.fontMedium {
+.font-medium {
   font-weight: $medium-weight-500;
 }
 
-.fontRegular {
+.font-regular {
   font-weight: $regular-weight-400;
 }
 
@@ -43,34 +43,34 @@
   letter-spacing: $letterspacing-2 $letterspacing-2;
 }
 
-.titleXl {
+.title-xl {
   font-size: $title-xl-font-size;
   line-height: $linehight-140;
 }
 
-.titleLg {
+.title-lg {
   font-size: $title-lg-font-size;
   line-height: $linehight-140;
 }
 
-.bodyMd {
+.body-md {
   font-size: $body-md-font-size;
   line-height: $linehight-150;
   letter-spacing: $letterspacing-2;
 }
 
-.bodySm {
+.body-sm {
   font-size: $body-sm-font-size;
   line-height: $linehight-150;
   letter-spacing: $letterspacing-2;
 }
 
-.captionXs {
+.caption-xs {
   font-size: $caption-xs-font-size;
   line-height: $linehight-150;
 }
 
-.captionXxs {
+.caption-xxs {
   font-size: $caption-xxs-font-size;
   line-height: $linehight-150;
 }

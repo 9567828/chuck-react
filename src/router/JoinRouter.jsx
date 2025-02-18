@@ -4,8 +4,9 @@ import Loading from "../components/Loading";
 const JOIN = "/join";
 
 const JoinPage = lazy(() => import("./../pages/account/JoinPage"));
-const VarifyEmailPage = lazy(() => import("./../pages/account/VarifyEmailPage"));
-const FindIdPage = lazy(() => import("./../pages/account/FindIdPage"));
+const VerifyEmailPage = lazy(() => import("../pages/account/VerifyEmailPage"));
+const SetPwPage = lazy(() => import("./../pages/account/SetPwPage"));
+const RequestJoinPage = lazy(() => import("./../pages/account/RequestJoinPage"));
 
 const joinRouter = {
   join: {
@@ -16,19 +17,27 @@ const joinRouter = {
       </Suspense>
     ),
   },
-  varify: {
-    path: `${JOIN}/varify-email`,
+  verify: {
+    path: `${JOIN}/verify-email`,
     element: (
       <Suspense fallback={<Loading />}>
-        <VarifyEmailPage />
+        <VerifyEmailPage />
       </Suspense>
     ),
   },
-  findId: {
-    path: `${JOIN}/find-id`,
+  setpw: {
+    path: `${JOIN}/set-password`,
     element: (
       <Suspense fallback={<Loading />}>
-        <FindIdPage />
+        <SetPwPage />
+      </Suspense>
+    ),
+  },
+  requestJoin: {
+    path: `${JOIN}/request-join`,
+    element: (
+      <Suspense fallback={<Loading />}>
+        <RequestJoinPage />
       </Suspense>
     ),
   },

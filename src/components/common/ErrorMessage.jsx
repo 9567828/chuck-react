@@ -1,8 +1,8 @@
-import style from "../../assets/scss/style.module.scss";
+import style from "../../assets/scss/modules/style.module.scss";
 import PropTypes from "prop-types";
 
 function ErrorMessage({ text }) {
-  return <div className={style.error}>{text}</div>;
+  return <div className={style.redMsgFont}>{text}</div>;
 }
 
 export default ErrorMessage;

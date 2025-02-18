@@ -3,13 +3,20 @@ import { createBrowserRouter } from "react-router";
 import Loading from "../components/Loading";
 import joinRouter from "./JoinRouter";
 import loginRouter from "./LoginRouter";
+import adminRouter from "./adminRouter";
+import AdminLayout from "../layouts/AdminLayout";
 
 const NotFound = lazy(() => import("./../pages/NotFound"));
+const HomePage = lazy(() => import("./../pages/HomePage"));
 
 const root = createBrowserRouter([
   {
     path: "/",
-    element: <Suspense fallback={<Loading />}>홈이유</Suspense>,
+    element: (
+      <Suspense fallback={<Loading />}>
+        <HomePage />
+      </Suspense>
+    ),
   },
   {
     path: "/404",
@@ -21,8 +28,17 @@ const root = createBrowserRouter([
   },
   loginRouter.login,
   loginRouter.findId,
+  loginRouter.findPw,
+  loginRouter.resetPw,
   joinRouter.join,
-  joinRouter.varify,
+  joinRouter.verify,
+  joinRouter.setpw,
+  joinRouter.requestJoin,
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    children: [adminRouter.companyInfo],
+  },
 ]);
 
 export default root;

@@ -27,10 +27,10 @@
   padding: 8px 8px 0;
 }
 
-.message, .resend-btn {
-  font-size: $caption-xs-font-size;
-  color: $gray-600;
-}
+// .message, .resend-btn {
+//   font-size: $caption-xs-font-size;
+//   color: $gray-600;
+// }
 
 // .message:not(.code, .message-wrap > p, .edit-work-info) {
 //     text-align: left;
@@ -112,9 +112,9 @@ label[for="birthDate"]::after { content: "일"; }
 
 .email-wrap { padding-top: 16px }
 
-.verify-container { display: none; }
+// .verify-container { display: none; }
 
-.verify-container.on { display: block; }
+// .verify-container.on { display: block; }
 
 .time-container {
   display: flex;
@@ -130,16 +130,16 @@ label[for="birthDate"]::after { content: "일"; }
   gap: 5px;
 }
 
-.message.code { color: $bg-red }
+// .message.code { color: $bg-red }
 
 .resend-btn {
   text-decoration: underline;
   cursor: pointer;
 }
 
-.send-btn.off { display: none; }
-.verify-btn { display: none; }
-.verify-btn.on { display: block; }
+// .send-btn.off { display: none; }
+// .verify-btn { display: none; }
+// .verify-btn.on { display: block; }
 
 /* ---------------------------------------------------------- */
 
@@ -147,7 +147,7 @@ label[for="birthDate"]::after { content: "일"; }
 .title-head { margin-bottom: 53px; }
 .result-form { margin-bottom: 111px }
 .result-box.join { margin: initial }
-.go-login { display: none; }
-.request-btn.off { display: block; }
+// .go-login { display: none; }
+// .request-btn.off { display: block; }
 
 /* ---------------------------------------------------------- */
