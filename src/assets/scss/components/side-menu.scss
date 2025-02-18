@@ -1,0 +1,69 @@
+aside { border-right: 1px solid $gray-300; }
+
+.lnb-container {
+  width: 100%;
+  /*height: 100%;*/
+  background-color: $bg-white;
+  padding: 40px 34px 0;
+}
+
+.lnb-container.admin.inactive {
+  display: none;
+}
+
+.lnb-container.my-profile {
+  display: none;
+}
+
+.lnb-container.my-profile.active {
+  display: block;
+}
+
+.lnb-title {
+  padding: 0 12px;
+  margin-bottom: 32px;
+}
+
+.lnb, .lnb-submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lnb-submenu {
+  display: none;
+  gap: 2px;
+  margin-top: 4px;
+}
+
+.lnb-submenu.active {
+display: block;
+}
+
+.lnb .lnb-style {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: $caption-xxs-font-size;
+  font-weight: $medium-weight-500;
+  line-height: 21px;
+  background-color: $bg-white;
+  cursor: pointer;
+}
+
+.lnb .lnb-menu-item {
+  font-size: $caption-xs-font-size;
+  font-weight: $bold-weight-700;
+}
+
+.lnb svg {
+  transform: rotate(90deg);
+}
+
+.lnb .lnb-menu-item.on,
+.lnb-submenu .lnb-submenu-item.on {
+  color: $main-color;
+  background-color: $gray-200;
+}

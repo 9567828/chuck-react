@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import Message from "../common/ErrorMessage";
 import { useState } from "react";
 import CustomMove from "../hooks/customMove";
-import style from "../../assets/scss/style.module.scss";
+import style from "../../assets/scss/modules/style.module.scss";
 
 function Join() {
   const [msg, setMsg] = useState("");
