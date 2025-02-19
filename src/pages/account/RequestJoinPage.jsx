@@ -1,10 +1,10 @@
-import VarifyEmail from "../../components/account/VarifyEmail";
+import RequestJoin from "../../components/account/RequestJoin";
 import AccountFooter from "../../layouts/AccountFooter";
 
 function LoginPage() {
   return (
     <>
-      <VarifyEmail />
+      <RequestJoin />
       <AccountFooter />
     </>
   );

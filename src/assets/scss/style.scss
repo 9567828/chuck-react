@@ -5,12 +5,20 @@
 @import url("../scss/common/common.scss");
 
 // component
+@import url("../scss/components/header.scss");
 @import url("../scss/components/footer.scss");
+@import url("../scss/components/side-menu.scss");
 
 // screen
+
+// account
 @import url("../scss/screen/account/login.scss");
 @import url("../scss/screen/account/join.scss");
 @import url("../scss/screen/account/find-account.scss");
+
+// admin
+@import url("../scss/screen/admin/company-info.scss");
+
 
 // 반응형
 @import url("../scss/media.scss");
