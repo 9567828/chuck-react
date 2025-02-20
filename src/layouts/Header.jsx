@@ -1,8 +1,15 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 
 function Header() {
-  const [isClick, setIsClick] = useState(false);
+  const menuItems = [
+    { name: "홈", to: "/", id: "home" },
+    { name: "전자결재", to: "/electronic-approval", id: "electronic-approval" },
+    { name: "근태관리", to: "/attendance", id: "attendance" },
+    { name: "일정관리", to: "/schedule", id: "schedule" },
+    { name: "게시판", to: "/board", id: "board" },
+    { name: "조직도", to: "/organization", id: "organization" },
+    { name: "관리자", to: "/admin/company-info", id: "admin" },
+  ];
 
   return (
     <header>
@@ -12,36 +19,18 @@ function Header() {
         </button>
         <div className="nav-left">
           <h1 className="gnb-logo">
-            <Link to="/">
+            <NavLink to="/">
               <img src="/img/logo_combination.svg" alt="로고" />
-            </Link>
+            </NavLink>
           </h1>
           <ul>
-            <li>
-              <Link to="/" className="gnb-menu-btn on">
-                홈
-              </Link>
-            </li>
-            <li>
-              <Link className="gnb-menu-btn">전자결재</Link>
-            </li>
-            <li>
-              <Link className="gnb-menu-btn">근태관리</Link>
-            </li>
-            <li>
-              <Link className="gnb-menu-btn">일정관리</Link>
-            </li>
-            <li>
-              <Link className="gnb-menu-btn">게시판</Link>
-            </li>
-            <li>
-              <Link className="gnb-menu-btn">조직도</Link>
-            </li>
-            <li>
-              <Link to="/admin/company-info" className="gnb-menu-btn">
-                관리자
-              </Link>
-            </li>
+            {menuItems.map((item) => (
+              <li key={item.id}>
+                <NavLink to={item.to} className={({ isActive }) => (isActive ? "gnb-menu-btn on" : "gnb-menu-btn")}>
+                  {item.name}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="profile-menu">
@@ -51,10 +40,10 @@ function Header() {
           <button className="gnb-icon alarm">
             <img src="/img/gnb/ic_alarm.svg" alt="알림" className="gnb-icon alarm" />
           </button>
-          <Link to="/user/profile" className="avatar-wrap">
+          <NavLink to="/user/profile" className="avatar-wrap">
             <img src="/img/202301261737390.jpg" alt="프로필" className="avatar" />
             <span className="first-name">김</span>
-          </Link>
+          </NavLink>
           <button className="logout">로그아웃</button>
         </div>
       </nav>
