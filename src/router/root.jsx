@@ -37,7 +37,7 @@ const root = createBrowserRouter([
   {
     path: "/admin",
     element: <AdminLayout />,
-    children: [adminRouter.companyInfo],
+    children: [adminRouter.companyInfo, adminRouter.workState],
   },
 ]);
 

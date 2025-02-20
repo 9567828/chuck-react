@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { NavLink } from "react-router";
 import { Link } from "react-router";
 
 function Header() {
-  const [isClick, setIsClick] = useState(false);
+  const menuItems = [
+    { id: "1", name: "홈", to: "/" },
+    { id: "2", name: "전자결재", to: "/electronic-approval" },
+    { id: "4", name: "근태관리", to: "/attendance" },
+    { id: "5", name: "일정관리", to: "/schedule" },
+    { id: "6", name: "게시판", to: "/board" },
+    { id: "7", name: "조직도", to: "/organization" },
+    { id: "8", name: "관리자", to: "/admin/company-info" },
+  ];
 
   return (
     <header>
@@ -17,31 +25,13 @@ function Header() {
             </Link>
           </h1>
           <ul>
-            <li>
-              <Link to="/" className="gnb-menu-btn on">
-                홈
-              </Link>
-            </li>
-            <li>
-              <Link className="gnb-menu-btn">전자결재</Link>
-            </li>
-            <li>
-              <Link className="gnb-menu-btn">근태관리</Link>
-            </li>
-            <li>
-              <Link className="gnb-menu-btn">일정관리</Link>
-            </li>
-            <li>
-              <Link className="gnb-menu-btn">게시판</Link>
-            </li>
-            <li>
-              <Link className="gnb-menu-btn">조직도</Link>
-            </li>
-            <li>
-              <Link to="/admin/company-info" className="gnb-menu-btn">
-                관리자
-              </Link>
-            </li>
+            {menuItems.map((item) => (
+              <li key={item.id}>
+                <NavLink to={item.to} className={({ isActive }) => (isActive ? "gnb-menu-btn on" : "gnb-menu-btn")}>
+                  {item.name}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="profile-menu">
@@ -55,6 +45,10 @@ function Header() {
             <img src="/img/202301261737390.jpg" alt="프로필" className="avatar" />
             <span className="first-name">김</span>
           </Link>
+          <NavLink to="/user/profile" className="avatar-wrap">
+            <img src="/img/202301261737390.jpg" alt="프로필" className="avatar" />
+            <span className="first-name">김</span>
+          </NavLink>
           <button className="logout">로그아웃</button>
         </div>
       </nav>

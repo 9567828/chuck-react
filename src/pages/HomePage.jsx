@@ -1,11 +1,11 @@
-// import BasicLayout from "../layouts/BasicLayout";
+import Home from "../components/Home";
 import Header from "../layouts/Header";
 
 function HomePage() {
   return (
     <>
       <Header />
-      <div>홈</div>
+      <Home />
     </>
   );
 }
