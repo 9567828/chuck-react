@@ -15,6 +15,7 @@ export default defineConfig({
     hmr: {
       overlay: false,
     },
+    // ssl 설정
     https: {
       key: fs.readFileSync(path.resolve(dirname, "./public/config/ssl.key")),
       cert: fs.readFileSync(path.resolve(dirname, "./public/config/ssl.crt")),

@@ -1,18 +1,60 @@
 import { Link, NavLink } from "react-router";
 import style from "../assets/scss/modules/style.module.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function SideMenu() {
-  const [isActive, setIsActive] = useState(false);
+  const [activeMenu, setActiveMenu] = useState({});
 
-  const menuName = {
-    menu1: "workTime",
-    menu2: "vacation",
-    menu3: "org",
-  };
+  // 메뉴 상태 복원
+  useEffect(() => {
+    const savedState = sessionStorage.getItem("activeMenu");
+    if (savedState) {
+      setActiveMenu(JSON.parse(savedState));
+    }
+  }, []);
 
-  const handleClickMenu = (menu) => {
-    setIsActive((prev) => !prev);
+  // 메뉴 상태 저장
+  useEffect(() => {
+    sessionStorage.setItem("activeMenu", JSON.stringify(activeMenu));
+  }, [activeMenu]);
+
+  const menuItems = [
+    { id: "1", name: "회사정보", to: "/admin/company-info" },
+    {
+      id: "2",
+      name: "출퇴근 관리",
+      submenu: [
+        { id: "1", name: "출퇴근 관리", to: "/admin/work-time/state" },
+        { id: "2", name: "출퇴근 설정", to: "/admin/work-time/setting" },
+      ],
+    },
+    {
+      id: "3",
+      name: "근무/휴가 관리",
+      submenu: [
+        { id: "1", name: "하위메뉴", to: "/404" },
+        { id: "2", name: "하위메뉴", to: "/404" },
+      ],
+    },
+    {
+      id: "4",
+      name: "조직원 관리",
+      submenu: [
+        { id: "1", name: "하위메뉴", to: "/404" },
+        { id: "2", name: "하위메뉴", to: "/404" },
+      ],
+    },
+    { id: "5", name: "환경설정", to: "/404" },
+  ];
+
+  const toggleMenu = (id) => {
+    setActiveMenu((prevState) => {
+      const newState = {
+        ...prevState,
+        [id]: !prevState[id], // 기존 상태를 반전시켜서 열기/닫기
+      };
+      return newState;
+    });
   };
 
   return (
@@ -20,98 +62,53 @@ function SideMenu() {
       <div className="lnb-container admin">
         <h1 className={`lnb-title ${style.fontBold} ${style.bodyMd}`}>관리자</h1>
         <ul className="lnb">
-          <li className="lnb-menu">
-            <NavLink
-              to="/admin/company-info"
-              className={({ isActive }) => (isActive ? "lnb-style lnb-menu-item on" : "lnb-style lnb-menu-item")}
+          {menuItems.map((item) => (
+            <li
+              key={item.id}
+              className="lnb-menu"
+              onClick={
+                !item.submenu
+                  ? null
+                  : (e) => {
+                      e.stopPropagation();
+                      toggleMenu(item.id);
+                    }
+              }
             >
-              <span>회사정보</span>
-            </NavLink>
-          </li>
-          <li className="lnb-menu" onClick={() => handleClickMenu(menuName.menu1)}>
-            <div className="lnb-style lnb-menu-item">
-              <span>출퇴근 관리</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 11.825L8.825 8L5 4.175L6.18333 3L11.1833 8L6.18333 13L5 11.825Z" fill="#616161" />
-              </svg>
-            </div>
-            <ul className={isActive ? "lnb-submenu active" : "lnb-submenu"}>
-              <li>
+              {item.to ? (
                 <NavLink
-                  to="/admin/work-time/state"
-                  className={({ isActive }) => (isActive ? "lnb-style lnb-submenu-item on" : "lnb-style lnb-submenu-item")}
+                  to={item.to}
+                  className={({ isActive }) => (isActive ? "lnb-style lnb-menu-item on" : "lnb-style lnb-menu-item")}
                 >
-                  출퇴근 관리
+                  <span>{item.name}</span>
                 </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/admin/work-time/setting"
-                  className={({ isActive }) => (isActive ? "lnb-style lnb-submenu-item on" : "lnb-style lnb-submenu-item")}
-                >
-                  출퇴근 설정
-                </NavLink>
-              </li>
-            </ul>
-          </li>
-          <li className="lnb-menu" onClick={() => handleClickMenu(menuName.menu2)}>
-            <div className="lnb-style lnb-menu-item">
-              <span>근무/휴가 관리</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 11.825L8.825 8L5 4.175L6.18333 3L11.1833 8L6.18333 13L5 11.825Z" fill="#616161" />
-              </svg>
-            </div>
-            <ul className="lnb-submenu">
-              <li>
-                <Link to="" className="lnb-style lnb-submenu-item">
-                  하위메뉴
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="lnb-style lnb-submenu-item">
-                  하위메뉴
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="lnb-style lnb-submenu-item">
-                  하위메뉴
-                </Link>
-              </li>
-            </ul>
-          </li>
-          <li className="lnb-menu" onClick={() => handleClickMenu(menuName.menu3)}>
-            <div className="lnb-style lnb-menu-item">
-              <span>조직원 관리</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 11.825L8.825 8L5 4.175L6.18333 3L11.1833 8L6.18333 13L5 11.825Z" fill="#616161" />
-              </svg>
-            </div>
-            <ul className="lnb-submenu">
-              <li>
-                <Link to="" className="lnb-style lnb-submenu-item">
-                  하위메뉴
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="lnb-style lnb-submenu-item">
-                  하위메뉴
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="lnb-style lnb-submenu-item">
-                  하위메뉴
-                </Link>
-              </li>
-            </ul>
-          </li>
-          <li className="lnb-menu">
-            <NavLink
-              to="/settings"
-              className={({ isActive }) => (isActive ? "lnb-style lnb-menu-item on" : "lnb-style lnb-menu-item")}
-            >
-              <span>환경 설정</span>
-            </NavLink>
-          </li>
+              ) : null}
+              {item.submenu ? (
+                <>
+                  <div className="lnb-style lnb-menu-item">
+                    <span>{item.name}</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 11.825L8.825 8L5 4.175L6.18333 3L11.1833 8L6.18333 13L5 11.825Z" fill="#616161" />
+                    </svg>
+                  </div>
+                  <ul className={activeMenu[item.id] ? "lnb-submenu active" : "lnb-submenu"}>
+                    {item.submenu.map((sub) => (
+                      <li key={sub.id} onClick={(e) => e.stopPropagation()}>
+                        <NavLink
+                          to={sub.to}
+                          className={({ isActive }) =>
+                            isActive ? "lnb-style lnb-submenu-item on" : "lnb-style lnb-submenu-item"
+                          }
+                        >
+                          {sub.name}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : null}
+            </li>
+          ))}
         </ul>
       </div>
       <div className="lnb-container my-profile">
