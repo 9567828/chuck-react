@@ -1,16 +1,7 @@
-import { NavLink, useLocation } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
 
 function Header() {
   const { pathname } = useLocation();
-  // const [isMenu, setIsMenu] = useState(false);
-
-  // useEffect(() => {
-  //   if (pathname.includes("/admin")) {
-  //     setIsMenu(true);
-  //   } else {
-  //     setIsMenu(false);
-  //   }
-  // }, [pathname]);
 
   const menuItems = [
     { id: "1", name: "홈", to: "/" },
@@ -30,9 +21,9 @@ function Header() {
         </button>
         <div className="nav-left">
           <h1 className="gnb-logo">
-            <NavLink to="/">
+            <Link to="/">
               <img src="/img/logo_combination.svg" alt="로고" />
-            </NavLink>
+            </Link>
           </h1>
           <ul>
             {menuItems.map((item) => (
@@ -57,6 +48,10 @@ function Header() {
           <button className="gnb-icon alarm">
             <img src="/img/gnb/ic_alarm.svg" alt="알림" className="gnb-icon alarm" />
           </button>
+          <Link to="/user/profile" className="avatar-wrap">
+            <img src="/img/202301261737390.jpg" alt="프로필" className="avatar" />
+            <span className="first-name">김</span>
+          </Link>
           <NavLink to="/user/profile" className="avatar-wrap">
             <img src="/img/202301261737390.jpg" alt="프로필" className="avatar" />
             <span className="first-name">김</span>
