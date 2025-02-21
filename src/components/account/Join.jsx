@@ -1,8 +1,7 @@
 import { Link } from "react-router";
-import Message from "../common/ErrorMessage";
 import { useState } from "react";
 import CustomMove from "../hooks/customMove";
-import style from "../../assets/scss/modules/style.module.scss";
+import { MessageStyle, Title } from "../common/StyledComponent";
 
 function Join() {
   const [msg, setMsg] = useState("");
@@ -58,14 +57,14 @@ function Join() {
 
   return (
     <div className="sign-container">
-      <h1 className={`${style.titleXl} ${style.fontBold} ${style.mb}`}>이름 / 생년월일</h1>
+      <Title>이름 / 생년월일</Title>
       <div className="input-container">
         <form action="" id="joinForm" onSubmit={handleSubmit}>
           <div className="name-wrap">
             <label htmlFor="inputName"></label>
             <input type="text" name="" id="inputName" className="input-box name" placeholder="이름" />
           </div>
-          <Message text={msg ? msg : ""} />
+          <MessageStyle color="red">{msg ? msg : ""}</MessageStyle>
           <div className="input-birth-wrap">
             <label htmlFor="birthYear">
               <input type="number" name="" id="birthYear" className="input-box birth year" placeholder="YYYY" maxLength="4" />

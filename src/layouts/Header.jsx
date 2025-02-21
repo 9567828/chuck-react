@@ -1,6 +1,17 @@
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 
 function Header() {
+  const { pathname } = useLocation();
+  // const [isMenu, setIsMenu] = useState(false);
+
+  // useEffect(() => {
+  //   if (pathname.includes("/admin")) {
+  //     setIsMenu(true);
+  //   } else {
+  //     setIsMenu(false);
+  //   }
+  // }, [pathname]);
+
   const menuItems = [
     { id: "1", name: "홈", to: "/" },
     { id: "2", name: "전자결재", to: "/electronic-approval" },
@@ -26,7 +37,13 @@ function Header() {
           <ul>
             {menuItems.map((item) => (
               <li key={item.id}>
-                <NavLink to={item.to} className={({ isActive }) => (isActive ? "gnb-menu-btn on" : "gnb-menu-btn")}>
+                <NavLink
+                  to={item.to}
+                  className={({ isActive }) => {
+                    const isAdminPath = item.to.includes("/admin");
+                    return isActive || (isAdminPath && pathname.includes("/admin")) ? "gnb-menu-btn on" : "gnb-menu-btn";
+                  }}
+                >
                   {item.name}
                 </NavLink>
               </li>
