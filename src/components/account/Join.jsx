@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { useState } from "react";
 import CustomMove from "../hooks/customMove";
 import { MessageStyle, Title } from "../common/StyledComponent";
+import { ButtonPrimary } from "./../common/ButtonComponents";
 
 function Join() {
   const [msg, setMsg] = useState("");
@@ -128,10 +129,8 @@ function Join() {
           </div>
         </div>
       </div>
-      <button type="submit" id="next-btn" className="primary-btn long" form="joinForm" disabled={isAble}>
-        <span>다음</span>
-      </button>
-      <Link to={{ pathname: "/login" }} className="text-btn back">
+      <ButtonPrimary type={"submit"} className={"primary-btn long"} form={"joinForm"} disabled={isAble} text={"다음"} />
+      <Link to="/login" className="text-btn back">
         돌아가기
       </Link>
     </div>
