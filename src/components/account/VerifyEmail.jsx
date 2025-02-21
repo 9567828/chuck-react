@@ -1,20 +1,18 @@
 import { Link } from "react-router";
 import VerifyComponent from "../common/VerifyComponent";
-import style from "../../assets/scss/modules/style.module.scss";
+import { MessageStyle, Title } from "./../common/StyledComponent";
 
 function VerifyEmail() {
   return (
     <div className="sign-container">
-      <h1 className={`${style.titleXl} ${style.fontBold} ${style.mb}`}>아이디 생성</h1>
+      <Title>아이디 생성</Title>
       <form action="" id="emailForm" className="email-form">
         <div className="input-wrap">
           <div className="email-wrap">
             <label htmlFor="inputEmail"></label>
             <input type="email" name="" id="inputEmail" className="input-box" placeholder="이메일 ex) chuckchuck@naver.com" />
           </div>
-          <p id="checkEmail" className={`${style.grayMsgFont} ${style.info}`}>
-            이메일을 입력하고 전송을 눌러주세요.
-          </p>
+          <MessageStyle>이메일을 입력하고 전송을 눌러주세요.</MessageStyle>
         </div>
         <VerifyComponent />
       </form>

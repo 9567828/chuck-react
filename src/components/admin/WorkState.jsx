@@ -13,7 +13,7 @@ function WorkState() {
             {/* 수정버튼 */}
           </div>
         </div>
-        <div className="date-pick-wrap">
+        {/* <div className="date-pick-wrap">
           <div id="todayBtn" className="date-btn date-today">
             오늘
           </div>
@@ -22,7 +22,7 @@ function WorkState() {
             <div className="date-btn date-week">주</div>
             <div className="date-btn date-month">월</div>
           </div>
-        </div>
+        </div> */}
       </section>
 
       <section className="select-emp">

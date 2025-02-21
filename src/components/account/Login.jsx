@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import ErrorMessage from "./../common/ErrorMessage";
+import { MessageStyle } from "../common/StyledComponent";
 
 function Login() {
   return (
@@ -20,7 +20,7 @@ function Login() {
           <label htmlFor="empPw"></label>
           <input type="password" name="empPw" id="empPw" className="input-box" placeholder="비밀번호입력" />
         </div>
-        <ErrorMessage text={"아이디 또는 비밀번호를 확인해주세요."} />
+        <MessageStyle color={"red"}>아이디 또는 비밀번호를 확인해주세요.</MessageStyle>
       </form>
       <div className="save-login">
         <div className="auto-login-wrap">

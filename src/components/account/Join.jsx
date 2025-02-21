@@ -1,8 +1,8 @@
 import { Link } from "react-router";
-import Message from "../common/ErrorMessage";
 import { useState } from "react";
 import CustomMove from "../hooks/customMove";
-import * as s from "../../assets/scss/modules/style.module.scss";
+import { MessageStyle, Title } from "../common/StyledComponent";
+import { ButtonPrimary } from "./../common/ButtonComponents";
 
 function Join() {
   const [msg, setMsg] = useState("");
@@ -58,14 +58,14 @@ function Join() {
 
   return (
     <div className="sign-container">
-      <h1 className={`${s.titleXl} ${s.fontBold} ${s.mb}`}>이름 / 생년월일</h1>
+      <Title>이름 / 생년월일</Title>
       <div className="input-container">
         <form action="" id="joinForm" onSubmit={handleSubmit}>
           <div className="name-wrap">
             <label htmlFor="inputName"></label>
             <input type="text" name="" id="inputName" className="input-box name" placeholder="이름" />
           </div>
-          <Message text={msg ? msg : ""} />
+          <MessageStyle color="red">{msg ? msg : ""}</MessageStyle>
           <div className="input-birth-wrap">
             <label htmlFor="birthYear">
               <input type="number" name="" id="birthYear" className="input-box birth year" placeholder="YYYY" maxLength="4" />
@@ -129,10 +129,8 @@ function Join() {
           </div>
         </div>
       </div>
-      <button type="submit" id="next-btn" className="primary-btn long" form="joinForm" disabled={isAble}>
-        <span>다음</span>
-      </button>
-      <Link to={{ pathname: "/login" }} className="text-btn back">
+      <ButtonPrimary type={"submit"} className={"primary-btn long"} form={"joinForm"} disabled={isAble} text={"다음"} />
+      <Link to="/login" className="text-btn back">
         돌아가기
       </Link>
     </div>
