@@ -45,10 +45,6 @@ function Header() {
             <img src="/img/202301261737390.jpg" alt="프로필" className="avatar" />
             <span className="first-name">김</span>
           </Link>
-          <NavLink to="/user/profile" className="avatar-wrap">
-            <img src="/img/202301261737390.jpg" alt="프로필" className="avatar" />
-            <span className="first-name">김</span>
-          </NavLink>
           <button className="logout">로그아웃</button>
         </div>
       </nav>

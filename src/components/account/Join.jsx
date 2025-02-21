@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import Message from "../common/ErrorMessage";
 import { useState } from "react";
 import CustomMove from "../hooks/customMove";
-import style from "../../assets/scss/modules/style.module.scss";
+import * as s from "../../assets/scss/modules/style.module.scss";
 
 function Join() {
   const [msg, setMsg] = useState("");
@@ -58,7 +58,7 @@ function Join() {
 
   return (
     <div className="sign-container">
-      <h1 className={`${style.titleXl} ${style.fontBold} ${style.mb}`}>이름 / 생년월일</h1>
+      <h1 className={`${s.titleXl} ${s.fontBold} ${s.mb}`}>이름 / 생년월일</h1>
       <div className="input-container">
         <form action="" id="joinForm" onSubmit={handleSubmit}>
           <div className="name-wrap">
