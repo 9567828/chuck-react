@@ -121,6 +121,7 @@ input[type=number] {
   background-color: $bg-white;
   border: 1px solid $gray-300;
   color: $bg-black;
+  margin-left: 4px;
 }
 
 /* 일,주,월 버튼 */
@@ -260,16 +261,20 @@ label[for^="search"]::before {
   cursor: pointer;
 }
 
-.select-box .select-one {
+.select-box {
+  .select-one {
   font-size: $caption-xs-font-size;
   font-weight: $medium-weight-500;
   color: $gray-400;
+  }
+  .select-one.on {
+    color: $bg-black;
+  }
 }
 
 .select-box img { transform: rotate(90deg); }
 
 .sel-options {
-  display: none;
   position: absolute;
   width: 160px;
   margin-top: 6px;
@@ -279,10 +284,6 @@ label[for^="search"]::before {
   box-shadow: $shadow;
   font-size: $caption-xxs-font-size;
   font-weight: $medium-weight-500;
-}
-
-.sel-options.active {
-  display: block;
 }
 
 .sel-options p { cursor: pointer; }

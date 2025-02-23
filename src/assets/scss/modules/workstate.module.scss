@@ -1,0 +1,35 @@
+.emp-name {
+  font-size: $body-sm-font-size;
+  font-weight: $bold-weight-700;
+}
+
+.emp-position {
+  font-size: $caption-xxs-font-size;
+  font-weight: $medium-weight-500;
+}
+
+.daily-rate {
+  margin: 16px 0 12px;
+  font-size: $caption-xxxs-font-size;
+  color: $gray-600;
+}
+
+.work-times {
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 6px;
+    border-bottom: 1px solid $gray-300;
+    margin-bottom: 16px;
+    p:first-child {
+      font-size: $caption-xxs-font-size;
+      font-weight: $medium-weight-500;
+      color: $gray-600;
+    }
+    p:last-child {
+      font-size: $caption-xs-font-size;
+      font-weight: $medium-weight-500;
+    }
+  }
+}

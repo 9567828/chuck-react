@@ -8,6 +8,8 @@
 @import url("../scss/components/header.scss");
 @import url("../scss/components/footer.scss");
 @import url("../scss/components/side-menu.scss");
+@import url("../scss/components/eidt-workstate-modal.scss");
+@import url("../scss/components/invite-alarm-modal.scss");
 
 // screen
 @import url("../scss/screen/home.scss");
@@ -20,6 +22,9 @@
 // admin
 @import url("../scss/screen/admin/company-info.scss");
 @import url("../scss/screen/admin/work-state.scss");
+
+//user
+@import url("../scss//screen/user/profile.scss");
 
 
 // 반응형

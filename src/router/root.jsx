@@ -5,9 +5,11 @@ import joinRouter from "./JoinRouter";
 import loginRouter from "./LoginRouter";
 import adminRouter from "./adminRouter";
 import AdminLayout from "../layouts/AdminLayout";
+import UserLayout from "../layouts/UserLayout";
 
 const NotFound = lazy(() => import("./../pages/NotFound"));
 const HomePage = lazy(() => import("./../pages/HomePage"));
+const ProfilePage = lazy(() => import("../pages/user/ProfilePage"));
 
 const root = createBrowserRouter([
   {
@@ -38,6 +40,20 @@ const root = createBrowserRouter([
     path: "/admin",
     element: <AdminLayout />,
     children: [adminRouter.companyInfo, adminRouter.workState],
+  },
+  {
+    path: "/user",
+    element: <UserLayout />,
+    children: [
+      {
+        path: "profile",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <ProfilePage />
+          </Suspense>
+        ),
+      },
+    ],
   },
 ]);
 

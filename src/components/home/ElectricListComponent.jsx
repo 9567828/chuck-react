@@ -8,7 +8,7 @@ function ElectricListComponent() {
         <div className="title-left">
           <img src="/img/main-icons/ic_fill_electric.svg" alt="전자결재아이콘" />
           <h1 className={`${s.bodyMd} ${s.fontBold}`}>전자결재</h1>
-          <p className="caption-xxs font-medium check-electric">확인하지 않은 결재 (7)</p>
+          <p className={`${s.captionXxs} ${s.fontMedium} check-electric`}>확인하지 않은 결재 (7)</p>
         </div>
         <Link to="" className="show-all">
           전체보기

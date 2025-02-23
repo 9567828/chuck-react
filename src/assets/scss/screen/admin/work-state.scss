@@ -14,7 +14,7 @@
 /* 달력설정 */
 .shadow {
   min-height: 280px;
-  box-shadow: var(--main-shadow);
+  box-shadow: $shadow;
 }
 
 .cal-drop {
@@ -41,8 +41,8 @@
   /*justify-content: space-between;*/
   gap: 58px;
   padding: 6px 4px;
-  font-size: var(--caption-xxs-font-size);
-  font-weight: var(--regular-weight-400);
+  font-size: $caption-xxs-font-size;
+  font-weight: $regular-weight-400;
 }
 
 .date-table.off {
@@ -55,13 +55,13 @@
 
 .table-title {
   margin-bottom: 16px;
-  color: var(--gray-600);
-  border-bottom: 2px solid var(--gray-300);
+  color: $gray-600 $gray-600;
+  border-bottom: 2px solid $gray-300;
 }
 
 .table-content {
   margin-bottom: 10px;
-  border-bottom: 1px solid var(--gray-200);
+  border-bottom: 1px solid $gray-200;
 }
 
 .table-data.dept-name {
@@ -70,7 +70,7 @@
   text-overflow: ellipsis;
 }
 
-.table-data.highlight { color: var(--main-bg-color) }
+.table-data.highlight { color: $main-color }
 
 .table-data.edit-data { position: relative; }
 
@@ -81,17 +81,25 @@
 
 .table-data.edit-data .edit-btn-box { top: -6px; }
 
-.table-data.edit-data .edit-btn-box { display: none; }
-.table-data.edit-data .edit-btn-box.on { display: block; }
+// .table-data.edit-data .edit-btn-box { display: none; }
+// .table-data.edit-data:hover .edit-btn-box { display: block; }
+
+.table-data {
+  &.edit-data {
+    .edit-btn-box {
+      display: none;
+    }
+
+    &:hover {
+      .edit-btn-box {
+        display: block;
+      }
+    }
+  }
+}
+
 
 /* 주, 월단위 사원카드 */
-.week-month-wrap {
-  display: none;
-}
-
-.week-month-wrap.on {
-  display: block;
-}
 
 .table-grid {
   display: grid;
@@ -102,46 +110,12 @@
 .emp-work-info {
   height: 352px;
   padding: 14px 16px;
-  background-color: var(--gray-100);
+  background-color: $gray-100;
   border-radius: 10px;
 }
 
-.emp-info, .work-times > li { display: flex; }
-
 .emp-info {
+  display: flex;
   align-items: flex-end;
   gap: 6px;
-}
-
-.work-times > li {
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--gray-300);
-  margin-bottom: 16px;
-}
-
-.emp-info .emp-name {
-  font-size: var(--body-sm-font-size);
-  font-weight: var(--bold-weight-700);
-}
-
-.emp-info .emp-position {
-  font-size: var(--caption-xxs-font-size);
-  font-weight: var(--medium-weight-500);
-}
-
-.daily-rate {
-  margin: 16px 0 12px;
-  font-size: var(--caption-xxxs-font-size);
-}
-
-.work-times li p:first-child {
-  font-size: var(--caption-xxs-font-size);
-  font-weight: var(--medium-weight-500);
-}
-
-.work-times li p:last-child {
-  font-size: var(--caption-xs-font-size);
-  font-weight: var(--medium-weight-500);
 }

@@ -1,5 +1,5 @@
-import { Link, NavLink } from "react-router";
-import style from "../assets/scss/modules/style.module.scss";
+import { NavLink } from "react-router";
+import * as s from "../assets/scss/modules/style.module.scss";
 import { useState, useEffect } from "react";
 
 function SideMenu() {
@@ -60,7 +60,7 @@ function SideMenu() {
   return (
     <aside>
       <div className="lnb-container admin">
-        <h1 className={`lnb-title ${style.fontBold} ${style.bodyMd}`}>관리자</h1>
+        <h1 className={`lnb-title ${s.fontBold} ${s.bodyMd}`}>관리자</h1>
         <ul className="lnb">
           {menuItems.map((item) => (
             <li
@@ -109,21 +109,6 @@ function SideMenu() {
               ) : null}
             </li>
           ))}
-        </ul>
-      </div>
-      <div className="lnb-container my-profile">
-        <h1 className="lnb-title font-bold body-md">마이페이지</h1>
-        <ul className="lnb">
-          <li className="lnb-menu">
-            <Link to="/user/profile" className="lnb-style lnb-menu-item">
-              <span>프로필</span>
-            </Link>
-          </li>
-          <li className="lnb-menu">
-            <Link to="/logoutProcess" className="lnb-style lnb-menu-item">
-              <span>로그아웃</span>
-            </Link>
-          </li>
         </ul>
       </div>
     </aside>
