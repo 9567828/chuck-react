@@ -1,0 +1,100 @@
+/* 달력 */
+.calender-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  padding: 16px;
+  border-radius: 10px;
+  background-color: $bg-white;
+}
+
+.calender-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 6px;
+}
+
+.calender-head button:first-child img { transform: rotate(180deg); }
+.calender-head button { height: 16px; }
+
+.month-year {
+  span {
+    &:first-child {
+      text-transform: capitalize;
+      margin-right: 3px;
+    } 
+  }
+}
+
+.weekday {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 11px 12px;
+  gap: 14px;
+  font-weight: $medium-weight-500;
+  color: $gray-600;
+}
+
+.weekday-wrap {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  gap: 13px;
+}
+
+.day-wrap {
+  width: 25px;
+  height: 25px;
+  padding: 3px 0;
+  border-radius: 50px;
+  background-color: $bg-white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+}
+
+.day-wrap.cal-today, .day-wrap.pick-date { background-color: $main-color; }
+.day-wrap.cal-today .schedule-dot { background-color: $bg-white }
+.day-wrap.cal-today .date-num,
+.day-wrap.pick-date .date-num,
+.day-wrap.holiday.cal-today .date-num,
+.day-wrap.holiday.pick-date .date-num {
+  color: $bg-white
+}
+.day-wrap.holiday .date-num { color: $holiday-red; }
+
+.day-wrap.prev-day .date-num,
+.day-wrap.next-day .date-num {
+  opacity: 0.4;
+}
+
+.date-num {
+  font-size: $caption-xxs-font-size;
+  font-weight: $medium-weight-500;
+  color: $gray-800;
+}
+.schedule-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 3px;
+  background-color: $main-color;
+}
+
+/* 주, 월 단위 선택했을 때 효과 */
+.weekday-wrap.select-week,
+.days-container.select-month:not(.prev-day, .next-day){
+  background-color: $main-color;
+  border-radius: 10px;
+}
+
+.weekday-wrap.select-week .day-wrap,
+.days-container.select-month .day-wrap { background-color: inherit; }
+.weekday-wrap.select-week .date-num,
+.days-container.select-month .date-num { color: $bg-white; }

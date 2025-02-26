@@ -15,8 +15,6 @@ function WorkStateList() {
     setIsOn(false);
   };
 
-  console.log(isOn);
-
   const thItems = [
     { id: 1, name: "이름" },
     { id: 2, name: "직책" },

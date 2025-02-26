@@ -2,9 +2,11 @@ import WorkStateList from "./WorkStateList";
 import WorkStateListWM from "./WorkStateListWM";
 import PeriodSelectorCompnent from "./../common/PeriodSelectorComponent";
 import { useState } from "react";
+import DateFormatter from "../hooks/MakeDate";
 
 function WorkState() {
   const { PeriodSelector, isClick } = PeriodSelectorCompnent();
+  const date = new DateFormatter();
 
   const [isActive, setIsActive] = useState(false);
   const [select, setSelect] = useState(null);
@@ -38,7 +40,7 @@ function WorkState() {
       <section className="date-pick-section">
         <div id="calenderWrap" className="calender-wrap">
           <div className="select-cal">
-            <div id="drawToday" className="get-today"></div>
+            <div className="get-today">{date.defaultDate}</div>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5 11.825L8.825 8L5 4.175L6.18333 3L11.1833 8L6.18333 13L5 11.825Z" fill="#616161" />
             </svg>

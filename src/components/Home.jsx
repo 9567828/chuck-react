@@ -1,8 +1,21 @@
 import { Link } from "react-router";
 import * as s from "../assets/scss/modules/style.module.scss";
 import ElectricListComponent from "./home/ElectricListComponent";
+import DateFormatter from "./hooks/MakeDate";
+import { useEffect, useState } from "react";
+import Calender from "./common/Calender";
 
 function Home() {
+  const date = new DateFormatter();
+  const [updateDate, setUpdateDate] = useState(date);
+
+  useEffect(() => {
+    const interValId = setInterval(() => {
+      setUpdateDate(new DateFormatter());
+    }, 1000);
+    return () => clearInterval(interValId);
+  }, []);
+
   return (
     <div className="inner">
       <div id="main-container">
@@ -22,7 +35,7 @@ function Home() {
           </div>
           <div className="schedule-container">
             {/* 달력 */}
-            {/* <th:block th:insert="~{common/fragments/calender :: calenderFragment}"></th:block> */}
+            <Calender />
             <div className="schedule-list">
               <div className="schedule-content">
                 <div className={`schedule-header ${s.captionXs} ${s.fontBold}`}>12월 9일</div>
@@ -107,8 +120,8 @@ function Home() {
               </div>
             </div>
             <div className="timer">
-              <div className={`today ${s.captionXs}`}></div>
-              <div className={`current-time ${s.display} ${s.fontBold}`}></div>
+              <div className={`today ${s.captionXs}`}>{updateDate.dateWithDay}</div>
+              <div className={`current-time ${s.display} ${s.fontBold}`}>{updateDate.hours}</div>
               <div className={`status-attendance ${s.bodySm}`}>퇴근 완료</div>
             </div>
             <button className="primary-btn punch-in">
