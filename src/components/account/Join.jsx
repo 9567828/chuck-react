@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { useState } from "react";
 import CustomMove from "../hooks/customMove";
 import { MessageStyle, Title } from "../common/StyledComponent";
-import { ButtonPrimary } from "./../common/ButtonComponents";
+import ButtonComponent from "../common/ButtonComponents";
 
 function Join() {
   const [msg, setMsg] = useState("");
@@ -15,6 +15,7 @@ function Join() {
   });
 
   const { moveToPage } = CustomMove();
+  const { ButtonPrimary } = ButtonComponent();
 
   const handleSubmit = (e) => {
     e.preventDefault();

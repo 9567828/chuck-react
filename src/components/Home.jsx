@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import * as s from "../assets/scss/modules/style.module.scss";
+import "../assets/scss/screen/home.scss";
 import ElectricListComponent from "./home/ElectricListComponent";
 import DateFormatter from "./hooks/MakeDate";
 import { useEffect, useState } from "react";

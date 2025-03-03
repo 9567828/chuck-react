@@ -1,8 +1,3 @@
-/* 폰트임포트 */
-/* 프리텐다드 */
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
-
-// colors
 $main-color: #FF5116;
 $main-hover-color: #F04A13;
 $bg-white: #FFFFFF;
@@ -18,7 +13,6 @@ $gray-300: #E0E0E0;
 $gray-200: #EEEEEE;
 $gray-100: #F5F5F5;
 
-// 폰트
 $linehight-140: 140%;
 $linehight-150: 150%;
 $letterspacing-2: -2%;
@@ -31,7 +25,6 @@ $caption-xs-font-size: 14px;
 $caption-xxs-font-size: 12px;
 $caption-xxxs-font-size: 10px;
 
-// 폰트 두께
 $thin-weight-100: 100;
 $extraLight-weight-200: 200;
 $light-weight-300: 300;
@@ -42,5 +35,20 @@ $bold-weight-700: 700;
 $extraBold-weight-800: 800;
 $heady-weight-900: 900;
 
-/* 이펙트 */
 $shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+
+@mixin grid-col($col, $justi, $align, $gap) {
+  display: grid;
+  @if $col {
+    grid-template-columns: $col;
+  }
+  @if $justi {
+    justify-content: $justi
+  }
+  @if $align {
+    align-items: $align
+  }
+  @if $gap {
+    gap: $gap
+  }
+}
