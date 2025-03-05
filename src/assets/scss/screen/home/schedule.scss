@@ -1,0 +1,51 @@
+.schedule-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  height: 280px;
+}
+
+.schedule-container.height {
+  height: 313px;
+}
+
+/* 달력은 css 따로있음 */
+
+/* 일정목록 */
+.schedule-list {
+  min-width: 324px;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  border-radius: 10px;
+  background-color: $bg-white;
+}
+
+.schedule-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 9px 16px;
+}
+
+.content-list {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.content-list p { font-weight: $medium-weight-500; }
+
+.cal-color {
+  width: 4px;
+  height: 14px;
+  background-color: $main-color;
+  border-radius: 4px;
+}
+
+.content-list:nth-child(odd) {
+  .cal-color {
+    background-color: #6E17FF;
+  }
+}

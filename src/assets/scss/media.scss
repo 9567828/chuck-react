@@ -15,24 +15,6 @@
 .join-footer {
     height: 161px;
 }
-
-/* header */
-nav { padding: 14px 24px; }
-nav ul, .gnb-icon.invite {
-  display: none;
-}
-.tab-menu-btn { display: block; }
-.alarm-modal { margin-right: 137px; }
-
-/* 홈 */
-#main-container {
-  min-width: 672px;
-  display: flex;
-  flex-direction: column;
-}
-/*.electric-card.height {*/
-/*    padding: 8px 14px;*/
-/*}*/
 }
 
 /* 모니터 해상도 1920이상 일 때 (24인치~) */

@@ -1,7 +1,49 @@
 import { Link } from "react-router";
+import "../../assets/scss/screen/home/electric.scss";
 import * as s from "../../assets/scss/modules/style.module.scss";
+import { EmptyMessage } from "./../common/StyledComponent";
+import AvatarComponent from "../common/AvatarComponent";
 
 function ElectricListComponent() {
+  const lists = [
+    {
+      id: 1,
+      title:
+        "최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용",
+      date: "2024.12.24(금) 09:42",
+      name: "김지훈",
+      src: "/img/202301261737390.jpg",
+    },
+    {
+      id: 2,
+      title:
+        "최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용",
+      date: "2024.12.24(금) 09:42",
+      name: "김지훈",
+    },
+    {
+      id: 3,
+      title:
+        "최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용",
+      date: "2024.12.24(금) 09:42",
+      name: "김지훈",
+    },
+    {
+      id: 4,
+      title:
+        "최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용",
+      date: "2024.12.24(금) 09:42",
+      name: "김지훈",
+    },
+    {
+      id: 5,
+      title:
+        "최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용",
+      date: "2024.12.24(금) 09:42",
+      name: "김지훈",
+    },
+  ];
+
   return (
     <div className="dashboard-box electric">
       <div className="title-bar">
@@ -14,114 +56,31 @@ function ElectricListComponent() {
           전체보기
         </Link>
       </div>
-      <div className="card-wrap">
-        <div className="electric-card">
-          <p className={`list-title ${s.captionXs} ${s.fontBold}`}>
-            최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대
-            표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용
-          </p>
-          <div className="list-right">
-            <div className="writer-info">
-              <p className={`${s.captionXs} ${s.fontRegular}`}>2024.12.24(금) 09:42</p>
-              <div className="writer-name">
-                <div className="avatar-wrap">
-                  <img src="/img/202301261737390.jpg" alt="" className="avatar" />
-                  <span className="first-name">김</span>
+      {lists.length !== 0 ? (
+        <div className="card-wrap">
+          {lists.map((item) => (
+            <div className="electric-card" key={item.id}>
+              <p className={`list-title ${s.captionXs} ${s.fontBold}`}>{item.title}</p>
+              <div className="list-right">
+                <div className="writer-info">
+                  <p className={`${s.captionXs} ${s.fontRegular}`}>{item.date}</p>
+                  <div className="writer-name">
+                    <div className="avatar-wrap">
+                      <AvatarComponent img={item.src} src={item.src} name={item.name} />
+                    </div>
+                    <span className={`${s.captionXs} ${s.fontMedium}`}>{item.name}</span>
+                  </div>
                 </div>
-                <span className={`${s.captionXs} ${s.fontMedium}`}>김지훈</span>
+                <Link to="" className={`show-detail ${s.captionXxs} ${s.fontMedium}`}>
+                  자세히 보기 &gt;
+                </Link>
               </div>
             </div>
-            <Link to="" className={`show-detail ${s.captionXxs} ${s.fontMedium}`}>
-              자세히 보기 &gt;
-            </Link>
-          </div>
+          ))}
         </div>
-        <div className="electric-card">
-          <p className={`list-title ${s.captionXs} ${s.fontBold}`}>
-            최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대
-            표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용
-          </p>
-          <div className="list-right">
-            <div className="writer-info">
-              <p className={`${s.captionXs} ${s.fontRegular}`}>2024.12.24(금) 09:42</p>
-              <div className="writer-name">
-                <div className="avatar-wrap">
-                  <img src="/img/202301261737390.jpg" alt="" className="avatar" />
-                  <span className="first-name">김</span>
-                </div>
-                <span className={`${s.captionXs} ${s.fontMedium}`}>김지훈</span>
-              </div>
-            </div>
-            <Link to="" className={`show-detail ${s.captionXxs} ${s.fontMedium}`}>
-              자세히 보기 &gt;
-            </Link>
-          </div>
-        </div>
-        <div className="electric-card">
-          <p className={`list-title ${s.captionXs} ${s.fontBold}`}>
-            최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대
-            표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용
-          </p>
-          <div className="list-right">
-            <div className="writer-info">
-              <p className={`${s.captionXs} ${s.fontRegular}`}>2024.12.24(금) 09:42</p>
-              <div className="writer-name">
-                <div className="avatar-wrap">
-                  <img src="/img/202301261737390.jpg" alt="" className="avatar" />
-                  <span className="first-name">김</span>
-                </div>
-                <span className={`${s.captionXs} ${s.fontMedium}`}>김지훈</span>
-              </div>
-            </div>
-            <Link to="" className={`show-detail ${s.captionXxs} ${s.fontMedium}`}>
-              자세히 보기 &gt;
-            </Link>
-          </div>
-        </div>
-        <div className="electric-card">
-          <p className={`list-title ${s.captionXs} ${s.fontBold}`}>
-            최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대
-            표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용
-          </p>
-          <div className="list-right">
-            <div className="writer-info">
-              <p className={`${s.captionXs} ${s.fontRegular}`}>2024.12.24(금) 09:42</p>
-              <div className="writer-name">
-                <div className="avatar-wrap">
-                  <img src="/img/202301261737390.jpg" alt="" className="avatar" />
-                  <span className="first-name">김</span>
-                </div>
-                <span className={`${s.captionXs} ${s.fontMedium}`}>김지훈</span>
-              </div>
-            </div>
-            <Link to="" className={`show-detail ${s.captionXxs} ${s.fontMedium}`}>
-              자세히 보기 &gt;
-            </Link>
-          </div>
-        </div>
-        <div className="electric-card">
-          <p className={`list-title ${s.captionXs} ${s.fontBold}`}>
-            최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용 최대
-            표시 글자 확인용 최대 표시 글자 확인용 최대 표시 글자 확인용
-          </p>
-          <div className="list-right">
-            <div className="writer-info">
-              <p className={`${s.captionXs} ${s.fontRegular}`}>2024.12.24(금) 09:42</p>
-              <div className="writer-name">
-                <div className="avatar-wrap">
-                  <img src="/img/202301261737390.jpg" alt="" className="avatar" />
-                  <span className="first-name">김</span>
-                </div>
-                <span className={`${s.captionXs} ${s.fontMedium}`}>김지훈</span>
-              </div>
-            </div>
-            <Link to="" className={`show-detail ${s.captionXxs} ${s.fontMedium}`}>
-              자세히 보기 &gt;
-            </Link>
-          </div>
-        </div>
-      </div>
-      {/* <div className="empty-message">진행중인 결재가 없습니다.</div> */}
+      ) : (
+        <EmptyMessage>진행중인 결재가 없습니다.</EmptyMessage>
+      )}
     </div>
   );
 }

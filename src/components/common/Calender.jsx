@@ -1,4 +1,5 @@
 import * as s from "../../assets/scss/modules/style.module.scss";
+import "../../assets/scss/components/calender.scss";
 import { useEffect } from "react";
 import DateFormatter from "../hooks/MakeDate";
 import getHoliday from "../../api/holiday";
