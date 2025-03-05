@@ -24,7 +24,19 @@ function Home() {
     <div className="inner">
       <div id="main-container">
         {/* 전자결재 */}
-        <ElectricListComponent />
+        <div className="dashboard-box electric">
+          <div className="title-bar">
+            <div className="title-left">
+              <img src="/img/main-icons/ic_fill_electric.svg" alt="전자결재아이콘" />
+              <h1 className={`${s.bodyMd} ${s.fontBold}`}>전자결재</h1>
+              <p className={`${s.captionXxs} ${s.fontMedium} check-electric`}>확인하지 않은 결재 (7)</p>
+            </div>
+            <Link to="" className="show-all">
+              전체보기
+            </Link>
+          </div>
+          <ElectricListComponent />
+        </div>
 
         {/* 스케줄 */}
         <div className="dashboard-box schedule">
@@ -45,7 +57,18 @@ function Home() {
         </div>
 
         {/* 공지사항 */}
-        <NoticeComp />
+        <div className="dashboard-box white">
+          <div className="title-bar">
+            <div className="title-left">
+              <img src="/img/main-icons/ic_fill_notice.svg" alt="공지사항" />
+              <h1 className={`${s.bodyMd} ${s.fontBold}`}>공지사항</h1>
+            </div>
+            <Link to="" className="show-all">
+              전체보기
+            </Link>
+          </div>
+          <NoticeComp />
+        </div>
         {/* 출퇴근 및 휴가현황 */}
         <div className="status-container">
           {/* 출퇴근관리 */}

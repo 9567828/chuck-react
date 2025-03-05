@@ -1,3 +1,39 @@
-@mixin text {
-  background-color: $bg-black;
+@use "variables" as *;
+
+@mixin flex($col, $justi, $align, $gap) {
+  display: flex;
+  @if $col {
+    flex-direction: column;
+  }
+  @if $justi {
+    justify-content: $justi
+  }
+  @if $align {
+    align-items: $align
+  }
+  @if $gap {
+    gap: $gap
+  }
+}
+
+@mixin grid-col($col, $justi, $align, $gap) {
+  display: grid;
+  @if $col {
+    grid-template-columns: $col;
+  }
+  @if $justi {
+    justify-content: $justi
+  }
+  @if $align {
+    align-items: $align
+  }
+  @if $gap {
+    gap: $gap
+  }
+}
+
+@mixin home-card {
+  margin-bottom: 8px;
+  padding: 8px 14px;
+  background-color: $bg-white;
 }

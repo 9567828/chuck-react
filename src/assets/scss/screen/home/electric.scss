@@ -1,11 +1,6 @@
 .electric-card, .contents-card {
-  display: grid;
-  place-content: center;
-  align-items: center;
+  @include grid-col(null, center, center, null);
   @include home-card;
-  // margin-bottom: 8px;
-  // padding: 8px 14px;
-  // background-color: $bg-white;
   border-radius: 10px;
 }
 

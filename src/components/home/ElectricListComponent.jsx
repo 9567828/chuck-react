@@ -44,43 +44,29 @@ function ElectricListComponent() {
     },
   ];
 
-  return (
-    <div className="dashboard-box electric">
-      <div className="title-bar">
-        <div className="title-left">
-          <img src="/img/main-icons/ic_fill_electric.svg" alt="전자결재아이콘" />
-          <h1 className={`${s.bodyMd} ${s.fontBold}`}>전자결재</h1>
-          <p className={`${s.captionXxs} ${s.fontMedium} check-electric`}>확인하지 않은 결재 (7)</p>
-        </div>
-        <Link to="" className="show-all">
-          전체보기
-        </Link>
-      </div>
-      {lists.length !== 0 ? (
-        <div className="card-wrap">
-          {lists.map((item) => (
-            <div className="electric-card" key={item.id}>
-              <p className={`list-title ${s.captionXs} ${s.fontBold}`}>{item.title}</p>
-              <div className="list-right">
-                <div className="writer-info">
-                  <p className={`${s.captionXs} ${s.fontRegular}`}>{item.date}</p>
-                  <div className="writer-name">
-                    <div className="avatar-wrap">
-                      <AvatarComponent img={item.src} src={item.src} name={item.name} />
-                    </div>
-                    <span className={`${s.captionXs} ${s.fontMedium}`}>{item.name}</span>
-                  </div>
+  return lists.length !== 0 ? (
+    <EmptyMessage>진행중인 결재가 없습니다.</EmptyMessage>
+  ) : (
+    <div className="card-wrap">
+      {lists.map((item) => (
+        <div className="electric-card" key={item.id}>
+          <p className={`list-title ${s.captionXs} ${s.fontBold}`}>{item.title}</p>
+          <div className="list-right">
+            <div className="writer-info">
+              <p className={`${s.captionXs} ${s.fontRegular}`}>{item.date}</p>
+              <div className="writer-name">
+                <div className="avatar-wrap">
+                  <AvatarComponent img={item.src} src={item.src} name={item.name} />
                 </div>
-                <Link to="" className={`show-detail ${s.captionXxs} ${s.fontMedium}`}>
-                  자세히 보기 &gt;
-                </Link>
+                <span className={`${s.captionXs} ${s.fontMedium}`}>{item.name}</span>
               </div>
             </div>
-          ))}
+            <Link to="" className={`show-detail ${s.captionXxs} ${s.fontMedium}`}>
+              자세히 보기 &gt;
+            </Link>
+          </div>
         </div>
-      ) : (
-        <EmptyMessage>진행중인 결재가 없습니다.</EmptyMessage>
-      )}
+      ))}
     </div>
   );
 }
