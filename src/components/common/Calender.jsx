@@ -18,14 +18,14 @@ function Calender() {
           <img src="/img/ic_move_in.svg" alt="화살표" />
         </button>
         <div className="month-year">
-          <span className={`${s.captionXs} ${s.fontBold}`}>{date.monthInEnglish}</span>
-          <span className={`${s.captionXs} ${s.fontBold}`}>{date.year}</span>
+          <span className={`${s.captionXsB}`}>{date.monthInEnglish}</span>
+          <span className={`${s.captionXsB}`}>{date.year}</span>
         </div>
         <button>
           <img src="/img/ic_move_in.svg" alt="화살표" />
         </button>
       </div>
-      <ul className={`weekday ${s.captionXxs}`}>
+      <ul className={`weekday ${s.captionXxsM}`}>
         <li>SUN</li>
         <li>MON</li>
         <li>TUE</li>

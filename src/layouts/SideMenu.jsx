@@ -60,7 +60,7 @@ function SideMenu() {
   return (
     <aside>
       <div className="lnb-container admin">
-        <h1 className={`lnb-title ${s.fontBold} ${s.bodyMd}`}>관리자</h1>
+        <h1 className={`lnb-title ${s.bodyMdB}`}>관리자</h1>
         <ul className="lnb">
           {menuItems.map((item) => (
             <li

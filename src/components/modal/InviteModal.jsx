@@ -5,7 +5,7 @@ function InviteModal({ closeFn, confirmFn, cancelFn }) {
   return (
     <div className="invite-modal">
       <div className="modal-head">
-        <h3 className={`${s.captionXs} ${s.fontBold}`}>요청</h3>
+        <h3 className={`${s.captionXsB}`}>요청</h3>
         <button
           className="close-modal"
           onClick={() => {
@@ -19,8 +19,8 @@ function InviteModal({ closeFn, confirmFn, cancelFn }) {
       </div>
       <div className="modal-inner">
         <div className="modal-content">
-          <h3 className={`content-title ${s.captionXs}`}>새로운 가입 요청이 있어요.</h3>
-          <div className={`content-info invite ${s.captionXxs}`}>
+          <h3 className={`content-title ${s.captionXsM}`}>새로운 가입 요청이 있어요.</h3>
+          <div className={`content-info invite ${s.captionXxsM}`}>
             <p>아이디 : rlawlgh486@naver.com</p>
             <p>코드 : 246825</p>
           </div>

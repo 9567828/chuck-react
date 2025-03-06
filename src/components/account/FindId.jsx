@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import * as s from "../../assets/scss/modules/style.module.scss";
 import { MessageStyle, Title } from "./../common/StyledComponent";
 
 function FindId() {
@@ -20,7 +21,7 @@ function FindId() {
       <button type="submit" className="primary-btn long" form="findIdForm">
         <span>다음</span>
       </button>
-      <Link to="/login" className="text-btn back">
+      <Link to="/login" className={`${s.textBtnMt}`}>
         돌아가기
       </Link>
     </div>

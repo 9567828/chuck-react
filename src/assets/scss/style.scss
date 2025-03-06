@@ -41,8 +41,7 @@
 
 .avatar-wrap span {
   position: absolute;
-  font-size: $body-md-font-size;
-  font-weight: $bold-weight-700;
+  @include font-style($body-md-font-size, $bold-weight-700, $linehight-150, $letterspacing-2);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -107,12 +106,6 @@ input[type=number] {
 }
 
 /* buttons */
-.text-btn {
-  display: inline-block;
-  font-size: $title-lg-font-size;
-  color: $gray-700;
-}
-
 /* primary long & short */
 .primary-btn,
 .google-login-btn {
@@ -126,8 +119,7 @@ input[type=number] {
   background-color: $main-color;
   color: $bg-white;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-  font-size: $body-md-font-size;
-  font-weight: $bold-weight-700;
+  @include font-style($body-md-font-size, $bold-weight-700, $linehight-150, $letterspacing-2);
 }
 
 .primary-btn img {
@@ -140,8 +132,7 @@ input[type=number] {
   height: 20px;
   border-radius: 3px;
   padding: 2px 6px;
-  font-size: $caption-xxs-font-size;
-  font-weight: $medium-weight-500;
+  @include font-style($caption-xxs-font-size, $medium-weight-500, $linehight-150, null);
   background-color: $main-color;
   color: $bg-white;
 }
@@ -176,8 +167,7 @@ input[type=number] {
   border: 0.5px solid $gray-300;
   background-color: $bg-white;
   color: $gray-700;
-  font-size: $caption-xs-font-size;
-  font-weight: $medium-weight-500;
+  @include font-style($caption-xs-font-size, $medium-weight-500, $linehight-150, 0);
   text-align: center;
   line-height: 24px;
 }
@@ -212,8 +202,7 @@ input[type=number] {
 }
 
 .edit-btn span {
-  font-size: $caption-xxs-font-size;
-  font-weight: $medium-weight-500;
+  @include font-style($caption-xxs-font-size, $medium-weight-500, $linehight-150, null);
   color: $bg-white;
 }
 
@@ -298,9 +287,8 @@ label[for^="search"]::before {
 
 .select-box {
   .select-one {
-  font-size: $caption-xs-font-size;
-  font-weight: $medium-weight-500;
-  color: $gray-400;
+    @include font-style($caption-xs-font-size, $medium-weight-500, $linehight-150, null);
+    color: $gray-400;
   }
   .select-one.on {
     color: $bg-black;
@@ -317,8 +305,7 @@ label[for^="search"]::before {
   border-radius: 8px;
   background-color: $bg-white;
   box-shadow: $shadow;
-  font-size: $caption-xxs-font-size;
-  font-weight: $medium-weight-500;
+  @include font-style($caption-xxs-font-size, $medium-weight-500, $linehight-150, null);
 }
 
 .sel-options p { cursor: pointer; }

@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import VerifyComponent from "../common/VerifyComponent";
 import { MessageStyle, Title } from "./../common/StyledComponent";
+import * as s from "../../assets/scss/modules/style.module.scss";
 
 function VerifyEmail() {
   return (
@@ -23,7 +24,7 @@ function VerifyEmail() {
       <button className="primary-btn long verify-btn" id="verifyBtn" form="emailForm">
         <span>인증하기</span>
       </button>
-      <Link to="/join" className="text-btn back">
+      <Link to="/join" className={`${s.textBtnMt}`}>
         돌아가기
       </Link>
     </div>

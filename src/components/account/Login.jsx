@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { MessageStyle } from "../common/StyledComponent";
+import * as s from "../../assets/scss/modules/style.module.scss";
 
 function Login() {
   return (
@@ -26,7 +27,7 @@ function Login() {
         <div className="auto-login-wrap">
           <input type="checkbox" name="" id="autoLogin" className="circle-check-box" />
           <label></label>
-          <label htmlFor="autoLogin" className="body-sm font-regular">
+          <label htmlFor="autoLogin" className={`${s.bodySmR}`}>
             자동로그인
           </label>
         </div>
@@ -46,7 +47,7 @@ function Login() {
         <img src="/img/google_icon.png" alt="구글" />
         <span>구글 계정으로 로그인하기</span>
       </button>
-      <Link to="/join" className="text-btn">
+      <Link to="/join" className={`${s.textBtn}`}>
         회원가입
       </Link>
     </div>

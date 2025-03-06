@@ -5,7 +5,7 @@ import { EmptyMessage } from "./../common/StyledComponent";
 import AvatarComponent from "../common/AvatarComponent";
 
 function ElectricListComponent() {
-  const lists = [
+  const electricLists = [
     {
       id: 1,
       title:
@@ -44,24 +44,24 @@ function ElectricListComponent() {
     },
   ];
 
-  return lists.length !== 0 ? (
+  return electricLists.length !== 0 ? (
     <EmptyMessage>진행중인 결재가 없습니다.</EmptyMessage>
   ) : (
     <div className="card-wrap">
-      {lists.map((item) => (
+      {electricLists.map((item) => (
         <div className="electric-card" key={item.id}>
-          <p className={`list-title ${s.captionXs} ${s.fontBold}`}>{item.title}</p>
+          <p className={`list-title ${s.captionXsB}`}>{item.title}</p>
           <div className="list-right">
             <div className="writer-info">
-              <p className={`${s.captionXs} ${s.fontRegular}`}>{item.date}</p>
+              <p className={`${s.captionXsR}`}>{item.date}</p>
               <div className="writer-name">
                 <div className="avatar-wrap">
                   <AvatarComponent img={item.src} src={item.src} name={item.name} />
                 </div>
-                <span className={`${s.captionXs} ${s.fontMedium}`}>{item.name}</span>
+                <span className={`${s.captionXsM}`}>{item.name}</span>
               </div>
             </div>
-            <Link to="" className={`show-detail ${s.captionXxs} ${s.fontMedium}`}>
+            <Link to="" className={`show-detail ${s.captionXxsM}`}>
               자세히 보기 &gt;
             </Link>
           </div>

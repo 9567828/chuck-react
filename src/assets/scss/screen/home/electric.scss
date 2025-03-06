@@ -1,22 +1,14 @@
-.electric-card, .contents-card {
-  @include grid-col(null, center, center, null);
+.electric-card {
+  @include grid-col(minmax(168px, 1fr) 440px, center, center, null);
   @include home-card;
   border-radius: 10px;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .electric-card.height { padding: 11px 14px; }
 
-.electric-card { grid-template-columns: minmax(168px, 1fr) 440px; }
-
-.contents-card {
-  grid-template-columns: minmax(475px, 1fr) 133px;
-  gap: 12px;
-  height: 65px;
-  border-radius: 0;
-  border-bottom: 1px solid $gray-200;
-}
-
-.electric-card:last-child, .contents-card:last-child { margin-bottom: 0; }
 
 .list-right {
   display: flex;

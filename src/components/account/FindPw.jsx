@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import VerifyComponent from "./../common/VerifyComponent";
 import { MessageStyle, Title } from "./../common/StyledComponent";
+import * as s from "../../assets/scss/modules/style.module.scss";
 
 function FindPw() {
   return (
@@ -19,7 +20,7 @@ function FindPw() {
       <button className="primary-btn long" form="findPwForm">
         <span>다음</span>
       </button>
-      <Link to="/login" className="text-btn back">
+      <Link to="/login" className={`${s.textBtnMt}`}>
         돌아가기
       </Link>
     </div>

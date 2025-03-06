@@ -1,7 +1,7 @@
 import * as s from "../../assets/scss/modules/style.module.scss";
 
 const NoticeComp = () => {
-  const lists = [
+  const noticeLists = [
     {
       id: 1,
       title:
@@ -27,10 +27,10 @@ const NoticeComp = () => {
       date: "2024.12.24(금) 09:42",
     },
   ];
-  return lists.map((item) => (
+  return noticeLists.map((item) => (
     <div className="contents-card" key={item.id}>
-      <div className={`list-title ${s.captionXs} ${s.fontBold}`}>{item.title}</div>
-      <div className={`write-date ${s.captionXs} ${s.fontRegular}`}>
+      <div className={`list-title ${s.captionXsB}`}>{item.title}</div>
+      <div className={`write-date ${s.captionXsR}`}>
         <p>{item.date}</p>
       </div>
     </div>

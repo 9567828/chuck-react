@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { MessageStyle, Title } from "../common/StyledComponent";
+import * as s from "../../assets/scss/modules/style.module.scss";
 import PropTypes from "prop-types";
 
 function SetPassword({ title }) {
@@ -37,7 +38,7 @@ function SetPassword({ title }) {
       <button id="nextBtn" className="primary-btn long" form="passwordForm" disabled>
         <span>다음</span>
       </button>
-      <Link to="/join/verify-email" className="text-btn back">
+      <Link to="/join/verify-email" className={`${s.textBtnMt}`}>
         돌아가기
       </Link>
     </div>

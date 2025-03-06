@@ -5,7 +5,7 @@ function AlamModal({ closeFn }) {
   return (
     <div className="alarm-modal">
       <div className="modal-head">
-        <h3 className={`${s.captionXs} ${s.fontBold}`}>알림</h3>
+        <h3 className={`${s.captionXsB}`}>알림</h3>
         <button
           className="close-modal"
           onClick={() => {
@@ -20,43 +20,43 @@ function AlamModal({ closeFn }) {
       <div className="modal-inner alarm">
         <div className="modal-content">
           <div className="content-title alarm">
-            <p className={`${s.captionXs} alarm`}>카테고리</p>
+            <p className={`${s.captionXsM} alarm`}>카테고리</p>
             <span className="alarm-circle"></span>
           </div>
-          <div className={`content-info alarm ${s.captionXs}`}>
+          <div className={`content-info alarm ${s.captionXsM}`}>
             <p>글자는 최대 2줄 까지 노출됩니다. 글자는 최대 2줄 까지 노출됩니다.글자는 최대 2줄 까지 노출됩니다.</p>
           </div>
-          <p className={`period-date ${s.captionXxs}`}>1달 전</p>
+          <p className={`period-date ${s.captionXxsM}`}>1달 전</p>
         </div>
         <div className="modal-content">
           <div className="content-title alarm">
-            <p className={`${s.captionXs} alarm`}>카테고리</p>
+            <p className={`${s.captionXsM} alarm`}>카테고리</p>
             <span className="alarm-circle"></span>
           </div>
-          <div className={`content-info alarm ${s.captionXs}`}>
+          <div className={`content-info alarm ${s.captionXsM}`}>
             <p>글자는 최대 2줄 까지 노출됩니다. 글자는 최대 2줄 까지 노출됩니다.글자는 최대 2줄 까지 노출됩니다.</p>
           </div>
-          <p className={`period-date ${s.captionXxs}`}>1달 전</p>
+          <p className={`period-date ${s.captionXxsM}`}>1달 전</p>
         </div>
         <div className="modal-content">
           <div className="content-title alarm">
-            <p className={`${s.captionXs} alarm`}>카테고리</p>
+            <p className={`${s.captionXsM} alarm`}>카테고리</p>
             <span className="alarm-circle"></span>
           </div>
-          <div className={`content-info alarm ${s.captionXs}`}>
+          <div className={`content-info alarm ${s.captionXsM}`}>
             <p>글자는 최대 2줄 까지 노출됩니다. 글자는 최대 2줄 까지 노출됩니다.글자는 최대 2줄 까지 노출됩니다.</p>
           </div>
-          <p className={`period-date ${s.captionXxs}`}>1달 전</p>
+          <p className={`period-date ${s.captionXxsM}`}>1달 전</p>
         </div>
         <div className="modal-content">
           <div className="content-title alarm">
-            <p className={`${s.captionXs} alarm`}>카테고리</p>
+            <p className={`${s.captionXsM} alarm`}>카테고리</p>
             <span className="alarm-circle"></span>
           </div>
-          <div className={`content-info alarm ${s.captionXs}`}>
+          <div className={`content-info alarm ${s.captionXsM}`}>
             <p>글자는 최대 2줄 까지 노출됩니다. 글자는 최대 2줄 까지 노출됩니다.글자는 최대 2줄 까지 노출됩니다.</p>
           </div>
-          <p className={`period-date ${s.captionXxs}`}>1달 전</p>
+          <p className={`period-date ${s.captionXxsM}`}>1달 전</p>
         </div>
       </div>
     </div>

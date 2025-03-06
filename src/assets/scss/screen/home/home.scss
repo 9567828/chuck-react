@@ -15,7 +15,13 @@
   background-color: $bg-white;
 }
 
-.dashboard-box.electric, .dashboard-box.schedule { height: fit-content }
+.dashboard-box.electric, .dashboard-box.schedule { height: 371px }
+
+.dashboard-box.notice {
+  .contents-card {
+    padding: 14px;
+  }
+}
 
 .title-bar {
   display: flex;
@@ -31,13 +37,9 @@
   gap: 10px;
 }
 
-.check-electric { color: $main-color; }
-
 .show-all {
   display: inline-block;
-  font-size: $caption-xs-font-size;
-  font-weight: $medium-weight-500;
-  text-decoration: underline;
+  @include font-style($caption-xs-font-size, $medium-weight-500, $linehight-150, 0);  text-decoration: underline;
   color: $gray-600;
 }
 
@@ -47,6 +49,15 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.contents-card {
+  @include grid-col(minmax(475px, 1fr) 133px, center, center, 12px);
+  @include home-card;
+  border-bottom: 1px solid $gray-200;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 /* --------------------------------------------------------------- */
@@ -85,20 +96,6 @@
   width: 100%;
   border-radius: 10px;
 }
-
-/* 휴가현황 */
-.dashboard-box.vacation > .card-wrap { padding: 0 14px; }
-.contents-card.vacation {
-  width: 100%;
-  min-width: 100%;
-  padding: 8px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.contents-card.vacation .writer-name { padding: 0; }
-.contents-card.vacation .writer-name span { font-size: $body-sm-font-size; }
 
 // media
 @media screen and (max-width: 1439px) {

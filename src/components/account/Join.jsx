@@ -3,6 +3,7 @@ import { useState } from "react";
 import CustomMove from "../hooks/customMove";
 import { MessageStyle, Title } from "../common/StyledComponent";
 import ButtonComponent from "../common/ButtonComponents";
+import * as s from "../../assets/scss/modules/style.module.scss";
 
 function Join() {
   const [msg, setMsg] = useState("");
@@ -131,7 +132,7 @@ function Join() {
         </div>
       </div>
       <ButtonPrimary type={"submit"} className={"primary-btn long"} form={"joinForm"} disabled={isAble} text={"다음"} />
-      <Link to="/login" className="text-btn back">
+      <Link to="/login" className={`${s.textBtnMt}`}>
         돌아가기
       </Link>
     </div>

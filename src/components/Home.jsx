@@ -28,8 +28,8 @@ function Home() {
           <div className="title-bar">
             <div className="title-left">
               <img src="/img/main-icons/ic_fill_electric.svg" alt="전자결재아이콘" />
-              <h1 className={`${s.bodyMd} ${s.fontBold}`}>전자결재</h1>
-              <p className={`${s.captionXxs} ${s.fontMedium} check-electric`}>확인하지 않은 결재 (7)</p>
+              <h1 className={`${s.bodyMdB}`}>전자결재</h1>
+              <p className={`${s.captionXxsM} ${s.redFont}`}>확인하지 않은 결재 (7)</p>
             </div>
             <Link to="" className="show-all">
               전체보기
@@ -43,7 +43,7 @@ function Home() {
           <div className="title-bar">
             <div className="title-left">
               <img src="/img/main-icons/ic_fill_calender.svg" alt="스케줄" />
-              <h1 className={`${s.bodyMd} ${s.fontBold}`}>스케줄</h1>
+              <h1 className={`${s.bodyMdB}`}>스케줄</h1>
             </div>
             <Link to="" className="show-all">
               전체보기
@@ -57,11 +57,11 @@ function Home() {
         </div>
 
         {/* 공지사항 */}
-        <div className="dashboard-box white">
+        <div className="dashboard-box white notice">
           <div className="title-bar">
             <div className="title-left">
               <img src="/img/main-icons/ic_fill_notice.svg" alt="공지사항" />
-              <h1 className={`${s.bodyMd} ${s.fontBold}`}>공지사항</h1>
+              <h1 className={`${s.bodyMdB}`}>공지사항</h1>
             </div>
             <Link to="" className="show-all">
               전체보기
@@ -76,13 +76,13 @@ function Home() {
             <div className="title-bar">
               <div className="title-left">
                 <img src="/img/main-icons/ic_attendance.svg" alt="출퇴근" />
-                <h1 className={`${s.bodyMd} ${s.fontBold}`}>출퇴근 관리</h1>
+                <h1 className={`${s.bodyMdB}`}>출퇴근 관리</h1>
               </div>
             </div>
             <div className="timer">
-              <div className={`today ${s.captionXs}`}>{updateDate.dateWithDay}</div>
-              <div className={`current-time ${s.display} ${s.fontBold}`}>{updateDate.hours}</div>
-              <div className={`status-attendance ${s.bodySm}`}>퇴근 완료</div>
+              <div className={`${s.captionXsM} ${s.gray700Font}`}>{updateDate.dateWithDay}</div>
+              <div className={`${s.displayB}`}>{updateDate.hours}</div>
+              <div className={`${s.bodySmM} ${s.gray700Font}`}>퇴근 완료</div>
             </div>
             <button className="primary-btn punch-in">
               <span>출근하기</span>
@@ -94,7 +94,7 @@ function Home() {
             <div className="title-bar">
               <div className="title-left">
                 <img src="/img/main-icons/ic_vacation.svg" alt="휴가" />
-                <h1 className={`${s.bodyMd} ${s.fontBold}`}>휴가 현황</h1>
+                <h1 className={`${s.bodyMdB}`}>휴가 현황</h1>
               </div>
               <Link to="" className="show-all">
                 전체보기

@@ -21,7 +21,7 @@ function ProfileSidemenu() {
   return (
     <aside>
       <div className="lnb-container my-profile">
-        <h1 className={`lnb-title ${s.fontBold} ${s.bodyMd}`}>마이페이지</h1>
+        <h1 className={`lnb-title ${s.bodyMdB}`}>마이페이지</h1>
         <ul className="lnb">
           <li className="lnb-menu">
             <NavLink

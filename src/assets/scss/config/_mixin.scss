@@ -37,3 +37,38 @@
   padding: 8px 14px;
   background-color: $bg-white;
 }
+
+@mixin font-style($size, $weight, $line, $letter) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line;
+  letter-spacing: $letter;
+}
+
+@mixin textBtn-style($ismt:false) {
+  display: inline-block;
+  @include font-style($title-lg-font-size, $regular-weight-400, $linehight-150, $letterspacing-2);
+  color: $gray-700;
+  @if $ismt == true {
+    margin-top: 24px;
+  }
+}
+
+@mixin font-class($size, $weight, $lineheight, $letterspacing: null) {
+  @include font-style($size, $weight, $lineheight, $letterspacing);
+}
+
+// 클래스 이름을 정의하는 함수
+@mixin generate-font-classes($base-name, $font-size, $line-height, $letter-spacing: null) {
+  .#{$base-name}-b {
+    @include font-class($font-size, $bold-weight-700, $line-height, $letter-spacing);
+  }
+
+  .#{$base-name}-m {
+    @include font-class($font-size, $medium-weight-500, $line-height, $letter-spacing);
+  }
+
+  .#{$base-name}-r {
+    @include font-class($font-size, $regular-weight-400, $line-height, $letter-spacing);
+  }
+}
