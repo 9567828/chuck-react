@@ -55,7 +55,7 @@ function ProfilePage() {
             </div>
           </div>
         </div>
-        <button className="primary-btn profile-edit-btn">
+        <button className="primary-btn small">
           <span>수정하기</span>
         </button>
       </section>

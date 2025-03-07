@@ -36,7 +36,7 @@ function EditWorkStateModal({ beforeWorkTime, confirmFn, cancelFn, changeFn }) {
         <p className="message edit-work-info">변경하실 시간을 입력해 주세요.</p>
         <div className="edit-btn-wrap">
           <button
-            className="confirm-btn"
+            className="sub-btn-large"
             onClick={() => {
               if (confirmFn) {
                 confirmFn();
@@ -46,7 +46,7 @@ function EditWorkStateModal({ beforeWorkTime, confirmFn, cancelFn, changeFn }) {
             확인
           </button>
           <button
-            className="confirm-btn cancel"
+            className="sub-btn-large cancel"
             onClick={() => {
               if (cancelFn) {
                 cancelFn();

@@ -1,6 +1,22 @@
 import * as s from "../../assets/scss/modules/style.module.scss";
 import "../../assets/scss/screen/home/vacation.scss";
 import AvatarComponent from "../common/AvatarComponent";
+import styled from "styled-components";
+
+const List = styled.div`
+  width: 100%;
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  padding: 8px 14px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
 
 function VacationComp() {
   const vationLists = [
@@ -15,7 +31,7 @@ function VacationComp() {
   ) : (
     <div className="card-wrap">
       {vationLists.map((item) => (
-        <div className="contents-card vacation" key={item.id}>
+        <List className="vacation" key={item.id}>
           <div className="writer-name">
             <div className="avatar-wrap">
               <AvatarComponent img={item.src} src={item.src} name={item.name} />
@@ -25,7 +41,7 @@ function VacationComp() {
           <div className={`write-date ${s.captionXsR}`}>
             <p>{item.date}</p>
           </div>
-        </div>
+        </List>
       ))}
     </div>
   );

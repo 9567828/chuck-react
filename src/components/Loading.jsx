@@ -1,4 +1,15 @@
 import { useEffect, useState } from "react";
+import styled from "styled-components";
+
+const Div = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    height: 152px;
+  }
+`;
 
 function Loading() {
   const [showFallback, setShowFallBack] = useState(true);
@@ -12,9 +23,9 @@ function Loading() {
   }, []);
   if (showFallback) {
     return (
-      <div className="loading">
+      <Div>
         <img src="../../img/loading.gif" alt="로딩이미지" />
-      </div>
+      </Div>
     );
   }
 }

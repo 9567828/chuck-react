@@ -4,6 +4,7 @@ import CustomMove from "../hooks/customMove";
 import { MessageStyle, Title } from "../common/StyledComponent";
 import ButtonComponent from "../common/ButtonComponents";
 import * as s from "../../assets/scss/modules/style.module.scss";
+import "../../assets/scss/screen/account/join.scss";
 
 function Join() {
   const [msg, setMsg] = useState("");
@@ -26,7 +27,7 @@ function Join() {
       setMsg("이름을 입력해주세요.");
       return;
     }
-    moveToPage("/join/varify-email");
+    moveToPage("/join/verify-email");
   };
 
   // 필수 체크박스의 상태를 업데이트하는 함수

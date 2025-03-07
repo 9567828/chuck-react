@@ -72,3 +72,50 @@
     @include font-class($font-size, $regular-weight-400, $line-height, $letter-spacing);
   }
 }
+
+@mixin btn-style ($flex, $width, $height, $radius, $padding, $bg: $main-color) {
+  @if $flex == flex {
+    @include flex(null, center, center, 10px);
+  }
+  @if $width {
+    width: $width;
+  }
+  @if $height {
+    height: $height;
+  }
+  @if $radius {
+    border-radius: $radius;
+  }
+  @if $padding {
+    padding: $padding;
+  }
+  background-color: $bg;
+
+  @if $bg == $main-color {
+    color: $bg-white;
+  }
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+@mixin modal-btn-style ($width, $height) {
+  width: $width;
+  height: $height;
+  border-radius: 3px;
+  padding: 2px 6px;
+  background-color: $main-color;
+  color: $bg-white;
+  @include font-style($caption-xxs-font-size, $medium-weight-500, $linehight-150, null);
+}
+
+@mixin sub-btn-class ($base-name, $width, $height) {
+  .sub-btn-#{$base-name} {
+    @include modal-btn-style($width, $height)
+  }
+}
+
+@mixin sub-btn-cancel-style {
+  background-color: $bg-white;
+  border: 1px solid $gray-300;
+  color: $bg-black;
+  margin-left: 4px;
+}

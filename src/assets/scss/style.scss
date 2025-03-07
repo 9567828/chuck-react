@@ -1,15 +1,5 @@
 @use "./config/reset";
-
-.loading {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.loading img {
-  height: 152px;
-}
+@use "./components/footer" as *;
 
 .inner {
   padding: 40px;
@@ -106,55 +96,64 @@ input[type=number] {
 }
 
 /* buttons */
-/* primary long & short */
-.primary-btn,
-.google-login-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  height: 64px;
-  border-radius: 20px;
-  padding: 18px 32px;
-  background-color: $main-color;
-  color: $bg-white;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+.primary-btn {
+  @include btn-style(flex, null, null, 20px, 18px 32px);
   @include font-style($body-md-font-size, $bold-weight-700, $linehight-150, $letterspacing-2);
+  &:hover:not(.google-login-btn) {
+    background-color: $main-hover-color;
+  }
+  img {
+    height: 32px;
+  }
 }
 
-.primary-btn img {
-  height: 32px;
+.primary-btn.short {
+  width: 161px;
 }
-
-/* sub 버튼*/
-.sub-btn, .confirm-btn {
-  width: fit-content;
-  height: 20px;
-  border-radius: 3px;
-  padding: 2px 6px;
-  @include font-style($caption-xxs-font-size, $medium-weight-500, $linehight-150, null);
-  background-color: $main-color;
-  color: $bg-white;
+.primary-btn.long {
+  width: 520px;
 }
-
-.confirm-btn {
-  width: 56px;
-  height: 24px;
-}
-
-.sub-btn.cancel,
-.confirm-btn.cancel {
+.primary-btn.secondary {
   background-color: $bg-white;
-  border: 1px solid $gray-300;
+  border: 1px solid $gray-600;
+}
+
+.primary-btn.small {
+  @include btn-style(flex, null, null, 10px, 8px 12px);
+  @include font-style($body-sm-font-size, $bold-weight-700, $linehight-150, $letterspacing-2);
+}
+
+.google-login-btn {
+  @extend .primary-btn;
+  width: 520px;
+  padding: 14px 37px;
+  background-color: $bg-white;
   color: $bg-black;
-  margin-left: 4px;
+  border: 1px solid $gray-400;
+  box-shadow: none;
+}
+
+/* modal sub 버튼*/
+@include sub-btn-class('flexible', fit-content, 20px);
+@include sub-btn-class('large', 56px, 24px);
+@include sub-btn-class('regular', 40px, 20px);
+
+.sub-btn-flexible.cancel {
+  @extend .sub-btn-flexible;
+  @include sub-btn-cancel-style;
+}
+.sub-btn-large.cancel {
+  @extend .sub-btn-large;
+  @include sub-btn-cancel-style;
+}
+.sub-btn-regular.cancel {
+  @extend .sub-btn-regular;
+  @include sub-btn-cancel-style;
 }
 
 /* 일,주,월 버튼 */
 .date-pick-wrap, .date-pick {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  @include flex(null, null, center, 6px);
   cursor: pointer;
 }
 
@@ -189,50 +188,6 @@ input[type=number] {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-left: 0;
-}
-
-.edit-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70px;
-  padding: 2px 0;
-  border-radius: 4px;
-  background-color: $gray-500;
-}
-
-.edit-btn span {
-  @include font-style($caption-xxs-font-size, $medium-weight-500, $linehight-150, null);
-  color: $bg-white;
-}
-
-/* 호버 */
-.primary-btn:hover {
-  background-color: $main-hover-color;
-}
-
-.primary-btn.short {
-  width: 161px;
-}
-
-.primary-btn.long {
-  width: 520px;
-}
-
-.primary-btn.secondary {
-  background-color: $bg-white;
-  color: $bg-black;
-  border: 1px solid $gray-600;
-}
-
-/* google 로그인 버튼 */
-.google-login-btn {
-  width: 520px;
-  padding: 14px 37px;
-  background-color: $bg-white;
-  border: 1px solid $gray-400;
-  color: $bg-black;
-  box-shadow: none;
 }
 
 /* input */
@@ -366,23 +321,12 @@ label:not([for^="birth"]) { cursor: pointer; }
   transition: background-image .3s ease-in-out;
 }
 
-/* --------------------------------------------------------------- */
-
-/* 404page */
-.page-container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
+// accounts 공통
+.sign-container {
+  width: 680px;
+  height: 100%;
+  min-height: calc(100vh - 75px);
+  margin: 0 auto;
+  padding: 175px 80px 0;
   text-align: center;
 }
-
-.page-container .head { color: $main-color; }
-
-.page-container .head h1 { font-size: 128px; }
-.page-container .head h3, .page-container p { font-size: 29px; }
-.page-container p { margin-bottom: 71px; }
-
-/* --------------------------------------------------------------- */

@@ -8,7 +8,7 @@ function FindPw() {
     <div className="sign-container">
       <Title>비밀번호 찾기</Title>
       <form action="" id="findPwForm" className="find-pw-form set-bottom">
-        <div className="input-wrap">
+        <div className={s.inputWrap}>
           <div className="findPw-wrap">
             <label htmlFor="inputFindPw"></label>
             <input type="email" name="" id="inputFindPw" className="input-box" placeholder="이메일" />

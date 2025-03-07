@@ -8,7 +8,7 @@ function FindId() {
     <div className="sign-container">
       <Title className="find-id-title">아이디 찾기</Title>
       <form action="" id="findIdForm" className="find-id-form set-bottom">
-        <div className="input-wrap">
+        <div className={s.inputWrap}>
           <div className="findId-wrap">
             <label htmlFor="inputFindId"></label>
             <input type="text" name="" id="inputFindId" className="input-box" placeholder="사번입력" />

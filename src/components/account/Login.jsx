@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { MessageStyle } from "../common/StyledComponent";
 import * as s from "../../assets/scss/modules/style.module.scss";
+import "../../assets/scss/screen/account/login.scss";
 
 function Login() {
   return (

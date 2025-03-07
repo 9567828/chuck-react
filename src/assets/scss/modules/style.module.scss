@@ -40,6 +40,8 @@
   margin-top: 24px;
 }
 
+.input-wrap { margin-bottom: 16px; }
+
 // 폰트설정
 @include generate-font-classes('display', $display-font-size, $linehight-140, $letterspacing-2);
 @include generate-font-classes('titleXl', $title-xl-font-size, $linehight-140, $letterspacing-2);

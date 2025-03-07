@@ -9,8 +9,8 @@ function CompanyInfo() {
             <label htmlFor="editSymbolImg"></label>
             <input type="file" name="" id="editSymbolImg" className="edit-img-input" />
             <div className="btn-wrap">
-              <button className="sub-btn">수정하기</button>
-              <input type="reset" className="sub-btn cancel" value="삭제" />
+              <button className="sub-btn-flexible">수정하기</button>
+              <input type="reset" className="sub-btn-flexible cancel" value="삭제" />
             </div>
           </form>
         </div>
@@ -22,8 +22,8 @@ function CompanyInfo() {
             <label htmlFor="editLogoImg"></label>
             <input type="file" name="" id="editLogoImg" className="edit-img-input" />
             <div className="btn-wrap">
-              <button className="sub-btn">수정하기</button>
-              <input type="reset" className="sub-btn cancel" value="삭제" />
+              <button className="sub-btn-flexible">수정하기</button>
+              <input type="reset" className="sub-btn-flexible cancel" value="삭제" />
             </div>
           </form>
         </div>

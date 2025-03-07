@@ -21,7 +21,7 @@ function RequestJoin() {
   return (
     <div className="sign-container">
       <div className="title-head">
-        <H1 className={`${s.titleXl} ${s.fontBold}`}>가입요청 보내기</H1>
+        <H1 className={s.titleXlB}>가입요청 보내기</H1>
         <P1>해당 정보로 회사에 가입요청을 보내시겠습니까?</P1>
       </div>
       <form action="" id="joinForm" className="result-form">
@@ -38,7 +38,7 @@ function RequestJoin() {
       <button type="button" className="primary-btn long">
         <span>로그인하러 가기</span>
       </button>
-      <Link to="/join/set-password" className={`${s.textBtnMt}`}>
+      <Link to="/join/set-password" className={s.textBtnMt}>
         돌아가기
       </Link>
     </div>

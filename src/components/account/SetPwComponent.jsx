@@ -2,13 +2,22 @@ import { Link } from "react-router";
 import { MessageStyle, Title } from "../common/StyledComponent";
 import * as s from "../../assets/scss/modules/style.module.scss";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+
+const PwForm = styled.form`
+  margin-bottom: 105px;
+`;
+
+const InputWrap = styled.div`
+  margin-bottom: 16px;
+`;
 
 function SetPassword({ title }) {
   return (
     <div className="sign-container">
       <Title>{title}</Title>
-      <form action="" id="passwordForm" className="password-form">
-        <div className="input-wrap">
+      <PwForm action="" id="passwordForm">
+        <InputWrap>
           <div className="input-password">
             <label htmlFor="password"></label>
             <input
@@ -28,13 +37,13 @@ function SetPassword({ title }) {
             8자 이상 32자 이하로 입력해주세요.
           </MessageStyle>
           <MessageStyle color={"red"}>비밀번호 형식이 잘못 되었습니다.</MessageStyle>
-        </div>
+        </InputWrap>
         <div className="password-chk-wrap">
           <label htmlFor="passwordChk"></label>
           <input type="password" name="" id="passwordChk" className="input-box" placeholder="비밀번호 확인" />
         </div>
         <p id="notMatchPw" className="message"></p>
-      </form>
+      </PwForm>
       <button id="nextBtn" className="primary-btn long" form="passwordForm" disabled>
         <span>다음</span>
       </button>
