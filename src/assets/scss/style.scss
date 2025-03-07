@@ -267,7 +267,9 @@ label[for^="search"]::before {
 .sel-options p:not(:last-child) { margin-bottom: 10px; }
 
 /* 체크박스 */
-label:not([for^="birth"]) { cursor: pointer; }
+label:not([for^=birth]):not([for^=co]) { 
+  cursor: pointer; 
+}
 
 /* 체크박스 네모 */
 .square-check-box[type=checkbox] {

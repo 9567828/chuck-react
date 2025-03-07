@@ -1,6 +1,7 @@
 import { NavLink } from "react-router";
 import * as s from "../assets/scss/modules/style.module.scss";
 import { useState, useEffect } from "react";
+import "../assets/scss/components/side-menu.scss";
 
 function SideMenu() {
   const [activeMenu, setActiveMenu] = useState({});

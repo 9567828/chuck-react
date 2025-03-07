@@ -34,9 +34,7 @@ nav ul {
   border-radius: 10px;
   background-color: $bg-white;
   line-height: 27px;
-  font-size: $body-md-font-size;
-  font-weight: $bold-weight-700;
-  letter-spacing: $letterspacing-2;
+  @include font-style($body-md-font-size, $bold-weight-700, $linehight-150, $letterspacing-2);
   cursor: pointer;
 }
 
@@ -50,6 +48,7 @@ nav ul {
   align-items: center;
   gap: 24px;
 }
+
 .gnb-icon {
   position: relative;
 }

@@ -19,7 +19,8 @@ export const EmptyMessage = styled.div`
 
 export const Title = styled.h1`
   font-size: 24px;
-  line-height: 140%;
   font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 140%;
   margin-bottom: 24px;
 `;
