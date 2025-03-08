@@ -10,6 +10,7 @@ import UserLayout from "../layouts/UserLayout";
 const NotFound = lazy(() => import("./../pages/NotFound"));
 const HomePage = lazy(() => import("./../pages/HomePage"));
 const ProfilePage = lazy(() => import("../pages/user/ProfilePage"));
+const ProfileEditPage = lazy(() => import("../pages/user/ProfileEditPage"));
 
 const root = createBrowserRouter([
   {
@@ -50,6 +51,14 @@ const root = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <ProfilePage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "profile/edit",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <ProfileEditPage />
           </Suspense>
         ),
       },

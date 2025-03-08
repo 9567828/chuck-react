@@ -2,7 +2,7 @@ import { Link, NavLink, useLocation } from "react-router";
 import "../assets/scss/components/header.scss";
 import "../assets/scss/components/invite-alarm-modal.scss";
 import InviteModal from "./../components/modal/InviteModal";
-import AlamModal from "../components/modal/AlamModal";
+import AlamModal from "../components/modal/AlarmModal";
 import { useState } from "react";
 
 function Header() {

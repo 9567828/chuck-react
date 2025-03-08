@@ -123,6 +123,11 @@ input[type=number] {
   @include font-style($body-sm-font-size, $bold-weight-700, $linehight-150, $letterspacing-2);
 }
 
+.primary-btn.small.cancel {
+  background-color: $gray-300;
+  color: $bg-black;
+}
+
 .google-login-btn {
   @extend .primary-btn;
   width: 520px;

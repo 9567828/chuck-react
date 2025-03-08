@@ -3,10 +3,10 @@ import * as s from "../../assets/scss/modules/style.module.scss";
 import styled from "styled-components";
 import ProfileImgComp from "./../common/ProfileImgComp";
 
-const H1 = styled.h1`
-  margin-bottom: 6px;
-  padding: 0 4px;
-`;
+// const H1 = styled.h1`
+//   margin-bottom: 6px;
+//   padding: 0 4px;
+// `;
 
 const Label = styled.label`
   display: block;
@@ -28,25 +28,25 @@ function CompanyInfo() {
 
       {/* 정보 수정 */}
       <section className="edit-info-wrap">
-        <div className="co-name-wrap">
+        <div>
           <Label htmlFor="coName" className={s.bodySmB}>
             회사명
           </Label>
           <input type="text" name="" id="coName" className="input-box small" placeholder="ex) ChuckChuck" />
         </div>
-        <div className="co-intro-wrap">
+        <div>
           <Label htmlFor="coIntro" className={s.bodySmB}>
             회사 소개
           </Label>
           <input type="text" name="" id="coIntro" className="input-box small" placeholder="ex) Chuck Chuck은 무엇이든 척척" />
         </div>
-        <div className="co-addr-wrap">
+        <div>
           <Label htmlFor="coAddr" className={s.bodySmB}>
             회사 주소
           </Label>
           <input type="text" name="" id="coAddr" className="input-box small" placeholder="시/구/동/길" />
         </div>
-        <div className="co-number-wrap">
+        <div>
           <Label htmlFor="coNumber" className={s.bodySmB}>
             회사 번호
           </Label>

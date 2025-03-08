@@ -55,9 +55,9 @@ function AlamModal({ closeFn }) {
           <img src="/img/main-icons/ic_cancle_small-24x24.svg" alt="취소" />
         </button>
       </div>
-      <div className="modal-inner alarm">
+      <div className="alarm-modal-inner">
         {alarmList.map((item) => (
-          <div className="modal-content" key={item.id}>
+          <div className="alarm-content" key={item.id}>
             <TitleHead>
               <p className={s.captionXsR}>{item.category}</p>
               {item.check ? <></> : <span className="alarm-circle"></span>}

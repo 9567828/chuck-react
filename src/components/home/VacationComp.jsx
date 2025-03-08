@@ -1,6 +1,7 @@
 import * as s from "../../assets/scss/modules/style.module.scss";
 import "../../assets/scss/screen/home/vacation.scss";
 import AvatarComponent from "../common/AvatarComponent";
+import { EmptyMessage } from "../common/StyledComponent";
 import styled from "styled-components";
 
 const List = styled.div`
@@ -16,6 +17,9 @@ const List = styled.div`
   &:last-child {
     margin-bottom: 0;
   }
+  .vacation {
+    padding: 0;
+  }
 `;
 
 function VacationComp() {
@@ -27,12 +31,12 @@ function VacationComp() {
     { id: 5, src: "", name: "박민우", date: "24.12.14~24.12.17" },
   ];
   return vationLists.length === 0 ? (
-    <div className="empty-message">휴가 중인 인원이 없습니다.</div>
+    <EmptyMessage>휴가 중인 인원이 없습니다.</EmptyMessage>
   ) : (
     <div className="card-wrap">
       {vationLists.map((item) => (
-        <List className="vacation" key={item.id}>
-          <div className="writer-name">
+        <List key={item.id}>
+          <div className="writer-name vacation">
             <div className="avatar-wrap">
               <AvatarComponent img={item.src} src={item.src} name={item.name} />
             </div>

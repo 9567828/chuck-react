@@ -13,29 +13,89 @@ const Modal = styled.div`
 `;
 
 const ModalInner = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
-  height: 240px;
-  padding: 17px 17px 10px 22px;
+  width: ${(props) => (props.width ? props.width : "auto")};
+  height: ${(props) => (props.height ? props.height : "auto")};
+  padding: 16px;
   border-radius: 10px;
   background-color: #fff;
 `;
 
-const ModalComp = ({ titleEle, elements, btnClass, btnName, cancelBtnClass, cancelBtnName }) => {
+const HeadWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 13px;
+`;
+
+// 근무시간 변경 모달 상부
+const TopWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
+
+const BtnWrap = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+`;
+
+const ModalComp = ({
+  width,
+  height,
+  titleEle,
+  isEditWork,
+  children,
+  btnClass,
+  btnName,
+  cancelBtnClass,
+  cancelBtnName,
+  confirmFn,
+  cancelFn,
+}) => {
   return (
     <Modal>
-      <ModalInner>
-        <div className={s.bodyMdM}>{titleEle}</div>
-        <div className="modal-content">{elements}</div>
-        <div className="modal-footer">
-          <div className="btn-wrap">
-            <button className={btnClass}>{btnName}</button>
-            <button className={cancelBtnClass}>{cancelBtnName}</button>
-          </div>
-        </div>
+      <ModalInner width={width} height={height}>
+        {isEditWork ? (
+          <TopWrap>
+            <HeadWrap className={s.bodyMdM}>{titleEle}</HeadWrap>
+            <div className="modal-content">{children}</div>
+          </TopWrap>
+        ) : (
+          <>
+            <div className={s.bodyMdM}>{titleEle}</div>
+            <div className="modal-content">{children}</div>
+          </>
+        )}
+        <BtnWrap>
+          <button
+            onClick={() => {
+              if (confirmFn) {
+                confirmFn();
+              }
+            }}
+            className={btnClass}
+          >
+            {btnName}
+          </button>
+          <button
+            onClick={() => {
+              if (cancelFn) {
+                cancelFn();
+              }
+            }}
+            className={cancelBtnClass}
+          >
+            {cancelBtnName}
+          </button>
+        </BtnWrap>
       </ModalInner>
     </Modal>
   );
@@ -44,10 +104,15 @@ const ModalComp = ({ titleEle, elements, btnClass, btnName, cancelBtnClass, canc
 export default ModalComp;
 
 ModalComp.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
+  isEditWork: PropTypes.bool,
   titleEle: PropTypes.element,
-  elements: PropTypes.element,
+  children: PropTypes.element,
   btnClass: PropTypes.string,
   btnName: PropTypes.string,
   cancelBtnClass: PropTypes.string,
   cancelBtnName: PropTypes.string,
+  confirmFn: PropTypes.any,
+  cancelFn: PropTypes.any,
 };

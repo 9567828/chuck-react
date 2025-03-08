@@ -44,7 +44,7 @@ function ElectricListComponent() {
     },
   ];
 
-  return electricLists.length !== 0 ? (
+  return electricLists.length == 0 ? (
     <EmptyMessage>진행중인 결재가 없습니다.</EmptyMessage>
   ) : (
     <div className="card-wrap">

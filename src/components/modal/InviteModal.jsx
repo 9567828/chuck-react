@@ -12,7 +12,7 @@ const BtnWrap = styled.div`
 `;
 
 const Footer = styled.div`
-  height: 29px;
+  height: 18px;
 `;
 
 function InviteModal({ closeFn, confirmFn, cancelFn }) {
@@ -37,15 +37,15 @@ function InviteModal({ closeFn, confirmFn, cancelFn }) {
           <img src="/img/main-icons/ic_cancle_small-24x24.svg" alt="취소" />
         </button>
       </div>
-      <div className="modal-inner">
+      <div className="invite-modal-inner">
         {inviteList.map((item) => (
-          <div className="modal-content" key={item.id}>
+          <div className="invite-content" key={item.id}>
             <h3 className={s.captionXsR}>새로운 가입 요청이 있어요.</h3>
             <ContentInfo className={s.captionXxsR}>
               <p>이름 : {item.name}</p>
               <p>아이디 : {item.emailId}</p>
             </ContentInfo>
-            <BtnWrap>
+            <BtnWrap className={s.btnWrap}>
               <button
                 className="sub-btn-regular"
                 onClick={() => {

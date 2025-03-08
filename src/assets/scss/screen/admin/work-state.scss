@@ -1,7 +1,5 @@
 .date-pick-section, .select-cal, .select-emp {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex(null, space-between, center, null);
 }
 
 .select-cal {
@@ -38,11 +36,9 @@
 .table-title, .table-content {
   display: grid;
   grid-template-columns: repeat(9, minmax(70px, 1fr));
-  /*justify-content: space-between;*/
   gap: 58px;
   padding: 6px 4px;
-  font-size: $caption-xxs-font-size;
-  font-weight: $regular-weight-400;
+  @include font-style($caption-xxs-font-size, $regular-weight-400, $linehight-150, null);
 }
 
 .date-table.off {
@@ -55,19 +51,13 @@
 
 .table-title {
   margin-bottom: 16px;
-  color: $gray-600 $gray-600;
+  color: $gray-600;
   border-bottom: 2px solid $gray-300;
 }
 
 .table-content {
   margin-bottom: 10px;
   border-bottom: 1px solid $gray-200;
-}
-
-.table-data.dept-name {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .table-data.highlight { color: $main-color }
@@ -97,11 +87,8 @@
 
 
 /* 주, 월단위 사원카드 */
-
 .table-grid {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 40px;
+  @include grid-col(240px 1fr, null, null, 40px);
 }
 
 .emp-work-info {
@@ -112,7 +99,5 @@
 }
 
 .emp-info {
-  display: flex;
-  align-items: flex-end;
-  gap: 6px;
+  @include flex(null, null, flex-end, 6px);
 }

@@ -78,7 +78,11 @@ function WorkState() {
       </section>
 
       <section className="emp-table">
-        {isClick === "일" ? <WorkStateList /> : isClick === "주" || isClick === "월" ? <WorkStateListWM date={isClick} /> : null}
+        {isClick === "일" ? (
+          <WorkStateList date={date.defaultDate} />
+        ) : isClick === "주" || isClick === "월" ? (
+          <WorkStateListWM date={isClick} />
+        ) : null}
       </section>
     </div>
   );

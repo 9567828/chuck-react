@@ -1,0 +1,30 @@
+.work-time-wrap, .after-edit {
+  display: flex;
+}
+.work-time-wrap {
+  margin-bottom: 15px;
+  gap: 15px;
+  img { margin-top: 10px; }
+}
+
+.after-edit { flex-direction: column; }
+.edit-text {
+  margin-bottom: 3px;
+  @include font-style($caption-xxs-font-size, $regular-weight-400, $linehight-150, null);
+  color: $gray-600;
+}
+
+.work-time-box {
+  width: 100px;
+  height: 40px;
+  padding: 5px 21px;
+  border-radius: 4px;
+  background-color: $gray-400;
+  text-align: center;
+}
+
+.work-time-input {
+  @extend .work-time-box;
+  background-color: $bg-white;
+  border: 1px solid $gray-300;
+}

@@ -1,21 +1,26 @@
 // 출퇴근 관리 (일) 리스트
 import { useState } from "react";
+import PropTypes from "prop-types";
 import ButtonComponent from "../common/ButtonComponents";
-import EditWorkStateModal from "../modal/EditWorkStateModal";
 import EditWorkModal from "../modal/EditWorkModal";
 import "../../assets/scss/screen/admin/work-state.scss";
+import styled from "styled-components";
 
-function WorkStateList() {
+const DeptName = styled.li`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const WorkType = styled.li`
+  color: ${(props) => (props.type === "결근" || props.type === "지각" ? "#FF5116" : null)};
+`;
+
+function WorkStateList({ date }) {
   const { EditWorkBtn } = ButtonComponent();
   const [isOn, setIsOn] = useState(false);
-
-  const openModal = () => {
-    setIsOn(true);
-  };
-
-  const closeModal = () => {
-    setIsOn(false);
-  };
+  const [beforeWorkTime, setBeforeWorkTime] = useState(null);
+  const [name, setName] = useState(null);
 
   const thItems = [
     { id: 1, name: "이름" },
@@ -91,6 +96,17 @@ function WorkStateList() {
       nigthWork: "24분",
     },
   ];
+
+  const openModal = (name, item) => {
+    setIsOn(true);
+    setBeforeWorkTime(item);
+    setName(name);
+  };
+
+  const closeModal = () => {
+    setIsOn(false);
+  };
+
   return (
     <div className="table-wrap date-table">
       <ul className="table-title">
@@ -103,18 +119,18 @@ function WorkStateList() {
       {contentList.map((item) => (
         <ul key={item.id} className="table-content">
           <li className="table-data">{item.name}</li>
-          <li className="table-data">{item.dept}</li>
-          <li className="table-data edit-data" onClick={openModal}>
+          <DeptName className="table-data">{item.dept}</DeptName>
+          <li className="table-data edit-data" onClick={() => openModal(item.name, item.atWork)}>
             <p>{item.atWork}</p>
             <EditWorkBtn />
           </li>
-          <li className="table-data edit-data" onClick={openModal}>
+          <li className="table-data edit-data" onClick={() => openModal(item.name, item.fromWork)}>
             <p>{item.fromWork}</p>
             <EditWorkBtn />
           </li>
-          <li>{item.workType}</li>
+          <WorkType type={item.workType}>{item.workType}</WorkType>
           <li>{item.restTime}</li>
-          <li className="table-data edit-data" onClick={openModal}>
+          <li className="table-data edit-data" onClick={() => openModal(item.name, item.overtime)}>
             <p>{item.overtime}</p>
             <EditWorkBtn />
           </li>
@@ -122,30 +138,13 @@ function WorkStateList() {
           <li>{item.nigthWork}</li>
         </ul>
       ))}
-      {/* <ul className="table-content">
-        <li className="table-data emp-name">김성은</li>
-        <li className="table-data dept-name">프론트엔드 개발자</li>
-        <li className="table-data edit-data" onClick={openModal}>
-          <p>-</p>
-          <EditWorkBtn />
-        </li>
-        <li className="table-data edit-data" onClick={openModal}>
-          <p>-</p>
-          <EditWorkBtn />
-        </li>
-        <li className="table-data">결근</li>
-        <li className="table-data">1시간</li>
-        <li className="table-data edit-data" onClick={openModal}>
-          <p>-</p>
-          <EditWorkBtn />
-        </li>
-        <li className="table-data">-</li>
-        <li className="table-data">-</li>
-      </ul> */}
-      {isOn ? <EditWorkStateModal cancelFn={closeModal} /> : <></>}
-      <EditWorkModal />
+      {isOn ? <EditWorkModal name={name} date={date} closeModal={closeModal} beforeWorkTime={beforeWorkTime} /> : <></>}
     </div>
   );
 }
 
 export default WorkStateList;
+
+WorkStateList.propTypes = {
+  date: PropTypes.any,
+};
