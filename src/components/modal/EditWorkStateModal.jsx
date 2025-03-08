@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import * as s from "../../assets/scss/modules/style.module.scss";
 
 function EditWorkStateModal({ beforeWorkTime, confirmFn, cancelFn, changeFn }) {
   return (
@@ -34,7 +35,7 @@ function EditWorkStateModal({ beforeWorkTime, confirmFn, cancelFn, changeFn }) {
           </div>
         </div>
         <p className="message edit-work-info">변경하실 시간을 입력해 주세요.</p>
-        <div className="edit-btn-wrap">
+        <div className={s.btnWrap}>
           <button
             className="sub-btn-large"
             onClick={() => {

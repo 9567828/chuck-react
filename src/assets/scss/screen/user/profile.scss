@@ -1,32 +1,3 @@
-.profile-wrap { margin-bottom: 48px }
-
-.detail-wrap {
-  h1 {
-    font-size: $body-sm-font-size $body-sm-font-size;
-    font-weight: $bold-weight-700;
-  }
-}
-
-.personal-info {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 16px 0 24px;
-}
-
-.info-item {
-  display: flex;
-  align-items: center;
-  gap: 60px;
-  font-size: $caption-xs-font-size;
-  font-weight: $medium-weight-500;
-  color: $gray-600;
-}
-
-.info-item p:first-child {
-  width: 62px;
-}
-
 .profile-edit-btn {
   padding: 12px;
   height: auto;
@@ -35,15 +6,18 @@
   letter-spacing: $letterspacing-2;
 }
 
-.terms-agree ul {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  font-size: $caption-xs-font-size;
-  font-weight: $medium-weight-500;
-  color: #5284DB;
+.terms-agree {
+  ul {
+    @include flex(column, null, null, 16px);
+    @include font-style($caption-xs-font-size, $medium-weight-500, $linehight-150, null);
+    color: #5284DB;
+    span {
+      cursor: pointer;
+    }
+    li {
+      &:last-child {
+        color: rgba(255, 22, 26, 0.8);
+      }
+    }
+  }
 }
-
-.terms-agree ul span { cursor: pointer }
-
-.terms-agree ul li:last-child { color: rgba(255, 22, 26, 0.8) }

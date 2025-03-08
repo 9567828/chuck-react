@@ -1,6 +1,7 @@
 import "../../assets/scss/screen/admin/company-info.scss";
 import * as s from "../../assets/scss/modules/style.module.scss";
 import styled from "styled-components";
+import ProfileImgComp from "./../common/ProfileImgComp";
 
 const H1 = styled.h1`
   margin-bottom: 6px;
@@ -19,30 +20,10 @@ function CompanyInfo() {
     <div className="inner admin">
       <section className="edit-img-section">
         {/* 회사대표 */}
-        <div className="edit-img">
-          <H1 className={s.bodySmB}>회사 대표 이미지</H1>
-          <form id="symbolForm" className="">
-            <label htmlFor="editSymbolImg"></label>
-            <input type="file" name="" id="editSymbolImg" className="edit-img-input" />
-            <div className="btn-wrap">
-              <button className="sub-btn-flexible">수정하기</button>
-              <input type="reset" className="sub-btn-flexible cancel" value="삭제" />
-            </div>
-          </form>
-        </div>
+        <ProfileImgComp title={"회사 대표 이미지"} isEdit={true} />
 
         {/* 회사로고 */}
-        <div className="edit-img">
-          <H1 className={s.bodySmB}>회사 대표 이미지</H1>
-          <form id="logoForm" className="">
-            <label htmlFor="editLogoImg"></label>
-            <input type="file" name="" id="editLogoImg" className="edit-img-input" />
-            <div className="btn-wrap">
-              <button className="sub-btn-flexible">수정하기</button>
-              <input type="reset" className="sub-btn-flexible cancel" value="삭제" />
-            </div>
-          </form>
-        </div>
+        <ProfileImgComp title={"회사 로고 이미지"} isEdit={true} />
       </section>
 
       {/* 정보 수정 */}

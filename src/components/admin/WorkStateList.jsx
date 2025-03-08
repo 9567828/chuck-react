@@ -2,6 +2,7 @@
 import { useState } from "react";
 import ButtonComponent from "../common/ButtonComponents";
 import EditWorkStateModal from "../modal/EditWorkStateModal";
+import EditWorkModal from "../modal/EditWorkModal";
 import "../../assets/scss/screen/admin/work-state.scss";
 
 function WorkStateList() {
@@ -142,6 +143,7 @@ function WorkStateList() {
         <li className="table-data">-</li>
       </ul> */}
       {isOn ? <EditWorkStateModal cancelFn={closeModal} /> : <></>}
+      <EditWorkModal />
     </div>
   );
 }
