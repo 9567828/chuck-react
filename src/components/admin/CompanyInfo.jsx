@@ -1,12 +1,13 @@
-import "../../assets/scss/screen/admin/company-info.scss";
 import * as s from "../../assets/scss/modules/style.module.scss";
 import styled from "styled-components";
-import ProfileImgComp from "./../common/ProfileImgComp";
+import ProfileEditImgComp from "./../common/ProfileImgEditComp";
 
-// const H1 = styled.h1`
-//   margin-bottom: 6px;
-//   padding: 0 4px;
-// `;
+const ImgSection = styled.section`
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 40px;
+`;
 
 const Label = styled.label`
   display: block;
@@ -18,39 +19,39 @@ const Label = styled.label`
 function CompanyInfo() {
   return (
     <div className="inner admin">
-      <section className="edit-img-section">
+      <ImgSection>
         {/* 회사대표 */}
-        <ProfileImgComp title={"회사 대표 이미지"} isEdit={true} />
+        <ProfileEditImgComp title={"회사 대표 이미지"} />
 
         {/* 회사로고 */}
-        <ProfileImgComp title={"회사 로고 이미지"} isEdit={true} />
-      </section>
+        <ProfileEditImgComp title={"회사 로고 이미지"} />
+      </ImgSection>
 
       {/* 정보 수정 */}
-      <section className="edit-info-wrap">
+      <section className={s.editInfoWrap}>
         <div>
           <Label htmlFor="coName" className={s.bodySmB}>
             회사명
           </Label>
-          <input type="text" name="" id="coName" className="input-box small" placeholder="ex) ChuckChuck" />
+          <input type="text" name="" id="coName" className=".input-box-medium" placeholder="ex) ChuckChuck" />
         </div>
         <div>
           <Label htmlFor="coIntro" className={s.bodySmB}>
             회사 소개
           </Label>
-          <input type="text" name="" id="coIntro" className="input-box small" placeholder="ex) Chuck Chuck은 무엇이든 척척" />
+          <input type="text" name="" id="coIntro" className=".input-box-medium" placeholder="ex) Chuck Chuck은 무엇이든 척척" />
         </div>
         <div>
           <Label htmlFor="coAddr" className={s.bodySmB}>
             회사 주소
           </Label>
-          <input type="text" name="" id="coAddr" className="input-box small" placeholder="시/구/동/길" />
+          <input type="text" name="" id="coAddr" className=".input-box-medium" placeholder="시/구/동/길" />
         </div>
         <div>
           <Label htmlFor="coNumber" className={s.bodySmB}>
             회사 번호
           </Label>
-          <input type="text" name="" id="coNumber" className="input-box small" placeholder="ex) 02-123-1234" />
+          <input type="text" name="" id="coNumber" className=".input-box-medium" placeholder="ex) 02-123-1234" />
         </div>
       </section>
     </div>

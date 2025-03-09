@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import { useState } from "react";
-import CustomMove from "../hooks/customMove";
+import { useEffect, useState } from "react";
+import CustomMove from "../hooks/CustomMove";
 import { MessageStyle, Title } from "../common/StyledComponent";
 import ButtonComponent from "../common/ButtonComponents";
 import * as s from "../../assets/scss/modules/style.module.scss";
@@ -8,16 +8,23 @@ import "../../assets/scss/screen/account/join.scss";
 
 function Join() {
   const [msg, setMsg] = useState("");
-  const [isClick, setIsClick] = useState(false);
-  const [isAble, setIsAble] = useState(false);
+  const [isCheckAll, setisCheckAll] = useState(false);
+  const [isAbleBtn, setIsAbleBtn] = useState(false);
 
   const [checkAgree, setCheckAgree] = useState({
-    requirePrivate: true, // 개인정보 동의 체크
-    requireService: true, // 서비스 이용약관 동의 체크
+    private: true, // 개인정보 동의 체크
+    service: true, // 서비스 이용약관 동의 체크
+    optional: false,
   });
 
   const { moveToPage } = CustomMove();
   const { ButtonPrimary } = ButtonComponent();
+
+  const termsList = [
+    { key: 1, title: "(필수) 개인정보 수집 이용 동의하기", isRequired: true, id: "private" },
+    { key: 2, title: "(필수) 서비스 이용약관 동의하기", isRequired: true, id: "service" },
+    { key: 3, title: "(선택) 메일, SNS 수신에 동의합니다.", isRequired: false, id: "optional" },
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,28 +43,37 @@ function Join() {
     setCheckAgree((prev) => {
       const updated = { ...prev, [id]: checked };
       // 하나라도 체크가 안되면 버튼을 비활성화
-      setIsAble(!(updated.requirePrivate && updated.requireService));
+      setIsAbleBtn(!(updated.private && updated.service));
       return updated;
     });
+  };
+
+  const isCheckOption = (e) => {
+    const { checked } = e.target;
+    if (checked) {
+      setisCheckAll(true);
+    }
+    setCheckAgree((prev) => ({ ...prev, optional: checked }));
   };
 
   const handleChangeAll = (e) => {
     const checked = e.target.checked;
     setCheckAgree({
-      requirePrivate: checked,
-      requireService: checked,
+      private: checked,
+      service: checked,
+      optional: checked,
     });
-    setIsClick(checked);
-    setIsAble(!checked);
+    setisCheckAll(checked);
+    setIsAbleBtn(!checked); // "모든 약관 동의"가 체크되면 버튼 활성화
   };
 
-  const isCheckOption = (e) => {
-    if (e.target.checked) {
-      setIsClick(true);
-    } else {
-      setIsClick(false);
+  // "모든 약관 동의" 체크 상태를 동적으로 설정
+  useEffect(() => {
+    const allChecked = checkAgree.private && checkAgree.service && checkAgree.optional;
+    if (!allChecked) {
+      setisCheckAll(false); // 모든 항목이 체크되지 않으면 "모든 약관 동의" 체크 해제
     }
-  };
+  }, [checkAgree]);
 
   return (
     <div className="sign-container">
@@ -82,48 +98,26 @@ function Join() {
           </div>
         </form>
         <div className="check-box-wrap">
-          <div>
-            <input
-              type="checkbox"
-              name="check-agree"
-              id="requirePrivate"
-              className="square-check-box"
-              onChange={isCheckRequired}
-              checked={checkAgree.requirePrivate}
-            />
-            <label></label>
-            <label htmlFor="requirePrivate">(필수) 개인정보 수집 이용 동의하기</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              name="check-agree"
-              id="requireService"
-              className="square-check-box"
-              onChange={isCheckRequired}
-              checked={checkAgree.requireService}
-            />
-            <label></label>
-            <label htmlFor="requireService">(필수) 서비스 이용약관 동의하기</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              name="check-agree"
-              checked={isClick}
-              onChange={isCheckOption}
-              id="emailAgree"
-              className="square-check-box"
-            />
-            <label></label>
-            <label htmlFor="emailAgree">(선택) 메일, SNS 수신에 동의합니다.</label>
-          </div>
+          {termsList.map((item) => (
+            <div className="check-box" key={item.key}>
+              <input
+                type="checkbox"
+                name="check-agree"
+                id={item.id}
+                className="square-check-box"
+                onChange={item.isRequired ? isCheckRequired : isCheckOption}
+                checked={checkAgree[item.id]}
+              />
+              <label></label>
+              <label htmlFor={item.id}>{item.title}</label>
+            </div>
+          ))}
           <div>
             <input
               type="checkbox"
               name="check-all"
               id="allAgree"
-              checked={isClick ? true : false}
+              checked={isCheckAll}
               onChange={handleChangeAll}
               className="square-check-box"
             />
@@ -132,7 +126,7 @@ function Join() {
           </div>
         </div>
       </div>
-      <ButtonPrimary type={"submit"} className={"primary-btn long"} form={"joinForm"} disabled={isAble} text={"다음"} />
+      <ButtonPrimary type={"submit"} className={"primary-btn long"} form={"joinForm"} disabled={isAbleBtn} text={"다음"} />
       <Link to="/login" className={`${s.textBtnMt}`}>
         돌아가기
       </Link>

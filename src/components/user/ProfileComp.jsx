@@ -1,8 +1,10 @@
 import "../../assets/scss/screen/user/profile.scss";
 import styled from "styled-components";
 import ProfileImgComp from "../common/ProfileImgComp";
+import CustomMove from "./../hooks/CustomMove";
+import TermsAgreeModal from "../modal/TermsAgreeModal";
+import EditPasswordModal from "../modal/EditPasswordModal";
 import { useState } from "react";
-import ProfileEditComp from "./ProfileEditComp";
 
 const ProfileContainer = styled.section`
   margin-bottom: 48px;
@@ -33,86 +35,101 @@ const InfoWrap = styled.div`
 `;
 
 function ProfileComp() {
-  const [clickEdit, setClickEdit] = useState(false);
+  const [isOnModal, setIsOnModal] = useState({
+    marketing: false,
+    editpassword: false,
+  });
+  const { moveToEditPage } = CustomMove();
 
-  const handleClickEdit = () => {
-    setClickEdit(true);
+  const empInfo = {
+    name: "김지호",
+    email: "rlawlgh486@gmail.com",
+    number: "-",
+    phoneNum: "010-9876-4321",
+    contractType: "정규직",
+    birth: "1999년 9월 9일",
+    dept: "디자인팀",
+    duty: "BX 디자이너",
+    isMarkeingAgree: true,
+    imgPath: "/img/202301261737390.jpg",
   };
 
-  const imgPath = "/img/202301261737390.jpg";
+  const openModal = (item) => {};
+
+  const closeModal = () => {
+    setIsOnModal(false);
+  };
+
   return (
     <div className="inner admin">
-      <ProfileImgComp title={"프로필 이미지"} isEdit={clickEdit} existImg={true} src={imgPath} />
+      <ProfileImgComp title={"프로필 이미지"} existImg={empInfo.imgPath ? true : false} src={empInfo.imgPath} />
 
       {/* 정보 */}
-      {clickEdit ? (
-        <ProfileEditComp empName={"김지호"} empNumber={"02-123-4567"} empPhone={"010-1234-5678"} />
-      ) : (
-        <>
-          <ProfileContainer>
-            <div>
-              <H1>개인정보</H1>
-              <ProfileWrap>
-                <InfoWrap>
-                  <p>이름</p>
-                  <p>김지호</p>
-                </InfoWrap>
-                <InfoWrap>
-                  <p>메일</p>
-                  <p>rlawlgh486@gmail.com</p>
-                </InfoWrap>
-                <InfoWrap>
-                  <p>전화번호</p>
-                  <p>-</p>
-                </InfoWrap>
-                <InfoWrap>
-                  <p>핸드폰번호</p>
-                  <p>010-9876-4321</p>
-                </InfoWrap>
-                <InfoWrap>
-                  <p>계약형태</p>
-                  <p>정규직</p>
-                </InfoWrap>
-                <InfoWrap>
-                  <p>생일</p>
-                  <p>1999년 9월 9일</p>
-                </InfoWrap>
-              </ProfileWrap>
-            </div>
 
-            <div>
-              <H1>조직</H1>
-              <ProfileWrap>
-                <InfoWrap>
-                  <p>부서</p>
-                  <p>디자인팀</p>
-                </InfoWrap>
-                <InfoWrap>
-                  <p>직무</p>
-                  <p>BX 디자이너</p>
-                </InfoWrap>
-              </ProfileWrap>
-            </div>
-            <button onClick={handleClickEdit} className="primary-btn small">
-              <span>수정하기</span>
-            </button>
-          </ProfileContainer>
+      <ProfileContainer>
+        <div>
+          <H1>개인정보</H1>
+          <ProfileWrap>
+            <InfoWrap>
+              <p>이름</p>
+              <p>{empInfo.name}</p>
+            </InfoWrap>
+            <InfoWrap>
+              <p>메일</p>
+              <p>{empInfo.email}</p>
+            </InfoWrap>
+            <InfoWrap>
+              <p>전화번호</p>
+              <p>{empInfo.number}</p>
+            </InfoWrap>
+            <InfoWrap>
+              <p>핸드폰번호</p>
+              <p>{empInfo.phoneNum}</p>
+            </InfoWrap>
+            <InfoWrap>
+              <p>계약형태</p>
+              <p>{empInfo.contractType}</p>
+            </InfoWrap>
+            <InfoWrap>
+              <p>생일</p>
+              <p>{empInfo.birth}</p>
+            </InfoWrap>
+          </ProfileWrap>
+        </div>
 
-          <section className="terms-agree">
-            <ul>
-              <li>
-                <span>마케팅 이용 • 수신 동의 변경하기</span>
-              </li>
-              <li>
-                <span>비밀번호 변경하기</span>
-              </li>
-              <li>
-                <span>회원 탈퇴하기</span>
-              </li>
-            </ul>
-          </section>
-        </>
-      )}
+        <div>
+          <H1>조직</H1>
+          <ProfileWrap>
+            <InfoWrap>
+              <p>부서</p>
+              <p>{empInfo.dept}</p>
+            </InfoWrap>
+            <InfoWrap>
+              <p>직무</p>
+              <p>{empInfo.duty}</p>
+            </InfoWrap>
+          </ProfileWrap>
+        </div>
+        <button onClick={() => moveToEditPage("/user/profile/edit", empInfo)} className="primary-btn small">
+          <span>수정하기</span>
+        </button>
+      </ProfileContainer>
+
+      <section className="terms-agree">
+        <ul>
+          <li onClick={() => openModal("marketing")}>
+            <span>마케팅 이용 • 수신 동의 변경하기</span>
+          </li>
+          <li onClick={() => openModal("editpassword")}>
+            <span>비밀번호 변경하기</span>
+          </li>
+          <li>
+            <span>회원 탈퇴하기</span>
+          </li>
+        </ul>
+      </section>
+      {isOnModal ? <TermsAgreeModal closeModal={closeModal} checked={empInfo.isMarkeingAgree} /> : <></>}
+      {isOnModal ? <EditPasswordModal closeModal={closeModal} /> : <></>}
     </div>
   );
 }

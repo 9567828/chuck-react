@@ -16,13 +16,13 @@ const ModalInner = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 24px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: ${(props) => (props.width ? props.width : "auto")};
-  height: ${(props) => (props.height ? props.height : "auto")};
-  padding: 16px;
+  padding: 24px;
   border-radius: 10px;
   background-color: #fff;
 `;
@@ -31,13 +31,6 @@ const HeadWrap = styled.div`
   display: flex;
   align-items: center;
   gap: 13px;
-`;
-
-// 근무시간 변경 모달 상부
-const TopWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
 `;
 
 const BtnWrap = styled.div`
@@ -50,7 +43,7 @@ const BtnWrap = styled.div`
 const ModalComp = ({
   width,
   height,
-  titleEle,
+  title,
   isEditWork,
   children,
   btnClass,
@@ -63,17 +56,8 @@ const ModalComp = ({
   return (
     <Modal>
       <ModalInner width={width} height={height}>
-        {isEditWork ? (
-          <TopWrap>
-            <HeadWrap className={s.bodyMdM}>{titleEle}</HeadWrap>
-            <div className="modal-content">{children}</div>
-          </TopWrap>
-        ) : (
-          <>
-            <div className={s.bodyMdM}>{titleEle}</div>
-            <div className="modal-content">{children}</div>
-          </>
-        )}
+        {isEditWork ? <HeadWrap className={s.bodyMdM}>{title}</HeadWrap> : <div className={s.bodyMdM}>{title}</div>}
+        <div className="modal-content">{children}</div>
         <BtnWrap>
           <button
             onClick={() => {
@@ -107,7 +91,7 @@ ModalComp.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
   isEditWork: PropTypes.bool,
-  titleEle: PropTypes.element,
+  title: PropTypes.any,
   children: PropTypes.element,
   btnClass: PropTypes.string,
   btnName: PropTypes.string,

@@ -7,7 +7,11 @@ const CustomMove = () => {
     navigate(url);
   };
 
-  return { moveToPage };
+  const moveToEditPage = (url, value) => {
+    navigate(url, { state: { value } });
+  };
+
+  return { moveToPage, moveToEditPage };
 };
 
 export default CustomMove;

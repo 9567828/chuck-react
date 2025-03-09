@@ -1,6 +1,5 @@
 /* 회원가입페이지 공통부분 */
-.input-container,
-.check-box-wrap {
+.input-container {
   display: flex;
   flex-direction: column;
 }
@@ -66,14 +65,6 @@ label[for="birthDate"]::after {
 }
 label[for="birthMonth"]::after { content: "월"; }
 label[for="birthDate"]::after { content: "일"; }
-
-.check-box-wrap { gap: 12px; }
-
-.check-box-wrap > div {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
 
 /* --------------------------------------------------------- */
 

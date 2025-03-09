@@ -72,7 +72,7 @@ function WorkState() {
         </div>
         <div className="input-search-bar">
           <label htmlFor="searchInput">
-            <input type="text" name="" id="searchInput" className="input-box small search" placeholder="직원 검색" />
+            <input type="text" name="" id="searchInput" className=".input-box-medium search" placeholder="직원 검색" />
           </label>
         </div>
       </section>

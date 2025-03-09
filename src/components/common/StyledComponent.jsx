@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
-export const MessageStyle = styled.p`
+export const MessageStyle = styled.p.withConfig({
+  shouldForwardProp: (prop) => prop !== "padding", // 'padding'은 DOM으로 전달되지 않음
+})`
   font-size: 14px;
   color: ${(props) => (props.color === "red" ? "#ff3333" : "#757575")};
   text-align: left;
-  padding: 8px 8px 0;
+  padding: ${(props) => (props.padding ? props.padding : `8px 8px 0`)};
 `;
 
 export const EmptyMessage = styled.div`

@@ -205,7 +205,8 @@ input[type=number] {
   background-color: $bg-white;
 }
 
-.input-box.small {
+.input-box-medium {
+  @extend .input-box;
   width: 440px;
   height: 48px;
   border-radius: 10px;
@@ -213,8 +214,16 @@ input[type=number] {
   border: 1px solid $gray-300;
 }
 
+// width 부모크기 따라감
+.input-box-regular {
+  @extend .input-box;
+  width: 100%;
+  padding: 24px 16px;
+}
+
 /* 검색 상자 */
-.input-box.search {
+.input-box-search {
+  @extend .input-box;
   width: 160px;
   height: 40px;
   padding: 8px 12px 8px 36px;
@@ -326,6 +335,15 @@ label:not([for^=birth]):not([for^=co]) {
 .circle-check-box[type=checkbox]:checked + label {
   background-image: url("/public/img/check_box_rounded.svg");
   transition: background-image .3s ease-in-out;
+}
+
+// 체크박스 스타일
+.check-box-wrap {
+  @include flex(column, null, null, 12px)
+}
+
+.check-box {
+  @include flex(null, null, center, 12px);
 }
 
 // accounts 공통

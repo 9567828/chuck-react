@@ -11,15 +11,15 @@ const BeforeTime = styled.p`
 
 const InfoP = styled.p`
   line-height: 21px;
+  margin-bottom: 8px;
 `;
 
 const EditWorkModal = ({ name, date, confirm, closeModal, changeFn, beforeWorkTime }) => {
   return (
     <ModalComp
       width="400px"
-      height="240px"
       isEditWork={true}
-      titleEle={
+      title={
         <>
           <h1>{name}</h1>
           <p>{date}</p>

@@ -104,7 +104,7 @@
   padding: 2px 6px;
   background-color: $main-color;
   color: $bg-white;
-  @include font-style($caption-xxs-font-size, $medium-weight-500, $linehight-150, null);
+  @include font-style($caption-xxs-font-size, $medium-weight-500, null, null);
 }
 
 @mixin sub-btn-class ($base-name, $width, $height) {
