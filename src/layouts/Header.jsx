@@ -3,7 +3,7 @@ import "../assets/scss/components/header.scss";
 import "../assets/scss/components/invite-alarm-modal.scss";
 import InviteModal from "./../components/modal/InviteModal";
 import AlamModal from "../components/modal/AlarmModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Header() {
   const { pathname } = useLocation();
@@ -21,14 +21,33 @@ function Header() {
   ];
 
   const openModal = (type) => {
-    setIsOpen(true);
-    setModalType(type);
+    if (modalType === type) {
+      setIsOpen(!isOpen);
+    } else {
+      setIsOpen(true);
+      setModalType(type);
+    }
   };
 
   const closeModel = () => {
     setIsOpen(false);
     setModalType(null);
   };
+
+  useEffect(() => {
+    const handleModalClose = () => {
+      const width = window.innerWidth;
+      if (width <= 1439) {
+        if (isOpen && modalType === "invite") {
+          setIsOpen(false);
+          setModalType(null);
+        }
+      }
+    };
+    window.addEventListener("resize", handleModalClose);
+
+    return () => window.removeEventListener("resize", handleModalClose);
+  }, [isOpen, modalType]);
 
   return (
     <header>

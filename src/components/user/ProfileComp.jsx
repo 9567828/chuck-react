@@ -50,16 +50,23 @@ function ProfileComp() {
     birth: "1999년 9월 9일",
     dept: "디자인팀",
     duty: "BX 디자이너",
-    isMarkeingAgree: true,
+    isMarketingAgree: true,
     imgPath: "/img/202301261737390.jpg",
   };
 
-  const openModal = (item) => {};
-
-  const closeModal = () => {
-    setIsOnModal(false);
+  const openModal = (item) => {
+    setIsOnModal((prev) => ({
+      ...prev,
+      [item]: true,
+    }));
   };
 
+  const closeModal = () => {
+    setIsOnModal({
+      marketing: false,
+      editpassword: false,
+    });
+  };
   return (
     <div className="inner admin">
       <ProfileImgComp title={"프로필 이미지"} existImg={empInfo.imgPath ? true : false} src={empInfo.imgPath} />
@@ -117,19 +124,13 @@ function ProfileComp() {
 
       <section className="terms-agree">
         <ul>
-          <li onClick={() => openModal("marketing")}>
-            <span>마케팅 이용 • 수신 동의 변경하기</span>
-          </li>
-          <li onClick={() => openModal("editpassword")}>
-            <span>비밀번호 변경하기</span>
-          </li>
-          <li>
-            <span>회원 탈퇴하기</span>
-          </li>
+          <li onClick={() => openModal("marketing")}>마케팅 이용 • 수신 동의 변경하기</li>
+          <li onClick={() => openModal("editpassword")}>비밀번호 변경하기</li>
+          <li>회원 탈퇴하기</li>
         </ul>
       </section>
-      {isOnModal ? <TermsAgreeModal closeModal={closeModal} checked={empInfo.isMarkeingAgree} /> : <></>}
-      {isOnModal ? <EditPasswordModal closeModal={closeModal} /> : <></>}
+      {isOnModal.marketing ? <TermsAgreeModal closeModal={closeModal} checked={empInfo.isMarketingAgree} /> : <></>}
+      {isOnModal.editpassword ? <EditPasswordModal closeModal={closeModal} /> : <></>}
     </div>
   );
 }

@@ -10,7 +10,7 @@ const TermsAgreeModal = ({ confirm, closeModal, checked }) => {
   };
 
   useEffect(() => {
-    // 부모로부터 받아온 `checked` 값에 따라 초기 상태를 설정
+    // props로 받아온 checked 상태에 따라 변경
     setIsCheck(checked);
   }, [checked]);
 

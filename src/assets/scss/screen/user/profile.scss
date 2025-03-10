@@ -11,10 +11,9 @@
     @include flex(column, null, null, 16px);
     @include font-style($caption-xs-font-size, $medium-weight-500, $linehight-150, null);
     color: #5284DB;
-    span {
-      cursor: pointer;
-    }
     li {
+      width: fit-content;
+      cursor: pointer;
       &:last-child {
         color: rgba(255, 22, 26, 0.8);
       }

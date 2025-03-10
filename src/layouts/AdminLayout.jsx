@@ -1,4 +1,5 @@
 import { Outlet, useLocation, useNavigate } from "react-router";
+import { TabletView, isAndroid, isMobile } from "react-device-detect";
 import Header from "./Header";
 import SideMenu from "./SideMenu";
 import { useEffect } from "react";
@@ -13,8 +14,9 @@ function AdminLayout() {
       navigate({ pathname: "/admin/company-info" });
     }
   });
-
-  return (
+  return TabletView && isAndroid && isMobile ? (
+    <div>{alert("PC 에서만 접속 가능 합니다")}</div>
+  ) : (
     <>
       <Header />
       <div className="page-grid">

@@ -32,19 +32,19 @@ function ProfileEditComp() {
           <Label htmlFor="empName" className={s.bodySmB}>
             이름
           </Label>
-          <input type="text" name="" id="empName" className=".input-box-medium" placeholder={empInfo.name} />
+          <input type="text" name="" id="empName" className="input-box-medium" placeholder={empInfo.name} />
         </div>
         <div>
           <Label htmlFor="empNumber" className={s.bodySmB}>
             전화번호
           </Label>
-          <input type="text" name="" id="empNumber" className=".input-box-medium" placeholder={empInfo.number} />
+          <input type="text" name="" id="empNumber" className="input-box-medium" placeholder={empInfo.number} />
         </div>
         <div>
           <Label htmlFor="empPhone" className={s.bodySmB}>
             핸드폰 번호
           </Label>
-          <input type="text" name="" id="empPhone" className=".input-box-medium" placeholder={empInfo.phoneNum} />
+          <input type="text" name="" id="empPhone" className="input-box-medium" placeholder={empInfo.phoneNum} />
         </div>
       </Div>
       <div className={s.btnWrap}>
