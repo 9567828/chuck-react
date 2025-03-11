@@ -8,7 +8,7 @@ import "../../assets/scss/screen/account/join.scss";
 
 function Join() {
   const [msg, setMsg] = useState("");
-  const [isCheckAll, setisCheckAll] = useState(false);
+  const [isCheckAll, setIsCheckAll] = useState(false);
   const [isAbleBtn, setIsAbleBtn] = useState(false);
 
   const [checkAgree, setCheckAgree] = useState({
@@ -51,7 +51,7 @@ function Join() {
   const isCheckOption = (e) => {
     const { checked } = e.target;
     if (checked) {
-      setisCheckAll(true);
+      setIsCheckAll(true);
     }
     setCheckAgree((prev) => ({ ...prev, optional: checked }));
   };
@@ -63,7 +63,7 @@ function Join() {
       service: checked,
       optional: checked,
     });
-    setisCheckAll(checked);
+    setIsCheckAll(checked);
     setIsAbleBtn(!checked); // "모든 약관 동의"가 체크되면 버튼 활성화
   };
 
@@ -71,7 +71,9 @@ function Join() {
   useEffect(() => {
     const allChecked = checkAgree.private && checkAgree.service && checkAgree.optional;
     if (!allChecked) {
-      setisCheckAll(false); // 모든 항목이 체크되지 않으면 "모든 약관 동의" 체크 해제
+      setIsCheckAll(false); // 모든 항목이 체크되지 않으면 "모든 약관 동의" 체크 해제
+    } else {
+      setIsCheckAll(true);
     }
   }, [checkAgree]);
 
@@ -112,7 +114,7 @@ function Join() {
               <label htmlFor={item.id}>{item.title}</label>
             </div>
           ))}
-          <div>
+          <div className="check-box">
             <input
               type="checkbox"
               name="check-all"

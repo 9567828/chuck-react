@@ -40,7 +40,8 @@
 
 .show-all {
   display: inline-block;
-  @include font-style($caption-xs-font-size, $medium-weight-500, $linehight-150, 0);  text-decoration: underline;
+  @include captionXs-m;
+  text-decoration: underline;
   color: $gray-600;
 }
 

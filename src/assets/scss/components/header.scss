@@ -34,7 +34,7 @@ nav ul {
   border-radius: 10px;
   background-color: $bg-white;
   line-height: 27px;
-  @include font-style($body-md-font-size, $bold-weight-700, $linehight-150, $letterspacing-2);
+  @include bodyMd-b;
   cursor: pointer;
 }
 

@@ -2,14 +2,13 @@
   padding: 12px;
   height: auto;
   border-radius: 10px;
-  font-size: $body-sm-font-size;
-  letter-spacing: $letterspacing-2;
+  @include bodySm-m;
 }
 
 .terms-agree {
   ul {
     @include flex(column, null, null, 16px);
-    @include font-style($caption-xs-font-size, $medium-weight-500, $linehight-150, null);
+    @include captionXs-m;
     color: #5284DB;
     li {
       width: fit-content;

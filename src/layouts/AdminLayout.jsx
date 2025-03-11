@@ -21,7 +21,9 @@ function AdminLayout() {
       <Header />
       <div className="page-grid">
         <SideMenu />
-        <Outlet />
+        <div className="inner admin">
+          <Outlet />
+        </div>
       </div>
     </>
   );

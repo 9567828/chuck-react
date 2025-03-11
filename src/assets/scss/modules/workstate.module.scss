@@ -1,11 +1,9 @@
 .emp-name {
-  font-size: $body-sm-font-size;
-  font-weight: $bold-weight-700;
+  @include bodySm-b;
 }
 
 .emp-position {
-  font-size: $caption-xxs-font-size;
-  font-weight: $medium-weight-500;
+  @include captionXxs-m;
 }
 
 .daily-rate {
@@ -23,13 +21,11 @@
     border-bottom: 1px solid $gray-300;
     margin-bottom: 16px;
     p:first-child {
-      font-size: $caption-xxs-font-size;
-      font-weight: $medium-weight-500;
+      @include captionXxs-m;
       color: $gray-600;
     }
     p:last-child {
-      font-size: $caption-xs-font-size;
-      font-weight: $medium-weight-500;
+      @include captionXs-m;
     }
   }
 }

@@ -8,16 +8,22 @@
 @include generate-font-classes('captionXxs', $caption-xxs-font-size, $linehight-150);
 
 .red-msg-font {
-  font-size: $caption-xs-font-size;
+  @extend .captionXs-r;
   color: $bg-red;
   text-align: left;
   padding: 8px 8px 0;
 }
 
-.gray-msg-font {
-  font-size: $caption-xs-font-size;
+.gray-msg-font { 
+  @extend .captionXs-r;
   color: $gray-600;
 }
+
+.gray-msg-font12 {
+  @extend .captionXxs-m;
+  color: $gray-500;
+}
+
 
 .red-font {
   color: $main-color;
@@ -25,6 +31,11 @@
 
 .gray700-font {
   color: $gray-700;
+}
+
+.gray800-font14 {
+  @extend .captionXs-m;
+  color: $gray-800;
 }
 
 .text-btn {
@@ -41,12 +52,16 @@
 }
 
 // 마진 설정
-.mb {
+.mb-24 {
   margin-bottom: 24px;
 }
 
-.mt {
+.mt-24 {
   margin-top: 24px;
+}
+
+.ml-33 {
+  margin-left: 33px;
 }
 
 .input-wrap { margin-bottom: 16px; }
@@ -54,7 +69,7 @@
 // 회사정보, 프로필 이미지 수정
 .profile-edit, .profile-img-wrap {
   h1 {
-    @include font-style($body-sm-font-size, $bold-weight-700, $linehight-150, $letterspacing-2);
+    @include bodySm-b;
     margin-bottom: 6px;
     padding-left: 4px;
   }

@@ -36,7 +36,7 @@ function WorkState() {
   };
 
   return (
-    <div className="inner admin">
+    <>
       <section className="date-pick-section">
         <div id="calenderWrap" className="calender-wrap">
           <div className="select-cal">
@@ -72,7 +72,7 @@ function WorkState() {
         </div>
         <div className="input-search-bar">
           <label htmlFor="searchInput">
-            <input type="text" name="" id="searchInput" className="input-box-medium search" placeholder="직원 검색" />
+            <input type="text" name="" id="searchInput" className="input-box-search" placeholder="직원 검색" />
           </label>
         </div>
       </section>
@@ -84,7 +84,7 @@ function WorkState() {
           <WorkStateListWM date={isClick} />
         ) : null}
       </section>
-    </div>
+    </>
   );
 }
 

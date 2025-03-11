@@ -45,9 +45,79 @@
   letter-spacing: $letter;
 }
 
+@mixin display-b {
+  @include font-style($display-font-size, $bold-weight-700, $linehight-140, $letterspacing-2)
+}
+@mixin display-m {
+  @include font-style($display-font-size, $medium-weight-500, $linehight-140, $letterspacing-2)
+}
+@mixin display-r {
+  @include font-style($display-font-size, $regular-weight-400, $linehight-140, $letterspacing-2)
+}
+
+@mixin titleXl-b {
+  @include font-style($title-xl-font-size, $bold-weight-700, $linehight-140, $letterspacing-2)
+}
+@mixin titleXl-m {
+  @include font-style($title-xl-font-size, $medium-weight-500, $linehight-140, $letterspacing-2)
+}
+@mixin titleXl-r {
+  @include font-style($title-xl-font-size, $regular-weight-400, $linehight-140, $letterspacing-2)
+}
+
+@mixin titleLg-b {
+  @include font-style($title-lg-font-size, $bold-weight-700, $linehight-140, $letterspacing-2)
+}
+@mixin titleLg-m {
+  @include font-style($title-lg-font-size, $medium-weight-500, $linehight-140, $letterspacing-2)
+}
+@mixin titleLg-r {
+  @include font-style($title-lg-font-size, $regular-weight-400, $linehight-140, $letterspacing-2)
+}
+
+@mixin bodyMd-b {
+  @include font-style($body-md-font-size, $bold-weight-700, $linehight-150, $letterspacing-2)
+}
+@mixin bodyMd-m {
+  @include font-style($body-md-font-size, $medium-weight-500, $linehight-150, $letterspacing-2)
+}
+@mixin bodyMd-r {
+  @include font-style($body-md-font-size, $regular-weight-400, $linehight-150, $letterspacing-2)
+}
+
+@mixin bodySm-b {
+  @include font-style($body-sm-font-size, $bold-weight-700, $linehight-150, $letterspacing-2)
+}
+@mixin bodySm-m {
+  @include font-style($body-sm-font-size, $medium-weight-500, $linehight-150, $letterspacing-2)
+}
+@mixin bodySm-r {
+  @include font-style($body-sm-font-size, $regular-weight-400, $linehight-150, $letterspacing-2)
+}
+
+@mixin captionXs-b {
+  @include font-style($caption-xs-font-size, $bold-weight-700, $linehight-150, null)
+}
+@mixin captionXs-m {
+  @include font-style($caption-xs-font-size, $medium-weight-500, $linehight-150, null)
+}
+@mixin captionXs-r {
+  @include font-style($caption-xs-font-size, $regular-weight-400, $linehight-150, null)
+}
+
+@mixin captionXxs-b {
+  @include font-style($caption-xxs-font-size, $bold-weight-700, $linehight-150, null)
+}
+@mixin captionXxs-m {
+  @include font-style($caption-xxs-font-size, $medium-weight-500, $linehight-150, null)
+}
+@mixin captionXxs-r {
+  @include font-style($caption-xxs-font-size, $regular-weight-400, $linehight-150, null)
+}
+
 @mixin textBtn-style($ismt:false) {
   display: inline-block;
-  @include font-style($title-lg-font-size, $regular-weight-400, $linehight-150, $letterspacing-2);
+  @include titleLg-r;
   color: $gray-700;
   @if $ismt == true {
     margin-top: 24px;
@@ -58,7 +128,7 @@
   @include font-style($size, $weight, $lineheight, $letterspacing);
 }
 
-// 클래스 이름을 정의하는 함수
+// 폰트 클래스 생성
 @mixin generate-font-classes($base-name, $font-size, $line-height, $letter-spacing: null) {
   .#{$base-name}-b {
     @include font-class($font-size, $bold-weight-700, $line-height, $letter-spacing);
@@ -104,7 +174,7 @@
   padding: 2px 6px;
   background-color: $main-color;
   color: $bg-white;
-  @include font-style($caption-xxs-font-size, $medium-weight-500, null, null);
+  @include captionXxs-m;
 }
 
 @mixin sub-btn-class ($base-name, $width, $height) {

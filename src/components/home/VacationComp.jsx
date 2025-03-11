@@ -10,12 +10,11 @@ const List = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 4px;
-  padding: 8px 14px;
+  padding: 12px 14px;
   background-color: #ffffff;
   border-bottom: 1px solid #eeeeee;
   &:last-child {
-    margin-bottom: 0;
+    border-bottom: 0;
   }
   .vacation {
     padding: 0;

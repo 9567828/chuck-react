@@ -59,8 +59,7 @@ label[for="birthDate"]::after {
   content: "년";
   top: 25px;
   right: 24px;
-  font-size: $body-md-font-size;
-  font-weight: $medium-weight-500;
+  @include bodyMd-m;
   color: $gray-500;
 }
 label[for="birthMonth"]::after { content: "월"; }

@@ -31,7 +31,7 @@
 
 .avatar-wrap span {
   position: absolute;
-  @include font-style($body-md-font-size, $bold-weight-700, $linehight-150, $letterspacing-2);
+  @include bodyMd-b;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -59,7 +59,7 @@ button:disabled, button[disabled] {
   pointer-events: none;
 }
 
-input:focus {
+input:focus:not([type="radio"]) {
   outline: none;
   border: 1px solid $bg-black !important;
 }
@@ -98,7 +98,7 @@ input[type=number] {
 /* buttons */
 .primary-btn {
   @include btn-style(flex, null, null, 20px, 18px 32px);
-  @include font-style($body-md-font-size, $bold-weight-700, $linehight-150, $letterspacing-2);
+  @include bodyMd-b;
   &:hover:not(.google-login-btn) {
     background-color: $main-hover-color;
   }
@@ -120,7 +120,7 @@ input[type=number] {
 
 .primary-btn.small {
   @include btn-style(flex, null, null, 10px, 8px 12px);
-  @include font-style($body-sm-font-size, $bold-weight-700, $linehight-150, $letterspacing-2);
+  @include bodyMd-b;
 }
 
 .primary-btn.small.cancel {
@@ -136,6 +136,17 @@ input[type=number] {
   color: $bg-black;
   border: 1px solid $gray-400;
   box-shadow: none;
+}
+
+.edit-btn {
+  width: 64px;
+  height: 24px;
+  padding: 2px 7px;
+  border: 1px solid $gray-600;
+  border-radius: 4px;
+  background-color: $bg-white;
+  @include captionXxs-m;
+  color: $gray-600
 }
 
 /* modal sub 버튼*/
@@ -171,9 +182,8 @@ input[type=number] {
   border: 0.5px solid $gray-300;
   background-color: $bg-white;
   color: $gray-700;
-  @include font-style($caption-xs-font-size, $medium-weight-500, $linehight-150, 0);
+  @include captionXs-m;
   text-align: center;
-  line-height: 24px;
 }
 
 .date-btn.on {
@@ -203,6 +213,7 @@ input[type=number] {
   padding: 24px;
   border-radius: 20px;
   background-color: $bg-white;
+  @include bodyMd-m;
 }
 
 .input-box-medium {
@@ -226,8 +237,11 @@ input[type=number] {
   @extend .input-box;
   width: 160px;
   height: 40px;
-  padding: 8px 12px 8px 36px;
+  border: 1px solid $gray-300;
+  border-radius: 10px;
+  padding: 12px 0 12px 36px;
   font-size: $caption-xs-font-size;
+  letter-spacing: 0;
 }
 label[for^="search"] { position: relative; }
 label[for^="search"]::before {
@@ -240,10 +254,30 @@ label[for^="search"]::before {
   background: url("/public/img/ic_search.svg") no-repeat center;
 }
 
+// 라디오 버튼
+/* 기본스타일 제거, 버튼 모양 재설정 */
+input[type='radio'] {
+  -webkit-appearance: none; /* 웹킷 브라우저에서 기본 스타일 제거*/
+  -moz-appearance: none; /* 모질라 브라우저에서 기본 스타일 제거*/ 
+  appearance: none; /*기본 브라우저에서 기본 스타일 제거*/
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc; /*체크되지 않았을 때의 테두리 색상*/
+  border-radius: 50%;
+  outline: none; /*focus 시에 나타나는 기본 스타일 제거*/
+  cursor: pointer;
+}
+// /* 체크 시 버튼 모양 스타일*/
+input[type='radio']:checked {
+  background-color: #436AF5; /*체크 시 내부 원 색상*/
+  border: 2px solid #fff; /*라인이 아닌, 라인과 원 사이 색상*/
+  box-shadow: 0 0 0 1px #436AF5; /*라인*/
+}
+
 /* 부서 셀렉트 박스 */
 .select-wrap { width: 160px; }
 .select-box {
-  width: 100%;
+  width: 100%; 
   height: 40px;
   padding: 12px;
   border-radius: 10px;
@@ -252,19 +286,15 @@ label[for^="search"]::before {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-}
-
-.select-box {
   .select-one {
-    @include font-style($caption-xs-font-size, $medium-weight-500, $linehight-150, null);
+    @include captionXs-m;
     color: $gray-400;
   }
   .select-one.on {
     color: $bg-black;
   }
+  img { transform: rotate(90deg); }
 }
-
-.select-box img { transform: rotate(90deg); }
 
 .sel-options {
   position: absolute;
@@ -274,11 +304,47 @@ label[for^="search"]::before {
   border-radius: 8px;
   background-color: $bg-white;
   box-shadow: $shadow;
-  @include font-style($caption-xxs-font-size, $medium-weight-500, $linehight-150, null);
+  @include captionXxs-m;
+  p { 
+    cursor: pointer; 
+      &:not(:last-child, .sel-options-square p) { 
+        margin-bottom: 10px; 
+    }
+  }
 }
 
-.sel-options p { cursor: pointer; }
-.sel-options p:not(:last-child) { margin-bottom: 10px; }
+.select-box-square {
+  @extend .select-box;
+  height: auto;
+  padding: 6px 12px;
+  border-radius: 0;
+  &.active {
+    border-bottom: 0;
+    height: 35px;
+  }
+  .select-one {
+    color: $bg-black;
+  }
+}
+
+.sel-options-square {
+  @extend .sel-options;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 1px;
+  border-top: 0;
+  border-style: solid;
+  border-color: $gray-300;
+  border-radius: 0;
+  p {
+    padding: 6px 12px;
+    &:hover,
+    &.active {
+      color: $main-color;
+    }
+  }
+}
 
 /* 체크박스 */
 label:not([for^=birth]):not([for^=co]) { 

@@ -18,12 +18,9 @@ const List = styled.div`
   padding: 22px 14px;
   background-color: #ffffff;
   border-bottom: 1px solid #eeeeee;
-  &:first-child {
-    padding-top: 14px;
-  }
   &:last-child {
-    padding-bottom: 14px;
     border: 0;
+    padding-bottom: 12px;
   }
 `;
 

@@ -10,7 +10,7 @@
 .after-edit { flex-direction: column; }
 .edit-text {
   margin-bottom: 3px;
-  @include font-style($caption-xxs-font-size, $regular-weight-400, $linehight-150, null);
+  @include  captionXxs-r;
   color: $gray-600;
 }
 

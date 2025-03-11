@@ -38,7 +38,7 @@
   grid-template-columns: repeat(9, minmax(70px, 1fr));
   gap: 58px;
   padding: 6px 4px;
-  @include font-style($caption-xxs-font-size, $regular-weight-400, $linehight-150, null);
+  @include  captionXxs-r;
 }
 
 .date-table.off {
