@@ -1,8 +1,6 @@
 /* 달력 */
 .calender-card {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  @include flex(column, null, null, 6px);
   width: 100%;
   max-width: 300px;
   height: 100%;
@@ -12,14 +10,17 @@
 }
 
 .calender-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex(null, space-between, center, null);
   padding: 5px 6px;
+  button {
+    height: 16px;
+    &:first-child {
+      img {
+        transform: rotate(180deg);
+      }
+    }
+  }
 }
-
-.calender-head button:first-child img { transform: rotate(180deg); }
-.calender-head button { height: 16px; }
 
 .month-year {
   span {
@@ -31,20 +32,15 @@
 }
 
 .weekday {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(null, center, center, 14px);
   padding: 11px 12px;
-  gap: 14px;
-  @include bodySm-m;
+  @include captionXxs-m;
   color: $gray-600;
 }
 
 .weekday-wrap {
-  display: flex;
-  align-items: center;
+  @include flex(null, null, center, 13px);
   padding: 4px 8px;
-  gap: 13px;
 }
 
 .day-wrap {
