@@ -54,32 +54,41 @@
   justify-content: center;
   align-items: center;
   gap: 1px;
+  .date-num {
+    @include captionXxs-m;
+    color: $gray-800;
+  }
+  &.today {
+    background-color: $main-color;
+    .date-num {
+      color: $bg-white;
+    }
+  }
+  &.holiday {
+    .date-num {
+      color: $holiday-red;
+    }
+  }
+  &.other-month {
+    .date-num {
+      opacity: 0.4;
+    }
+  }
+  span {
+    width: 3px;
+    height: 3px;
+    border-radius: 3px;
+    background-color: $main-color;
+    color: transparent;
+    font-size: 5px;
+  }
 }
 
 .day-wrap.cal-today, .day-wrap.pick-date { background-color: $main-color; }
 .day-wrap.cal-today .schedule-dot { background-color: $bg-white }
-.day-wrap.cal-today .date-num,
 .day-wrap.pick-date .date-num,
-.day-wrap.holiday.cal-today .date-num,
 .day-wrap.holiday.pick-date .date-num {
   color: $bg-white
-}
-.day-wrap.holiday .date-num { color: $holiday-red; }
-
-.day-wrap.prev-day .date-num,
-.day-wrap.next-day .date-num {
-  opacity: 0.4;
-}
-
-.date-num {
-  @include captionXxs-m;
-  color: $gray-800;
-}
-.schedule-dot {
-  width: 3px;
-  height: 3px;
-  border-radius: 3px;
-  background-color: $main-color;
 }
 
 /* 주, 월 단위 선택했을 때 효과 */
@@ -93,3 +102,39 @@
 .days-container.select-month .day-wrap { background-color: inherit; }
 .weekday-wrap.select-week .date-num,
 .days-container.select-month .date-num { color: $bg-white; }
+
+// 리액트 캘린더
+.react-calendar {
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  padding: 16px;
+  border-radius: 10px;
+  background-color: $bg-white;
+}
+
+.react-calendar__navigation {
+  @include flex(null, center, space-between, null);
+}
+
+.react-calendar__navigation__arrow.react-calendar__navigation__prev2-button,
+.react-calendar__navigation__arrow.react-calendar__navigation__next2-button {
+  display: none;
+}
+
+.react-calendar__navigation__arrow.react-calendar__navigation__next-button,
+.react-calendar__navigation__arrow.react-calendar__navigation__prev-button {
+  background: url(/public/img/ic_move_in.svg) no-repeat center;
+  width: 16px;
+  height: 16px;
+  color: transparent;
+}
+
+.react-calendar__navigation__arrow.react-calendar__navigation__prev-button {
+  transform: rotate(180deg);
+}
+
+.react-calendar__tile.react-calendar__tile--now.react-calendar__month-view__days__day {
+  background-color: $main-color;
+  color: $bg-white;
+}

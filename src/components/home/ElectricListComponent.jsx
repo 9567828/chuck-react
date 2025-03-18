@@ -1,10 +1,11 @@
 import { Link } from "react-router";
+import PropTypes from "prop-types";
 import "../../assets/scss/screen/home/electric.scss";
 import * as s from "../../assets/scss/modules/style.module.scss";
 import { EmptyMessage } from "./../common/StyledComponent";
 import AvatarComponent from "../common/AvatarComponent";
 
-function ElectricListComponent() {
+function ElectricListComponent({ row }) {
   const electricLists = [
     {
       id: 1,
@@ -49,7 +50,7 @@ function ElectricListComponent() {
   ) : (
     <div className="card-wrap">
       {electricLists.map((item) => (
-        <div className="electric-card" key={item.id}>
+        <div className={row >= 6 ? "electric-card height" : "electric-card"} key={item.id}>
           <p className={`list-title ${s.captionXsB}`}>{item.title}</p>
           <div className="list-right">
             <div className="writer-info">
@@ -72,3 +73,7 @@ function ElectricListComponent() {
 }
 
 export default ElectricListComponent;
+
+ElectricListComponent.propTypes = {
+  row: PropTypes.any,
+};

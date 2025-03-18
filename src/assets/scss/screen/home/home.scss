@@ -15,7 +15,7 @@
   background-color: $bg-white;
 }
 
-.dashboard-box.electric, .dashboard-box.schedule { height: 371px }
+.dashboard-box.electric, .dashboard-box.schedule { height: fit-content }
 
 .dashboard-box.notice {
   height: 268px;
@@ -110,7 +110,4 @@
     display: flex;
     flex-direction: column;
   }
-  /*.electric-card.height {*/
-  /*    padding: 8px 14px;*/
-  /*}*/
 }

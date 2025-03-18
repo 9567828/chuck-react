@@ -38,7 +38,7 @@
 
 .input-box.birth {
   width: 160px;
-  padding-right: 34px;
+  padding-right: 42px;
 }
 
 .input-box.birth.month,
@@ -57,8 +57,8 @@ label[for="birthMonth"]::after,
 label[for="birthDate"]::after {
   position: absolute;
   content: "년";
-  top: 25px;
-  right: 24px;
+  top: 22px;
+  right: 28px;
   @include bodyMd-m;
   color: $gray-500;
 }

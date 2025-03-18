@@ -175,6 +175,7 @@
   background-color: $main-color;
   color: $bg-white;
   @include captionXxs-m;
+  line-height: unset;
 }
 
 @mixin sub-btn-class ($base-name, $width, $height) {

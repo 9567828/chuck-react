@@ -2,7 +2,7 @@ class DateFormatter {
   constructor(date = new Date()) {
     this.ndate = date;
     this.year = this.ndate.getFullYear();
-    this.month = this.ndate.getMonth() + 1; // getMonth() returns 0-11, so +1
+    this.month = this.ndate.getMonth() + 1;
     this.date = this.ndate.getDate();
     this.day = this.ndate.getDay();
     this.hour = this.ndate.getHours();
@@ -12,28 +12,31 @@ class DateFormatter {
     this.weekdays = ["일", "월", "화", "수", "목", "금", "토"];
     this.weekEn = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     this.monthArr = [
-      "january",
-      "february",
-      "march",
-      "april",
-      "may",
-      "june",
-      "july",
-      "august",
-      "september",
-      "october",
-      "november",
-      "december",
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ];
   }
 
-  // Helper function to pad numbers to 2 digits
   format(value) {
     return String(value).padStart(2, "0");
   }
 
   get defaultDate() {
     return `${this.year}년 ${this.format(this.month)}월 ${this.format(this.date)}일`;
+  }
+
+  get dateToNum() {
+    return parseInt(`${this.year}${this.format(this.month)}${this.format(this.date)}`);
   }
 
   get dateWithDayDot() {
@@ -52,8 +55,12 @@ class DateFormatter {
     return `${this.monthArr[this.month]} ${this.format(this.date)}, ${this.year}`;
   }
 
-  get monthInEnglish() {
-    return `${this.monthArr[this.month]}`;
+  // get monthInEnglish() {
+  //   return `${this.monthArr[this.month]}`;
+  // }
+
+  get monthString() {
+    return `${this.format(this.month)}`;
   }
 }
 

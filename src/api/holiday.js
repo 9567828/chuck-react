@@ -2,46 +2,60 @@ import axios from "axios";
 import qs from "qs";
 
 const url = "https://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/";
-const decodedKey = import.meta.env.VITE_decoding_key;
 const encodingKey = import.meta.env.VITE_encoding_key;
 
+let holidaysCache = {};
+
 const getHoliday = async (year, month) => {
-  // let encodingURL = encodeURIComponent(decodedKey);
+  const cacheKey = `${year}-${month}`;
+
+  if (holidaysCache[cacheKey]) {
+    // console.log("캐시에서 데이터 반환:", holidaysCache[cacheKey]);
+    return holidaysCache[cacheKey];
+  }
 
   const config = {
     solYear: year,
-    solMonth: month,
+    solMonth: String(month).padStart(2, "0"),
     _type: "json",
   };
 
-  const params = new URLSearchParams(config).toString();
+  const fullURL = `/getHoliDeInfo?ServiceKey=${encodingKey}`;
 
-  const fullURL = `${url}getHoliDeInfo?${params}&ServiceKey=${encodingKey}`;
-
-  const res = await fetch(fullURL, {
-    method: "GET",
+  const instance = axios.create({
+    baseURL: `${url}`,
+    paramsSerializer: (params) => {
+      return qs.stringify(params, { encode: false });
+    },
   });
 
-  console.log(res);
+  const res = await instance.get(fullURL, {
+    params: config,
+  });
 
-  // const instance = axios.create({
-  //   baseURL: `${url}`,
-  //   paramsSerializer: (params) => {
-  //     return qs.stringify(params, { encode: false });
-  //   },
-  // });
+  const {
+    response: {
+      body: { items },
+      header: { resultCode },
+    },
+  } = res.data;
 
-  // const fullURL = `/getHoliDeInfo?ServiceKey=${encodingURL}`;
+  try {
+    if (resultCode === "00") {
+      // holidaysCache[cacheKey] = items;
+      return items;
+    } else if (resultCode === "30") {
+      console.log("인증키 오류");
+    }
+  } catch (error) {
+    console.error(error);
+  }
 
-  // await instance.get(fullURL, {
-  //   params: config,
-  // });
-
-  // const res = await axios({
-  //   method: "GET",
-  //   url: `${url}getHoliDeInfo?ServiceKey=${encodingURL}`,
-  //   params: config,
-  // });
+  return []; // 오류 발생 시 빈 배열 반환
 };
 
-export default getHoliday;
+const clearCache = () => {
+  holidaysCache = {};
+};
+
+export { getHoliday, clearCache };

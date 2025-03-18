@@ -59,6 +59,10 @@ button:disabled, button[disabled] {
   pointer-events: none;
 }
 
+input::placeholder {
+  color: $gray-400;
+}
+
 input:focus:not([type="radio"]) {
   outline: none;
   border: 1px solid $bg-black !important;

@@ -39,3 +39,10 @@
   @include flex(null, null, center, 4px);
   padding: 0 8px;
 }
+
+// 미디아
+@media screen and (max-width: 1439px) {
+  .electric-card.height {
+    padding: 8px 14px;
+  }
+}

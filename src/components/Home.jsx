@@ -15,6 +15,7 @@ function Home() {
   const [btnText, setBtnText] = useState("출근하기");
   const [isAbleBtn, setIsAbleBtn] = useState(true);
   const [isWork, setIsWork] = useState("출근 전");
+  const [row, setRow] = useState(0);
   // beforeWork: false,
   // atWork: false,
   // Away: false,
@@ -81,6 +82,10 @@ function Home() {
     return () => clearInterval(interValId);
   }, []);
 
+  const getRows = (r) => {
+    setRow(r);
+  };
+
   return (
     <div className="inner">
       <div id="main-container">
@@ -96,7 +101,7 @@ function Home() {
               전체보기
             </Link>
           </div>
-          <ElectricListComponent />
+          <ElectricListComponent row={row} />
         </div>
 
         {/* 스케줄 */}
@@ -110,9 +115,9 @@ function Home() {
               전체보기
             </Link>
           </div>
-          <div className="schedule-container">
+          <div className={row >= 6 ? "schedule-container height" : "schedule-container"}>
             {/* 달력 */}
-            <Calender />
+            <Calender onRows={getRows} />
             <ScheduleListComp />
           </div>
         </div>
