@@ -20,7 +20,7 @@ function Calender({ onRows, clickFn }) {
   const [schedules, setSchdules] = useState([
     {
       id: 1,
-      date: 20250303,
+      date: 20250319,
       title: "BX팀 외부 미팅",
     },
   ]);
@@ -116,20 +116,29 @@ function Calender({ onRows, clickFn }) {
       if (holidays) {
         if (holidays.length >= 0) {
           holidays.forEach((value) => {
-            if (dataDate === value.locdate) {
-              d.classList.add("holiday");
-              d.setAttribute("data-holidayName", holidays.dateName);
+            if (value.isHoliday === "Y") {
+              if (dataDate === value.locdate) {
+                d.classList.add("holiday");
+                d.setAttribute("data-holidayName", value.dateName);
+              }
             }
           });
         } else {
-          if (dataDate === holidays.locdate) {
-            d.classList.add("holiday");
-            d.setAttribute("data-holidayName", holidays.dateName);
+          if (holidays.isHoliday === "Y") {
+            if (dataDate === holidays.locdate) {
+              d.classList.add("holiday");
+              d.setAttribute("data-holidayName", holidays.dateName);
+            }
           }
         }
       }
     });
   }, [holidays]);
+
+  // 일정 조회
+  // const getSchedule = () => {
+  //   setSchdules()
+  // }
 
   return (
     <div className="calender-card">
@@ -172,13 +181,13 @@ function Calender({ onRows, clickFn }) {
                       }
                     }}
                     data-date={d}
-                    key={dindex}
+                    key={`d_${dindex}`}
                     className={MS < m || MS > m ? "day-wrap other-month" : d === today ? "day-wrap today" : "day-wrap"}
                   >
                     <button className="date-num">{day.date}</button>
-                    {schedules.map((s, index) =>
+                    {schedules.map((s, i) =>
                       s.date === d ? (
-                        <span key={index} data-schedule={s.date}>
+                        <span key={`S_${i}`} data-schedule={s.date}>
                           {s.title}
                         </span>
                       ) : (

@@ -1,0 +1,33 @@
+.set-table {
+  ul {
+    @include flex(null, null, cetner, null);
+    padding-bottom: 12px;
+    border-bottom: 1px solid $gray-200;
+    li {
+      @include captionXs-m;
+      color: $gray-600;
+    }
+  }
+}
+
+.setting-container {
+  padding-right: 14px;
+}
+
+.setting-wrap {
+  margin-top: 16px;
+  @include flex(null, space-between, center, 48px);
+}
+
+.set-work-time {
+  @include flex(null, null, center, 8px)
+}
+
+.set-lunch-time {
+  @extend .set-work-time;
+}
+
+.input-wrap {
+  @extend .set-work-time;
+  gap: 4px;
+}

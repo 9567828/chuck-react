@@ -1,7 +1,7 @@
 // 폰트설정
 @include generate-font-classes('display', $display-font-size, $linehight-140, $letterspacing-2);
 @include generate-font-classes('titleXl', $title-xl-font-size, $linehight-140, $letterspacing-2);
-@include generate-font-classes('titleLg', $title-lg-font-size, $linehight-150, $letterspacing-2);
+@include generate-font-classes('titleLg', $title-lg-font-size, $linehight-140, $letterspacing-2);
 @include generate-font-classes('bodyMd', $body-md-font-size, $linehight-150, $letterspacing-2);
 @include generate-font-classes('bodySm', $body-sm-font-size, $linehight-150, $letterspacing-2);
 @include generate-font-classes('captionXs', $caption-xs-font-size, $linehight-150);

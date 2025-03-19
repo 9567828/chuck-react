@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import * as s from "../../assets/scss/modules/style.module.scss";
+import SetWorkTimeModal from "../modal/SetWorkTimeModal";
 
 const GridWrap = styled.div`
   display: grid;
@@ -50,6 +51,7 @@ const Div = styled.div`
 function WorkSetting() {
   const [isOn, setIsOn] = useState(false);
   const [clickType, setClickType] = useState(null);
+  const [isModalOn, setIsModalOn] = useState(false);
   const optionsRef = useRef(null);
 
   const options = [
@@ -65,6 +67,14 @@ function WorkSetting() {
 
   const selType = (item) => {
     setClickType(item);
+  };
+
+  const openModal = () => {
+    setIsModalOn(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOn(false);
   };
 
   return (
@@ -134,7 +144,9 @@ function WorkSetting() {
       <GridWrap>
         <h1>근무일</h1>
         <div>월, 화, 수, 목, 금 (주 5일)</div>
-        <button className="edit-btn">수정하기</button>
+        <button className="edit-btn" onClick={openModal}>
+          수정하기
+        </button>
       </GridWrap>
       <GridWrap>
         <h1>근무 시간</h1>
@@ -149,6 +161,7 @@ function WorkSetting() {
         <div className={s.gray800Font14}>40시간</div>
         <button className="edit-btn">수정하기</button>
       </GridWrap>
+      {isModalOn ? <SetWorkTimeModal closeModal={closeModal} /> : <></>}
     </>
   );
 }

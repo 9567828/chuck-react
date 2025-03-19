@@ -12,7 +12,9 @@ const Modal = styled.div`
   background-color: rgba(0, 0, 0, 0.25);
 `;
 
-const ModalInner = styled.div`
+const ModalInner = styled.div.withConfig({
+  shouldForwardProp: (prop) => !["padding", "width"].includes(prop),
+})`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -22,7 +24,7 @@ const ModalInner = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: ${(props) => (props.width ? props.width : "auto")};
-  padding: 24px;
+  padding: ${(props) => (props.padding ? props.padding : "24px")};
   border-radius: 10px;
   background-color: #fff;
 `;
@@ -33,17 +35,22 @@ const HeadWrap = styled.div`
   gap: 13px;
 `;
 
-const BtnWrap = styled.div`
+const BtnWrap = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "gap",
+})`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 4px;
+  gap: ${(props) => (props.gap ? props.gap : "4px")};
 `;
 
 const ModalComp = ({
   width,
   height,
+  padding,
+  gap,
   title,
+  isLargeTit,
   isEditWork,
   children,
   btnClass,
@@ -55,10 +62,14 @@ const ModalComp = ({
 }) => {
   return (
     <Modal>
-      <ModalInner width={width} height={height}>
-        {isEditWork ? <HeadWrap className={s.bodyMdM}>{title}</HeadWrap> : <div className={s.bodyMdM}>{title}</div>}
+      <ModalInner width={width} height={height} padding={padding}>
+        {isEditWork ? (
+          <HeadWrap className={!isLargeTit ? s.bodyMdM : s.titleLgB}>{title}</HeadWrap>
+        ) : (
+          <div className={!isLargeTit ? s.bodyMdM : s.titleLgB}>{title}</div>
+        )}
         <div className="modal-content">{children}</div>
-        <BtnWrap>
+        <BtnWrap gap={gap}>
           <button
             onClick={() => {
               if (confirmFn) {
@@ -90,8 +101,11 @@ export default ModalComp;
 ModalComp.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
+  padding: PropTypes.string,
+  gap: PropTypes.string,
   isEditWork: PropTypes.bool,
   title: PropTypes.any,
+  isLargeTit: PropTypes.bool,
   children: PropTypes.element,
   btnClass: PropTypes.string,
   btnName: PropTypes.string,

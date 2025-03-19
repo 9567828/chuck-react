@@ -44,6 +44,7 @@
 }
 
 .day-wrap {
+  position: relative;
   width: 25px;
   height: 25px;
   padding: 3px 0;
@@ -63,6 +64,9 @@
     .date-num {
       color: $bg-white;
     }
+    span {
+      background-color: $bg-white;
+    }
   }
   &.holiday {
     .date-num {
@@ -75,21 +79,26 @@
     }
   }
   span {
+    position: absolute;
+    bottom: 3px;
     width: 3px;
     height: 3px;
     border-radius: 3px;
     background-color: $main-color;
     color: transparent;
     font-size: 5px;
+    // 글자 안보이도록 설정
+    white-space: nowrap;
+    overflow: hidden;
   }
 }
 
-.day-wrap.cal-today, .day-wrap.pick-date { background-color: $main-color; }
-.day-wrap.cal-today .schedule-dot { background-color: $bg-white }
-.day-wrap.pick-date .date-num,
-.day-wrap.holiday.pick-date .date-num {
-  color: $bg-white
-}
+// .day-wrap.cal-today, .day-wrap.pick-date { background-color: $main-color; }
+// .day-wrap.cal-today .schedule-dot { background-color: $bg-white }
+// .day-wrap.pick-date .date-num,
+// .day-wrap.holiday.pick-date .date-num {
+//   color: $bg-white
+// }
 
 /* 주, 월 단위 선택했을 때 효과 */
 .weekday-wrap.select-week,
