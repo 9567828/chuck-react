@@ -13,12 +13,12 @@ const Modal = styled.div`
 `;
 
 const ModalInner = styled.div.withConfig({
-  shouldForwardProp: (prop) => !["padding", "width"].includes(prop),
+  shouldForwardProp: (prop) => !["padding", "width", "innerGap"].includes(prop),
 })`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 24px;
+  gap: ${(props) => (props.innerGap ? props.innerGap : "24px")};
   position: absolute;
   top: 50%;
   left: 50%;
@@ -29,11 +29,11 @@ const ModalInner = styled.div.withConfig({
   background-color: #fff;
 `;
 
-const HeadWrap = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 13px;
-`;
+// const HeadWrap = styled.div`
+//   display: flex;
+//   align-items: center;
+//   gap: 13px;
+// `;
 
 const BtnWrap = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== "gap",
@@ -48,10 +48,11 @@ const ModalComp = ({
   width,
   height,
   padding,
+  innerGap,
   gap,
   title,
   isLargeTit,
-  isEditWork,
+  // isEditWork,
   children,
   btnClass,
   btnName,
@@ -62,12 +63,13 @@ const ModalComp = ({
 }) => {
   return (
     <Modal>
-      <ModalInner width={width} height={height} padding={padding}>
-        {isEditWork ? (
+      <ModalInner width={width} height={height} padding={padding} innerGap={innerGap}>
+        {/* {isEditWork ? (
           <HeadWrap className={!isLargeTit ? s.bodyMdM : s.titleLgB}>{title}</HeadWrap>
         ) : (
           <div className={!isLargeTit ? s.bodyMdM : s.titleLgB}>{title}</div>
-        )}
+        )} */}
+        <div className={!isLargeTit ? s.bodyMdM : s.titleLgB}>{title}</div>
         <div className="modal-content">{children}</div>
         <BtnWrap gap={gap}>
           <button
@@ -102,8 +104,9 @@ ModalComp.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
   padding: PropTypes.string,
+  innerGap: PropTypes.string,
   gap: PropTypes.string,
-  isEditWork: PropTypes.bool,
+  // isEditWork: PropTypes.bool,
   title: PropTypes.any,
   isLargeTit: PropTypes.bool,
   children: PropTypes.element,

@@ -130,15 +130,18 @@ function WorkStateList({ date }) {
           </li>
           <WorkType type={item.workType}>{item.workType}</WorkType>
           <li>{item.restTime}</li>
-          <li className="table-data edit-data" onClick={() => openModal(item.name, item.overtime)}>
+          <li className="table-data">
             <p>{item.overtime}</p>
-            <EditWorkBtn />
           </li>
           <li>{item.workTime}</li>
           <li>{item.nigthWork}</li>
         </ul>
       ))}
-      {isOn ? <EditWorkModal name={name} date={date} closeModal={closeModal} beforeWorkTime={beforeWorkTime} /> : <></>}
+      {isOn ? (
+        <EditWorkModal isEditWork={true} name={name} date={date} closeModal={closeModal} beforeWorkTime={beforeWorkTime} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

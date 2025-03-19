@@ -1,10 +1,10 @@
 import ModalComp from "./ModalComp";
 import "../../assets/scss/components/set-worktime-modal.scss";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-function SetWorkTimeModal(closeModal) {
-  const [isClick, setIsClick] = useState(false);
+function SetWorkTimeModal({ closeModal }) {
+  const [isClick, setIsClick] = useState({});
   const lists = [
     {
       id: 1,
@@ -92,15 +92,18 @@ function SetWorkTimeModal(closeModal) {
     },
   ];
 
-  const handleToggleBtn = () => {
-    setIsClick((prev) => !prev);
-
-    console.log(isClick);
+  const handleToggleBtn = (idx) => {
+    setIsClick((prev) => ({
+      ...prev,
+      [idx]: !prev[idx], // 해당 id의 상태를 반전
+    }));
   };
+
   return (
     <ModalComp
       width={"990px"}
       padding={"30px 40px"}
+      innerGap={"40px"}
       title={"근무 시간 설정"}
       isLargeTit={true}
       gap={"8px"}
@@ -148,7 +151,7 @@ function SetWorkTimeModal(closeModal) {
                   <input type="number" name="" id="" className="input-box-small" />
                 </div>
               </div>
-              <div className={isClick ? "toggle-btn on" : "toggle-btn"} onClick={() => handleToggleBtn()}>
+              <div className={isClick[item.id] ? "toggle-btn on" : "toggle-btn"} onClick={() => handleToggleBtn(item.id)}>
                 <div className="toggle"></div>
               </div>
             </div>
@@ -160,3 +163,7 @@ function SetWorkTimeModal(closeModal) {
 }
 
 export default SetWorkTimeModal;
+
+SetWorkTimeModal.propTypes = {
+  closeModal: PropTypes.func,
+};

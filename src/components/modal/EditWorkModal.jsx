@@ -4,6 +4,12 @@ import "../../assets/scss/components/edit-workstate-modal.scss";
 import * as s from "../../assets/scss/modules/style.module.scss";
 import styled from "styled-components";
 
+const HeadWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 13px;
+`;
+
 const BeforeTime = styled.p`
   line-height: 30px;
   color: #fff;
@@ -14,16 +20,19 @@ const InfoP = styled.p`
   margin-bottom: 8px;
 `;
 
-const EditWorkModal = ({ name, date, confirm, closeModal, changeFn, beforeWorkTime }) => {
+const EditWorkModal = ({ isEditWork, title, name, date, confirm, closeModal, changeFn, beforeWorkTime }) => {
   return (
     <ModalComp
       width="400px"
-      isEditWork={true}
       title={
-        <>
-          <h1>{name}</h1>
-          <p>{date}</p>
-        </>
+        isEditWork ? (
+          <HeadWrap>
+            <h1>{name}</h1>
+            <p>{date}</p>
+          </HeadWrap>
+        ) : (
+          <>{title}</>
+        )
       }
       btnClass={"sub-btn-large"}
       cancelBtnClass={"sub-btn-large cancel"}
@@ -63,6 +72,8 @@ const EditWorkModal = ({ name, date, confirm, closeModal, changeFn, beforeWorkTi
 export default EditWorkModal;
 
 EditWorkModal.propTypes = {
+  isEditWork: PropTypes.bool,
+  title: PropTypes.string,
   name: PropTypes.string,
   date: PropTypes.string,
   confirm: PropTypes.any,
