@@ -52,6 +52,12 @@ const Div = styled.div`
 function WorkSetting() {
   const [isOn, setIsOn] = useState(false);
   const [clickType, setClickType] = useState(null);
+  const [selOpts, setSelOpts] = useState([
+    { id: 1, menu: "고정 출퇴근제", select: true },
+    { id: 2, menu: "시차 출퇴근제", select: false },
+    { id: 3, menu: "탄력 출퇴근제", select: false },
+    { id: 4, menu: "출퇴근 사용 안함", select: false },
+  ]);
   const [isModalOn, setIsModalOn] = useState(false);
   const [modalType, setModalType] = useState(null);
   const optionsRef = useRef(null);
@@ -64,19 +70,19 @@ function WorkSetting() {
     }
   }, []); // 빈 배열을 넣어 컴포넌트가 처음 렌더링될 때만 실행
 
-  const options = [
-    { id: 1, menu: "고정 출퇴근제" },
-    { id: 2, menu: "시차 출퇴근제" },
-    { id: 3, menu: "탄력 출퇴근제" },
-    { id: 4, menu: "출퇴근 사용 안함" },
-  ];
-
+  // 셀렉트박스 클릭 이벤트 (드롭다운 열기)
   const clickSelBox = () => {
     setIsOn((prev) => !prev);
   };
 
+  // 셀렉트옵션 클릭이벤트
   const selType = (item) => {
     setClickType(item);
+  };
+
+  // 셀렉트 옵션 hover(마우스엔터)이벤트
+  const handleMouseEnter = (item) => {
+    setSelOpts((prev) => prev.map((opt) => (opt.menu === item ? { ...opt, select: true } : { ...opt, select: false })));
   };
 
   const openModal = (type) => {
@@ -93,15 +99,6 @@ function WorkSetting() {
     setModalType(null);
   };
 
-  // const openModal = (e, modal) => {
-  //   console.log(e.target);
-  //   setIsModalOn(true);
-  // };
-
-  // const closeModal = () => {
-  //   setIsModalOn(false);
-  // };
-
   return (
     <>
       <GridWrap>
@@ -115,8 +112,13 @@ function WorkSetting() {
           </div>
           {isOn ? (
             <Div ref={optionsRef} className="sel-options-square">
-              {options.map((item) => (
-                <p key={item.id} onClick={() => selType(item.menu)} className={clickType === item.menu ? "active" : ""}>
+              {selOpts.map((item) => (
+                <p
+                  key={item.id}
+                  onMouseEnter={() => handleMouseEnter(item.menu)}
+                  onClick={() => selType(item.menu)}
+                  className={item.select ? "active" : ""}
+                >
                   {item.menu}
                 </p>
               ))}

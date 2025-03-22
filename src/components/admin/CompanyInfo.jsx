@@ -21,10 +21,10 @@ function CompanyInfo() {
     <div className="inner admin">
       <ImgSection>
         {/* 회사대표 */}
-        <ProfileEditImgComp title={"회사 대표 이미지"} />
+        <ProfileEditImgComp inputId={"compImg"} title={"회사 대표 이미지"} />
 
         {/* 회사로고 */}
-        <ProfileEditImgComp title={"회사 로고 이미지"} />
+        <ProfileEditImgComp inputId={"compLogo"} title={"회사 로고 이미지"} />
       </ImgSection>
 
       {/* 정보 수정 */}

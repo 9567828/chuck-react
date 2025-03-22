@@ -1,11 +1,17 @@
 .set-table {
   ul {
-    @include flex(null, null, cetner, null);
+    @include flex(null, space-between, center, 12px);
     padding-bottom: 12px;
     border-bottom: 1px solid $gray-200;
     li {
+      width: calc(100% - 50%);
+      @include flex(null, space-between, center, null);
       @include captionXs-m;
       color: $gray-600;
+      &:first-child {
+        justify-content: flex-start;
+        gap: 43px;
+      }
     }
   }
 }

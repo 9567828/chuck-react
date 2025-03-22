@@ -1,7 +1,7 @@
 import ModalComp from "./ModalComp";
 import "../../assets/scss/components/set-worktime-modal.scss";
 import PropTypes from "prop-types";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 function SetWorkTimeModal({ closeModal }) {
   const [isClick, setIsClick] = useState({});
@@ -116,10 +116,18 @@ function SetWorkTimeModal({ closeModal }) {
     >
       <div className="set-table">
         <ul>
-          <li>근무일</li>
+          <li>
+            <span>근무일</span>
+            <span>근무 시간</span>
+          </li>
+          <li>
+            <span>점심 시간</span>
+            <span>근무일 활성화</span>
+          </li>
+          {/* <li>근무일</li>
           <li>근무 시간</li>
           <li>점심 시간</li>
-          <li>근무일 활성화</li>
+          <li>근무일 활성화</li> */}
         </ul>
         <div className="setting-container">
           {lists.map((item) => (

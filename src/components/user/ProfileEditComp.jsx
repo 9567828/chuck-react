@@ -26,7 +26,7 @@ function ProfileEditComp() {
 
   return (
     <div className="inner admin">
-      <ProfileEditImgComp title={"프로필 이미지"} currentImg={empInfo.imgPath} />
+      <ProfileEditImgComp inputId={"profileImg"} title={"프로필 이미지"} currentImg={empInfo.imgPath} />
       <Div className={s.editInfoWrap}>
         <div>
           <Label htmlFor="empName" className={s.bodySmB}>
