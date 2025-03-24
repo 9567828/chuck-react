@@ -139,9 +139,7 @@ function WorkStateList({ date }) {
       ))}
       {isOn ? (
         <EditWorkModal isEditWork={true} name={name} date={date} closeModal={closeModal} beforeWorkTime={beforeWorkTime} />
-      ) : (
-        <></>
-      )}
+      ) : null}
     </div>
   );
 }

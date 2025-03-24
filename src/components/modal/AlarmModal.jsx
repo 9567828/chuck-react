@@ -60,7 +60,7 @@ function AlamModal({ closeFn }) {
           <div className="alarm-content" key={item.id}>
             <TitleHead>
               <p className={s.captionXsR}>{item.category}</p>
-              {item.check ? <></> : <span className="alarm-circle"></span>}
+              {item.check ? null : <span className="alarm-circle"></span>}
             </TitleHead>
             <ContentInfo className={s.captionXsR}>
               <p>{item.content}</p>

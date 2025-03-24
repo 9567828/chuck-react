@@ -60,9 +60,35 @@ function WorkSetting() {
   ]);
   const [isModalOn, setIsModalOn] = useState(false);
   const [modalType, setModalType] = useState(null);
+  const [workingHours, setWorkingHours] = useState("");
+  const [isChecked, setIsChecked] = useState({
+    realWorkTimeStart: false,
+    setWorkTimeStart: false,
+    realWorkTimeFinish: false,
+    setWorkTimeFinish: false,
+  });
   const optionsRef = useRef(null);
   const workingHoursRef = useRef(null);
-  const [workingHours, setWorkingHours] = useState("");
+
+  const workingHourLists = [
+    { id: 1, day: "월", start: "09:00", finish: "18:00", work: true },
+    { id: 2, day: "화", start: "09:00", finish: "18:00", work: true },
+    { id: 3, day: "수", start: "09:00", finish: "18:00", work: true },
+    { id: 4, day: "목", start: "09:00", finish: "18:00", work: true },
+    { id: 5, day: "금", start: "09:00", finish: "18:00", work: true },
+    { id: 6, day: "토", start: "09:00", finish: "18:00", work: false },
+    { id: 7, day: "일", start: "09:00", finish: "18:00", work: false },
+  ];
+
+  const lunchTimeLists = [
+    { id: 1, day: "월", start: "12:00", finish: "13:00", work: true },
+    { id: 2, day: "화", start: "12:00", finish: "13:00", work: true },
+    { id: 3, day: "수", start: "12:00", finish: "13:00", work: true },
+    { id: 4, day: "목", start: "12:00", finish: "13:00", work: true },
+    { id: 5, day: "금", start: "12:00", finish: "13:00", work: true },
+    { id: 6, day: "토", start: "12:00", finish: "13:00", work: false },
+    { id: 7, day: "일", start: "12:00", finish: "13:00", work: false },
+  ];
 
   useEffect(() => {
     if (workingHoursRef.current) {
@@ -75,14 +101,32 @@ function WorkSetting() {
     setIsOn((prev) => !prev);
   };
 
+  const handleSelectOpt = (item) => {
+    setSelOpts((prev) => prev.map((opt) => (opt.menu === item ? { ...opt, select: true } : { ...opt, select: false })));
+  };
+
   // 셀렉트옵션 클릭이벤트
   const selType = (item) => {
+    // handleSelectOpt(item);
     setClickType(item);
+    if (item === "출퇴근 사용 안함") {
+      setIsChecked({
+        realWorkTimeStart: false,
+        setWorkTimeStart: false,
+        realWorkTimeFinish: false,
+        setWorkTimeFinish: false,
+      });
+    }
   };
 
   // 셀렉트 옵션 hover(마우스엔터)이벤트
   const handleMouseEnter = (item) => {
-    setSelOpts((prev) => prev.map((opt) => (opt.menu === item ? { ...opt, select: true } : { ...opt, select: false })));
+    handleSelectOpt(item);
+    // setSelOpts((prev) => prev.map((opt) => (opt.menu === item ? { ...opt, select: true } : { ...opt, select: false })));
+  };
+
+  const handleRadioBtn = (item) => {
+    console.log(item);
   };
 
   const openModal = (type) => {
@@ -105,7 +149,9 @@ function WorkSetting() {
         <h1>근무 유형 선택</h1>
         <div className="select-wrap" onClick={clickSelBox}>
           <div className={isOn ? "select-box-square active" : "select-box-square"}>
+            {/* <div className="select-one">{clickType}</div> */}
             <div className="select-one">{clickType ? clickType : "고정 출퇴근제"}</div>
+            {/* <div className="select-one">{selOpts.map((item) => (item.select === true ? item.menu : null))}</div> */}
             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4.175 5.5L8 9.325L11.825 5.5L13 6.68333L8 11.6833L3 6.68333L4.175 5.5Z" fill="#616161" />
             </svg>
@@ -130,15 +176,27 @@ function WorkSetting() {
         <h1>출근 시간 기준 설정</h1>
         <ColumnWrap>
           <ColumnWrap>
-            <LabelFlex htmlFor="SrealTime">
-              <input type="radio" name="startTime" id="SrealTime" />
+            <LabelFlex htmlFor="realTimeS">
+              <input
+                type="radio"
+                name="startTime"
+                id="realTimeS"
+                onChange={() => handleRadioBtn("실제출근시간")}
+                checked={clickType === "고정 출퇴근제" || clickType === "시차 출퇴근제" ? true : isChecked.realWorkTimeStart}
+              />
               <span className={s.captionXsM}>실제 업무 시간으로 출근 시간을 기록</span>
             </LabelFlex>
             <p className={`${s.grayMsgFont12} ${s.ml33}`}>출근 버튼을 클릭한 시간으로 기록합니다.</p>
           </ColumnWrap>
           <ColumnWrap>
-            <LabelFlex htmlFor="SruleTime">
-              <input type="radio" name="startTime" id="SruleTime" />
+            <LabelFlex htmlFor="ruleTimeS">
+              <input
+                type="radio"
+                name="startTime"
+                id="ruleTimeS"
+                onChange={() => handleRadioBtn("설정출근시간")}
+                checked={isChecked.setWorkTimeStart}
+              />
               <span className={s.captionXsM}>설정된 근무 스케줄에 맞춰 출근 시간을 기록</span>
             </LabelFlex>
             <p className={`${s.grayMsgFont12} ${s.ml33}`}>
@@ -151,15 +209,27 @@ function WorkSetting() {
         <h1>퇴근 시간 기준 설정</h1>
         <ColumnWrap>
           <ColumnWrap>
-            <LabelFlex htmlFor="FrealTime">
-              <input type="radio" name="finishTime" id="FrealTime" />
+            <LabelFlex htmlFor="realTimeF">
+              <input
+                type="radio"
+                name="finishTime"
+                id="realTimeF"
+                onChange={() => handleRadioBtn("실제퇴근시간")}
+                checked={isChecked.realWorkTimeFinish}
+              />
               <span className={s.captionXsM}>실제 업무 시간으로 퇴근 시간을 기록</span>
             </LabelFlex>
             <p className={`${s.grayMsgFont12} ${s.ml33}`}>퇴근 버튼을 클릭한 시간으로 기록합니다.</p>
           </ColumnWrap>
           <ColumnWrap>
-            <LabelFlex htmlFor="FruleTime">
-              <input type="radio" name="finishTime" id="FruleTime" />
+            <LabelFlex htmlFor="ruleTimeF">
+              <input
+                type="radio"
+                name="finishTime"
+                id="ruleTimeF"
+                onChange={() => handleRadioBtn("설정퇴근시간")}
+                checked={isChecked.setWorkTimeFinish}
+              />
               <span className={s.captionXsM}>설정된 근무 스케줄에 맞춰 퇴근 시간을 기록</span>
             </LabelFlex>
             <p className={`${s.grayMsgFont12} ${s.ml33}`}>
@@ -168,20 +238,43 @@ function WorkSetting() {
           </ColumnWrap>
         </ColumnWrap>
       </GridWrap>
-      <GridWrap>
+      <GridWrap className={s.captionXsM}>
         <h1>근무일</h1>
-        <div>월, 화, 수, 목, 금 (주 5일)</div>
+        <div>
+          {workingHourLists.map((item) => {
+            return <div key={item.id}></div>;
+          })}
+        </div>
+        {/* <div>{workingHourLists.map((list) => (list.work ? <div key={list.id}>{list.day}</div> : null))}</div> */}
         <button className="edit-btn" onClick={() => openModal("set-worktimes")}>
           수정하기
         </button>
       </GridWrap>
       <GridWrap>
         <h1>근무 시간</h1>
-        <div>월 09:00~18:00 화 09:00~18:00 수 09:00~18:00 목 09:00~18:00 금 09:00~18:00</div>
+        <ul className={s.captionXsM}>
+          {workingHourLists.map((list) =>
+            list.work ? (
+              <li key={list.id}>
+                <span>{list.day}</span>
+                <span>{`${list.start} ~ ${list.finish}`}</span>
+              </li>
+            ) : null
+          )}
+        </ul>
       </GridWrap>
       <GridWrap>
         <h1>점심 시간</h1>
-        <div>월 12:00~13:00 화 12:00~13:00 수 12:00~13:00 목 12:00~13:00 금 12:00~13:00</div>
+        <ul className={s.captionXsM}>
+          {lunchTimeLists.map((list) =>
+            list.work ? (
+              <li key={list.id}>
+                <span>{list.day}</span>
+                <span>{`${list.start} ~ ${list.finish}`}</span>
+              </li>
+            ) : null
+          )}
+        </ul>
       </GridWrap>
       <GridWrap>
         <h1>주 소정 근로시간</h1>
@@ -192,12 +285,10 @@ function WorkSetting() {
           수정하기
         </button>
       </GridWrap>
-      {isModalOn && modalType === "set-worktimes" ? <SetWorkTimeModal closeModal={closeModal} /> : <></>}
+      {isModalOn && modalType === "set-worktimes" ? <SetWorkTimeModal closeModal={closeModal} /> : null}
       {isModalOn && modalType === "set-workinghours" ? (
         <EditWorkModal isEditWork={false} title={"주 소정 근로시간 설정"} beforeWorkTime={workingHours} closeModal={closeModal} />
-      ) : (
-        <></>
-      )}
+      ) : null}
     </>
   );
 }

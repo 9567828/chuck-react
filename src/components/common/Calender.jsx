@@ -166,7 +166,7 @@ function Calender({ onRows, clickFn }) {
       <div className={`days-container ${s.captionXxsM}`}>
         <ul>
           {weeks.map((week, index) => (
-            <li key={index} className="weekday-wrap">
+            <li key={`w_${index}`} className="weekday-wrap">
               {week.map((day, dindex) => {
                 const MS = day.month;
                 const m = month + 1;
@@ -181,18 +181,16 @@ function Calender({ onRows, clickFn }) {
                       }
                     }}
                     data-date={d}
-                    key={`d_${dindex}`}
+                    key={`day-${index}-${dindex}`}
                     className={MS < m || MS > m ? "day-wrap other-month" : d === today ? "day-wrap today" : "day-wrap"}
                   >
                     <button className="date-num">{day.date}</button>
                     {schedules.map((s, i) =>
                       s.date === d ? (
-                        <span key={`S_${i}`} data-schedule={s.date}>
+                        <span key={`s_${s.date}_${i}`} data-schedule={s.date}>
                           {s.title}
                         </span>
-                      ) : (
-                        <></>
-                      )
+                      ) : null
                     )}
                   </div>
                 );

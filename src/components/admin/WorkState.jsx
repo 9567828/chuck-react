@@ -66,9 +66,7 @@ function WorkState() {
                 </p>
               ))}
             </div>
-          ) : (
-            <></>
-          )}
+          ) : null}
         </div>
         <div className="input-search-bar">
           <label htmlFor="searchInput">

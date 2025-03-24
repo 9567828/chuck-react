@@ -129,8 +129,8 @@ function ProfileComp() {
           <li>회원 탈퇴하기</li>
         </ul>
       </section>
-      {isOnModal.marketing ? <TermsAgreeModal closeModal={closeModal} checked={empInfo.isMarketingAgree} /> : <></>}
-      {isOnModal.editpassword ? <EditPasswordModal closeModal={closeModal} /> : <></>}
+      {isOnModal.marketing ? <TermsAgreeModal closeModal={closeModal} checked={empInfo.isMarketingAgree} /> : null}
+      {isOnModal.editpassword ? <EditPasswordModal closeModal={closeModal} /> : null}
     </div>
   );
 }

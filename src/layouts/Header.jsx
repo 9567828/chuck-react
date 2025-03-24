@@ -93,8 +93,8 @@ function Header() {
         </div>
       </nav>
       <div className="modal-wrap">
-        {isOpen && modalType === "invite" ? <InviteModal closeFn={closeModal} /> : <></>}
-        {isOpen && modalType === "alarm" ? <AlamModal closeFn={closeModal} /> : <></>}
+        {isOpen && modalType === "invite" ? <InviteModal closeFn={closeModal} /> : null}
+        {isOpen && modalType === "alarm" ? <AlamModal closeFn={closeModal} /> : null}
       </div>
     </header>
   );
