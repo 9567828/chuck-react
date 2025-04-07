@@ -41,11 +41,15 @@ const getHoliday = async (year, month) => {
   } = res.data;
 
   try {
-    if (resultCode === "00") {
-      // holidaysCache[cacheKey] = items;
-      return items;
-    } else if (resultCode === "30") {
-      console.log("인증키 오류");
+    if (!items) {
+      return;
+    } else {
+      if (resultCode === "00") {
+        // holidaysCache[cacheKey] = items;
+        return items;
+      } else if (resultCode === "30") {
+        console.log("인증키 오류");
+      }
     }
   } catch (error) {
     console.error(error);

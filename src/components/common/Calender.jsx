@@ -2,7 +2,7 @@ import * as s from "../../assets/scss/modules/style.module.scss";
 import "../../assets/scss/components/calender.scss";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DateFormatter from "../hooks/MakeDate";
 import { getHoliday, clearCache } from "../../api/holiday";
 
@@ -10,7 +10,7 @@ const Span = styled.span`
   text-transform: capitalize;
 `;
 
-function Calender({ onRows, clickFn }) {
+function Calender({ clickFn, mouseFn, rowData }) {
   const dateForm = new DateFormatter();
   const monthEng = dateForm.monthArr;
   const [weeks, setWeeks] = useState([]);
@@ -24,6 +24,7 @@ function Calender({ onRows, clickFn }) {
       title: "BX팀 외부 미팅",
     },
   ]);
+  const rowRef = useRef(0);
 
   const year = curDate.getFullYear(); // getFullYear로 연도 얻기
   const month = curDate.getMonth(); // getMonth로 월 얻기 (0부터 시작하므로 1을 더해야 실제 월)
@@ -61,7 +62,9 @@ function Calender({ onRows, clickFn }) {
 
     setWeeks(allWeeks);
     setRows(Math.ceil((firstNum + lastNum) / 7));
-    onRows(Math.ceil((firstNum + lastNum) / 7));
+    if (rowRef.current) {
+      rowData(Math.ceil((firstNum + lastNum) / 7));
+    }
   };
 
   useEffect(() => {
@@ -142,7 +145,7 @@ function Calender({ onRows, clickFn }) {
 
   return (
     <div className="calender-card">
-      <div className="calender-head">
+      <div ref={rowRef} data-row={rows} className="calender-head">
         <button onClick={handlePrevMonth}>
           <img src="/img/ic_move_in.svg" alt="화살표" />
         </button>
@@ -174,17 +177,24 @@ function Calender({ onRows, clickFn }) {
                 const today = new DateFormatter().dateToNum;
                 // JSX 요소 반환
                 return (
-                  <div
-                    onClick={() => {
+                  <button
+                    onClick={(e) => {
                       if (clickFn) {
-                        clickFn();
+                        e.stopPropagation();
+                        clickFn(e);
+                      }
+                    }}
+                    onMouseEnter={(e) => {
+                      if (mouseFn) {
+                        e.stopPropagation();
+                        mouseFn(e);
                       }
                     }}
                     data-date={d}
                     key={`day-${index}-${dindex}`}
                     className={MS < m || MS > m ? "day-wrap other-month" : d === today ? "day-wrap today" : "day-wrap"}
                   >
-                    <button className="date-num">{day.date}</button>
+                    <p className="date-num">{day.date}</p>
                     {schedules.map((s, i) =>
                       s.date === d ? (
                         <span key={`s_${s.date}_${i}`} data-schedule={s.date}>
@@ -192,7 +202,7 @@ function Calender({ onRows, clickFn }) {
                         </span>
                       ) : null
                     )}
-                  </div>
+                  </button>
                 );
               })}
             </li>
@@ -204,8 +214,10 @@ function Calender({ onRows, clickFn }) {
 }
 
 Calender.propTypes = {
-  onRows: PropTypes.func.isRequired,
+  // onRows: PropTypes.func,
+  rowData: PropTypes.number,
   clickFn: PropTypes.func,
+  mouseFn: PropTypes.func,
 };
 
 export default Calender;

@@ -11,8 +11,8 @@ const List = styled.div`
   position: relative;
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(475px, 1fr) 133px;
-  justify-content: center;
+  grid-template-columns: minmax(475px, 1fr) auto;
+  justify-content: space-between;
   align-items: center;
   column-gap: 12px;
   padding: 22px 14px;

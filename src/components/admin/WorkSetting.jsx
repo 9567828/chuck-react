@@ -33,6 +33,7 @@ const GridWrap = styled.div`
     padding: 0;
   }
 `;
+
 const LabelFlex = styled.label`
   display: flex;
   align-items: center;
@@ -47,6 +48,29 @@ const ColumnWrap = styled.div`
 
 const Div = styled.div`
   height: ${(props) => (props.height ? props.height : "auto")};
+`;
+
+const FlexUl = styled.ul`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  li {
+    position: relative;
+    &:not(:last-child)::after {
+      position: absolute;
+      top: 4px;
+      right: -10px;
+      content: "";
+      width: 1px;
+      height: 14px;
+      background-color: #424242;
+    }
+    span {
+      &:first-child {
+        margin-right: 5px;
+      }
+    }
+  }
 `;
 
 function WorkSetting() {
@@ -107,7 +131,7 @@ function WorkSetting() {
 
   // 셀렉트옵션 클릭이벤트
   const selType = (item) => {
-    // handleSelectOpt(item);
+    handleSelectOpt(item);
     setClickType(item);
     if (item === "출퇴근 사용 안함") {
       setIsChecked({
@@ -120,9 +144,8 @@ function WorkSetting() {
   };
 
   // 셀렉트 옵션 hover(마우스엔터)이벤트
-  const handleMouseEnter = (item) => {
-    handleSelectOpt(item);
-    // setSelOpts((prev) => prev.map((opt) => (opt.menu === item ? { ...opt, select: true } : { ...opt, select: false })));
+  const handleMouseEnter = (menu) => {
+    handleSelectOpt(menu);
   };
 
   const handleRadioBtn = (item) => {
@@ -143,15 +166,18 @@ function WorkSetting() {
     setModalType(null);
   };
 
+  // 근무요일
+  const workDays = workingHourLists.filter((day) => day.work).map((day) => day.day);
+  const workDaysStr = workDays.join(", ");
+
   return (
     <>
       <GridWrap>
         <h1>근무 유형 선택</h1>
         <div className="select-wrap" onClick={clickSelBox}>
           <div className={isOn ? "select-box-square active" : "select-box-square"}>
-            {/* <div className="select-one">{clickType}</div> */}
             <div className="select-one">{clickType ? clickType : "고정 출퇴근제"}</div>
-            {/* <div className="select-one">{selOpts.map((item) => (item.select === true ? item.menu : null))}</div> */}
+            {/* <div className="select-one">{selOpts.map((item) => (item.select === true ? item.menu : clickType))}</div> */}
             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4.175 5.5L8 9.325L11.825 5.5L13 6.68333L8 11.6833L3 6.68333L4.175 5.5Z" fill="#616161" />
             </svg>
@@ -240,19 +266,14 @@ function WorkSetting() {
       </GridWrap>
       <GridWrap className={s.captionXsM}>
         <h1>근무일</h1>
-        <div>
-          {workingHourLists.map((item) => {
-            return <div key={item.id}></div>;
-          })}
-        </div>
-        {/* <div>{workingHourLists.map((list) => (list.work ? <div key={list.id}>{list.day}</div> : null))}</div> */}
+        <div>{`${workDaysStr} (주 ${workDays.length}일)`}</div>
         <button className="edit-btn" onClick={() => openModal("set-worktimes")}>
           수정하기
         </button>
       </GridWrap>
       <GridWrap>
         <h1>근무 시간</h1>
-        <ul className={s.captionXsM}>
+        <FlexUl className={s.captionXsM}>
           {workingHourLists.map((list) =>
             list.work ? (
               <li key={list.id}>
@@ -261,11 +282,11 @@ function WorkSetting() {
               </li>
             ) : null
           )}
-        </ul>
+        </FlexUl>
       </GridWrap>
       <GridWrap>
         <h1>점심 시간</h1>
-        <ul className={s.captionXsM}>
+        <FlexUl className={s.captionXsM}>
           {lunchTimeLists.map((list) =>
             list.work ? (
               <li key={list.id}>
@@ -274,7 +295,7 @@ function WorkSetting() {
               </li>
             ) : null
           )}
-        </ul>
+        </FlexUl>
       </GridWrap>
       <GridWrap>
         <h1>주 소정 근로시간</h1>

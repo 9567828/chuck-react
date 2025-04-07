@@ -1,8 +1,10 @@
 import WorkStateList from "./WorkStateList";
-import WorkStateListWM from "./WorkStateListWM";
+import WorkStateEmp from "./WorkStateEmp";
+import * as s from "../../assets/scss/modules/style.module.scss";
 import PeriodSelectorCompnent from "./../common/PeriodSelectorComponent";
 import { useState } from "react";
 import DateFormatter from "../hooks/MakeDate";
+import Calender from "./../common/Calender";
 
 function WorkState() {
   const { PeriodSelector, isClick } = PeriodSelectorCompnent();
@@ -10,6 +12,9 @@ function WorkState() {
 
   const [isActive, setIsActive] = useState(false);
   const [select, setSelect] = useState(null);
+  const [row, setRow] = useState(5);
+  const [onCal, setOnCal] = useState(false);
+  const [clickDate, setClickDate] = useState(null);
 
   const selectMenu = [
     { id: 1, name: "전체" },
@@ -24,6 +29,84 @@ function WorkState() {
     { id: 10, name: "CS팀" },
   ];
 
+  const thItems = [
+    { id: 1, name: "이름", isMonthly: false, default: true },
+    { id: 2, name: "직책", isMonthly: false, default: true },
+    { id: 3, name: "날짜", isMonthly: true, default: false },
+    { id: 4, name: "출근시간", isMonthly: true, default: true },
+    { id: 5, name: "퇴근시간", isMonthly: true, default: true },
+    { id: 6, name: "근무형태", isMonthly: true, default: true },
+    { id: 7, name: "휴게시간", isMonthly: true, default: true },
+    { id: 8, name: "연장근무시간", isMonthly: true, default: true },
+    { id: 9, name: "근무시간", isMonthly: true, default: true },
+    { id: 10, name: "야간근무시간", isMonthly: true, default: true },
+  ];
+
+  const contentList = [
+    {
+      id: 1,
+      name: "김성은",
+      dept: "프론트엔드 개발자",
+      atWork: "-",
+      fromWork: "-",
+      workType: "결근",
+      restTime: "1시간",
+      overtime: "-",
+      workTime: "-",
+      nigthWork: "-",
+    },
+    {
+      id: 2,
+      name: "이현정",
+      dept: "BX 디자이너",
+      atWork: "10:02",
+      fromWork: "09:02",
+      workType: "지각",
+      restTime: "1시간",
+      overtime: "-",
+      workTime: "00시간 00분",
+      nigthWork: "-",
+    },
+    {
+      id: 3,
+      name: "정우성",
+      dept: "인사관리자",
+      atWork: "-",
+      fromWork: "-",
+      workType: "휴가",
+      restTime: "1시간",
+      overtime: "-",
+      workTime: "-",
+      nigthWork: "-",
+    },
+    {
+      id: 4,
+      name: "김지호",
+      dept: "BX 디자이너",
+      atWork: "09:02",
+      fromWork: "18:09",
+      workType: "정상",
+      restTime: "1시간",
+      overtime: "-",
+      workTime: "09시간 00분",
+      nigthWork: "-",
+    },
+    {
+      id: 5,
+      name: "이신우",
+      dept: "퍼포먼스 마케터",
+      atWork: "08:24",
+      fromWork: "22:24",
+      workType: "정상",
+      restTime: "1시간",
+      overtime: "3시간 24분",
+      workTime: "12시간 24분",
+      nigthWork: "24분",
+    },
+  ];
+
+  const isWeekMonth = isClick === "주" || isClick === "월";
+
   const onClickDrop = () => {
     setIsActive((prev) => !prev);
   };
@@ -35,19 +118,40 @@ function WorkState() {
     setIsActive(false);
   };
 
+  const handleRowDate = (r) => {
+    setRow(r);
+  };
+
+  const onCalender = () => {
+    setOnCal(true);
+  };
+
+  const handleDateClick = (e) => {
+    console.log(e.target.parentElement);
+    setOnCal(false);
+  };
+
+  const handleMouseEnter = (e) => {
+    console.log(e.target);
+    const selDate = e.target;
+    selDate.classList.add("onMouse");
+  };
+
   return (
     <>
       <section className="date-pick-section">
-        <div id="calenderWrap" className="calender-wrap">
+        <div className="calender-wrap" onClick={onCalender}>
           <div className="select-cal">
             <div className="get-today">{date.defaultDate}</div>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5 11.825L8.825 8L5 4.175L6.18333 3L11.1833 8L6.18333 13L5 11.825Z" fill="#616161" />
             </svg>
           </div>
-          <div id="calDrop" className="cal-drop">
-            {/* 달력 */}
-          </div>
+          {onCal ? (
+            <div className="cal-drop">
+              <Calender rowData={handleRowDate} clickFn={handleDateClick} mouseFn={handleMouseEnter} />
+            </div>
+          ) : null}
         </div>
         <PeriodSelector />
       </section>
@@ -75,12 +179,44 @@ function WorkState() {
         </div>
       </section>
 
-      <section className="emp-table">
-        {isClick === "일" ? (
-          <WorkStateList date={date.defaultDate} />
-        ) : isClick === "주" || isClick === "월" ? (
-          <WorkStateListWM date={isClick} />
-        ) : null}
+      {/* 클릭 상태가 주 또는 월(isWeekMonth)인 경우 클래스, dom요소를 리턴 아니면 null처리 */}
+      <section className={isWeekMonth ? "table-grid" : null}>
+        {isWeekMonth ? <WorkStateEmp date={isClick} /> : null}
+        <div>
+          <ul className={isWeekMonth ? "table-title onWeekMonth" : "table-title"}>
+            {thItems.map((item) =>
+              isWeekMonth ? (
+                item.isMonthly ? (
+                  <li key={item.id}>{item.name}</li>
+                ) : null
+              ) : item.default ? (
+                <li key={item.id}>{item.name}</li>
+              ) : null
+            )}
+          </ul>
+          {/* 
+            일인 경우 조회 된 기록에 따라 리스트업
+            주 또는 월인 경우 조회 된 한 사람의 기록을
+            주 또는 월 단위로 리스트업
+           */}
+          {contentList.map((item) => (
+            <WorkStateList
+              key={item.id}
+              workDate={date.defaultDate}
+              dates={"2024-12-30"}
+              isMontly={isWeekMonth}
+              empName={item.name}
+              dept={item.dept}
+              atWork={item.atWork}
+              fromWork={item.fromWork}
+              nigthWork={item.nigthWork}
+              overtime={item.overtime}
+              restTime={item.restTime}
+              workTime={item.workTime}
+              workType={item.workType}
+            />
+          ))}
+        </div>
       </section>
     </>
   );

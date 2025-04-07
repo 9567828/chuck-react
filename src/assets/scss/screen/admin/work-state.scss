@@ -16,13 +16,12 @@
 }
 
 .cal-drop {
-  display: none;
   margin-top: 6px;
   position: absolute;
   z-index: 100;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px 2px #0000001A;
 }
-
-.cal-drop.showup { display: block; }
 
 .select-emp {
   position: relative;
@@ -33,34 +32,32 @@
 }
 
 /* 근무시간 테이블 영역 */
-.table-title, .table-content {
+.table-title {
   display: grid;
   grid-template-columns: repeat(9, minmax(70px, 1fr));
   gap: 58px;
   padding: 6px 4px;
-  @include  captionXxs-r;
-}
-
-.date-table.off {
-  display: none;
-}
-
-.weekMonth-table .table-title, .weekMonth-table .table-content {
-  grid-template-columns: repeat(8, minmax(70px, 1fr));
-}
-
-.table-title {
   margin-bottom: 16px;
   color: $gray-600;
   border-bottom: 2px solid $gray-300;
+  @include  captionXxs-r;
+  &.onWeekMonth {
+    grid-template-columns: repeat(8, minmax(70px, 1fr));
+  }
 }
 
 .table-content {
+  @extend .table-title;
   margin-bottom: 10px;
   border-bottom: 1px solid $gray-200;
+  color: unset;
 }
 
-.table-data.highlight { color: $main-color }
+// .weekMonth-table .table-title, .weekMonth-table .table-content {
+//   grid-template-columns: repeat(8, minmax(70px, 1fr));
+// }
+
+// .table-data.highlight { color: $main-color }
 
 .table-data.edit-data { position: relative; }
 

@@ -10,6 +10,7 @@ const Modal = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.25);
+  z-index: 100;
 `;
 
 const ModalInner = styled.div.withConfig({
