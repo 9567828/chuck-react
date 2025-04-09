@@ -95,23 +95,13 @@ function WorkSetting() {
   const workingHoursRef = useRef(null);
 
   const workingHourLists = [
-    { id: 1, day: "월", start: "09:00", finish: "18:00", work: true },
-    { id: 2, day: "화", start: "09:00", finish: "18:00", work: true },
-    { id: 3, day: "수", start: "09:00", finish: "18:00", work: true },
-    { id: 4, day: "목", start: "09:00", finish: "18:00", work: true },
-    { id: 5, day: "금", start: "09:00", finish: "18:00", work: true },
-    { id: 6, day: "토", start: "09:00", finish: "18:00", work: false },
-    { id: 7, day: "일", start: "09:00", finish: "18:00", work: false },
-  ];
-
-  const lunchTimeLists = [
-    { id: 1, day: "월", start: "12:00", finish: "13:00", work: true },
-    { id: 2, day: "화", start: "12:00", finish: "13:00", work: true },
-    { id: 3, day: "수", start: "12:00", finish: "13:00", work: true },
-    { id: 4, day: "목", start: "12:00", finish: "13:00", work: true },
-    { id: 5, day: "금", start: "12:00", finish: "13:00", work: true },
-    { id: 6, day: "토", start: "12:00", finish: "13:00", work: false },
-    { id: 7, day: "일", start: "12:00", finish: "13:00", work: false },
+    { id: 1, day: "월", start: "09:00", finish: "18:00", lunchStart: "12:00", lunchFinish: "13:00", work: true },
+    { id: 2, day: "화", start: "09:00", finish: "18:00", lunchStart: "12:00", lunchFinish: "13:00", work: true },
+    { id: 3, day: "수", start: "09:00", finish: "18:00", lunchStart: "12:00", lunchFinish: "13:00", work: true },
+    { id: 4, day: "목", start: "09:00", finish: "18:00", lunchStart: "12:00", lunchFinish: "13:00", work: true },
+    { id: 5, day: "금", start: "09:00", finish: "18:00", lunchStart: "12:00", lunchFinish: "13:00", work: true },
+    { id: 6, day: "토", start: "09:00", finish: "18:00", lunchStart: "12:00", lunchFinish: "13:00", work: false },
+    { id: 7, day: "일", start: "09:00", finish: "18:00", lunchStart: "12:00", lunchFinish: "13:00", work: false },
   ];
 
   useEffect(() => {
@@ -126,7 +116,8 @@ function WorkSetting() {
   };
 
   const handleSelectOpt = (item) => {
-    setSelOpts((prev) => prev.map((opt) => (opt.menu === item ? { ...opt, select: true } : { ...opt, select: false })));
+    const updateOpts = selOpts.map((opt) => (opt.menu === item ? { ...opt, select: true } : { ...opt, select: false }));
+    setSelOpts(updateOpts);
   };
 
   // 셀렉트옵션 클릭이벤트
@@ -287,11 +278,11 @@ function WorkSetting() {
       <GridWrap>
         <h1>점심 시간</h1>
         <FlexUl className={s.captionXsM}>
-          {lunchTimeLists.map((list) =>
+          {workingHourLists.map((list) =>
             list.work ? (
               <li key={list.id}>
                 <span>{list.day}</span>
-                <span>{`${list.start} ~ ${list.finish}`}</span>
+                <span>{`${list.lunchStart} ~ ${list.lunchFinish}`}</span>
               </li>
             ) : null
           )}
@@ -306,7 +297,9 @@ function WorkSetting() {
           수정하기
         </button>
       </GridWrap>
-      {isModalOn && modalType === "set-worktimes" ? <SetWorkTimeModal closeModal={closeModal} /> : null}
+      {isModalOn && modalType === "set-worktimes" ? (
+        <SetWorkTimeModal closeModal={closeModal} workingList={workingHourLists} />
+      ) : null}
       {isModalOn && modalType === "set-workinghours" ? (
         <EditWorkModal isEditWork={false} title={"주 소정 근로시간 설정"} beforeWorkTime={workingHours} closeModal={closeModal} />
       ) : null}
