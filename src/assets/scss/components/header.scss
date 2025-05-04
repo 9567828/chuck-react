@@ -4,12 +4,12 @@ header {
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
-nav {
+.main-nav {
   height: 66px;
   padding: 14px 40px;
   background-color: $bg-white;
 }
-nav, .nav-left {
+.main-nav, .nav-left {
   @include flex(null, space-between, center, null)
 }
 
@@ -21,7 +21,7 @@ nav, .nav-left {
 
 .tab-menu-btn { display: none; }
 
-nav ul {
+.main-nav ul {
   display: flex;
   align-items: center;
   padding: 14px 12px;
@@ -66,8 +66,8 @@ nav ul {
 
 // 미디어 설정
 @media screen and (max-width: 1439px) {
-  nav { padding: 14px 24px; }
-  nav ul, .gnb-icon.invite {
+  .main-nav { padding: 14px 24px; }
+  .main-nav ul, .gnb-icon.invite {
     display: none;
   }
   .tab-menu-btn { display: block; }

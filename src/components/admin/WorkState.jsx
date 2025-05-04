@@ -5,6 +5,7 @@ import PeriodSelectorCompnent from "./../common/PeriodSelectorComponent";
 import { useState } from "react";
 import DateFormatter from "../hooks/MakeDate";
 import Calender from "./../common/Calender";
+import { getWorkHours } from "../hooks/CalculateTime";
 
 function WorkState() {
   const { PeriodSelector, isClick } = PeriodSelectorCompnent();
@@ -28,6 +29,11 @@ function WorkState() {
     { id: 9, name: "콘텐츠 기획팀" },
     { id: 10, name: "CS팀" },
   ];
+
+  // api로 정보 받아올 때 이름, 직책, 날짜(근무날짜), 출근시간, 퇴근시간, 근무형태, 휴게시간은 받고
+  // 연장근무, 근무시간(하루 총 근무시간), 야간근무시간은 자동 계산 되어서 서버에서 받을 지? 아니면 프론트에서 계산할지
+  // 사내 근무규칙을 정해서 그 시간에 맞춰서 계산할지
+  // 사원별로 근무 시간을 각각 넣어서 따로 계산할지
 
   const thItems = [
     { id: 1, name: "이름", isMonthly: false, default: true },
@@ -60,7 +66,7 @@ function WorkState() {
       name: "이현정",
       dept: "BX 디자이너",
       atWork: "10:02",
-      fromWork: "09:02",
+      fromWork: "19:02",
       workType: "지각",
       restTime: "1시간",
       overtime: "-",
@@ -212,7 +218,8 @@ function WorkState() {
               nigthWork={item.nigthWork}
               overtime={item.overtime}
               restTime={item.restTime}
-              workTime={item.workTime}
+              // workTime={item.workTime}
+              workTime={getWorkHours(item.atWork, item.fromWork, item.restTime)}
               workType={item.workType}
             />
           ))}

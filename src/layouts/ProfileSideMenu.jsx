@@ -19,25 +19,23 @@ function ProfileSidemenu() {
   }, [activeMenu]);
 
   return (
-    <aside>
-      <div className="lnb-container my-profile">
-        <h1 className={`lnb-title ${s.bodyMdB}`}>마이페이지</h1>
-        <ul className="lnb">
-          <li className="lnb-menu">
-            <NavLink
-              to="/user/profile"
-              className={({ isActive }) => (isActive ? "lnb-style lnb-menu-item on" : "lnb-style lnb-menu-item")}
-            >
-              <span>프로필</span>
-            </NavLink>
-          </li>
-          <li className="lnb-menu">
-            <Link to="/logoutProcess" className="lnb-style lnb-menu-item">
-              <span>로그아웃</span>
-            </Link>
-          </li>
-        </ul>
-      </div>
+    <aside className="lnb-container my-profile">
+      <h1 className={`lnb-title ${s.bodyMdB}`}>마이페이지</h1>
+      <ul className="lnb">
+        <li className="lnb-menu">
+          <NavLink
+            to="/user/profile"
+            className={({ isActive }) => (isActive ? "lnb-style lnb-menu-item on" : "lnb-style lnb-menu-item")}
+          >
+            <span>프로필</span>
+          </NavLink>
+        </li>
+        <li className="lnb-menu">
+          <Link to="/logoutProcess" className="lnb-style lnb-menu-item">
+            <span>로그아웃</span>
+          </Link>
+        </li>
+      </ul>
     </aside>
   );
 }

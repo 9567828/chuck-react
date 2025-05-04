@@ -59,59 +59,54 @@ function SideMenu() {
   };
 
   return (
-    <aside>
-      <div className="lnb-container admin">
-        <h1 className={`lnb-title ${s.bodyMdB}`}>관리자</h1>
-        <ul className="lnb">
-          {menuItems.map((item) => (
-            <li
-              key={item.id}
-              className="lnb-menu"
-              onClick={
-                !item.submenu
-                  ? null
-                  : (e) => {
-                      e.stopPropagation();
-                      toggleMenu(item.id);
-                    }
-              }
-            >
-              {item.to ? (
-                <NavLink
-                  to={item.to}
-                  className={({ isActive }) => (isActive ? "lnb-style lnb-menu-item on" : "lnb-style lnb-menu-item")}
-                >
+    <aside className="lnb-container admin">
+      <ul className="lnb">
+        {menuItems.map((item) => (
+          <li
+            key={item.id}
+            className="lnb-menu"
+            onClick={
+              !item.submenu
+                ? null
+                : (e) => {
+                    e.stopPropagation();
+                    toggleMenu(item.id);
+                  }
+            }
+          >
+            {item.to ? (
+              <NavLink
+                to={item.to}
+                className={({ isActive }) => (isActive ? "lnb-style lnb-menu-item on" : "lnb-style lnb-menu-item")}
+              >
+                <span>{item.name}</span>
+              </NavLink>
+            ) : null}
+            {item.submenu ? (
+              <>
+                <div className="lnb-style lnb-menu-item">
                   <span>{item.name}</span>
-                </NavLink>
-              ) : null}
-              {item.submenu ? (
-                <>
-                  <div className="lnb-style lnb-menu-item">
-                    <span>{item.name}</span>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5 11.825L8.825 8L5 4.175L6.18333 3L11.1833 8L6.18333 13L5 11.825Z" fill="#616161" />
-                    </svg>
-                  </div>
-                  <ul className={activeMenu[item.id] ? "lnb-submenu active" : "lnb-submenu"}>
-                    {item.submenu.map((sub) => (
-                      <li key={sub.id} onClick={(e) => e.stopPropagation()}>
-                        <NavLink
-                          to={sub.to}
-                          className={({ isActive }) =>
-                            isActive ? "lnb-style lnb-submenu-item on" : "lnb-style lnb-submenu-item"
-                          }
-                        >
-                          {sub.name}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : null}
-            </li>
-          ))}
-        </ul>
-      </div>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 11.825L8.825 8L5 4.175L6.18333 3L11.1833 8L6.18333 13L5 11.825Z" fill="#616161" />
+                  </svg>
+                </div>
+                <ul className={activeMenu[item.id] ? "lnb-submenu active" : "lnb-submenu"}>
+                  {item.submenu.map((sub) => (
+                    <li key={sub.id} onClick={(e) => e.stopPropagation()}>
+                      <NavLink
+                        to={sub.to}
+                        className={({ isActive }) => (isActive ? "lnb-style lnb-submenu-item on" : "lnb-style lnb-submenu-item")}
+                      >
+                        {sub.name}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
+          </li>
+        ))}
+      </ul>
     </aside>
   );
 }

@@ -85,12 +85,7 @@ function WorkSetting() {
   const [isModalOn, setIsModalOn] = useState(false);
   const [modalType, setModalType] = useState(null);
   const [workingHours, setWorkingHours] = useState("");
-  const [isChecked, setIsChecked] = useState({
-    realWorkTimeStart: false,
-    setWorkTimeStart: false,
-    realWorkTimeFinish: false,
-    setWorkTimeFinish: false,
-  });
+  const [isChecked, setIsChecked] = useState(true);
   const optionsRef = useRef(null);
   const workingHoursRef = useRef(null);
 
@@ -122,14 +117,13 @@ function WorkSetting() {
 
   // 셀렉트옵션 클릭이벤트
   const selType = (item) => {
+    console.log(item);
     handleSelectOpt(item);
     setClickType(item);
     if (item === "출퇴근 사용 안함") {
       setIsChecked({
-        realWorkTimeStart: false,
-        setWorkTimeStart: false,
-        realWorkTimeFinish: false,
-        setWorkTimeFinish: false,
+        realTime: false,
+        setTime: false,
       });
     }
   };
@@ -139,8 +133,14 @@ function WorkSetting() {
     handleSelectOpt(menu);
   };
 
-  const handleRadioBtn = (item) => {
-    console.log(item);
+  const handleRadioBtn = (e) => {
+    console.log(e.target.checked);
+    const checkedType = e.target.checked;
+    if (checkedType === true) {
+      setIsChecked(false);
+    } else {
+      setIsChecked(true);
+    }
   };
 
   const openModal = (type) => {
@@ -198,8 +198,9 @@ function WorkSetting() {
                 type="radio"
                 name="startTime"
                 id="realTimeS"
-                onChange={() => handleRadioBtn("실제출근시간")}
-                checked={clickType === "고정 출퇴근제" || clickType === "시차 출퇴근제" ? true : isChecked.realWorkTimeStart}
+                // onChange={() => handleRadioBtn("실제출근시간")}
+                onChange={(e) => handleRadioBtn(e)}
+                checked={isChecked}
               />
               <span className={s.captionXsM}>실제 업무 시간으로 출근 시간을 기록</span>
             </LabelFlex>
@@ -211,8 +212,9 @@ function WorkSetting() {
                 type="radio"
                 name="startTime"
                 id="ruleTimeS"
-                onChange={() => handleRadioBtn("설정출근시간")}
-                checked={isChecked.setWorkTimeStart}
+                // onChange={() => handleRadioBtn("설정출근시간")}
+                onChange={(e) => handleRadioBtn(e)}
+                checked={isChecked}
               />
               <span className={s.captionXsM}>설정된 근무 스케줄에 맞춰 출근 시간을 기록</span>
             </LabelFlex>
@@ -231,8 +233,9 @@ function WorkSetting() {
                 type="radio"
                 name="finishTime"
                 id="realTimeF"
-                onChange={() => handleRadioBtn("실제퇴근시간")}
-                checked={isChecked.realWorkTimeFinish}
+                // onChange={() => handleRadioBtn("실제퇴근시간")}
+                onChange={(e) => handleRadioBtn(e)}
+                checked={isChecked}
               />
               <span className={s.captionXsM}>실제 업무 시간으로 퇴근 시간을 기록</span>
             </LabelFlex>
@@ -244,8 +247,9 @@ function WorkSetting() {
                 type="radio"
                 name="finishTime"
                 id="ruleTimeF"
-                onChange={() => handleRadioBtn("설정퇴근시간")}
-                checked={isChecked.setWorkTimeFinish}
+                // onChange={() => handleRadioBtn("설정퇴근시간")}
+                onChange={(e) => handleRadioBtn(e)}
+                checked={isChecked}
               />
               <span className={s.captionXsM}>설정된 근무 스케줄에 맞춰 퇴근 시간을 기록</span>
             </LabelFlex>
