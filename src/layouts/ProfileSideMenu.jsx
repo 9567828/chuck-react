@@ -27,13 +27,8 @@ function ProfileSidemenu() {
             to="/user/profile"
             className={({ isActive }) => (isActive ? "lnb-style lnb-menu-item on" : "lnb-style lnb-menu-item")}
           >
-            <span>프로필</span>
+            <span>프로필 변경</span>
           </NavLink>
-        </li>
-        <li className="lnb-menu">
-          <Link to="/logoutProcess" className="lnb-style lnb-menu-item">
-            <span>로그아웃</span>
-          </Link>
         </li>
       </ul>
     </aside>

@@ -3,10 +3,10 @@ import "../assets/scss/components/header.scss";
 import "../assets/scss/components/invite-alarm-modal.scss";
 import InviteModal from "./../components/modal/InviteModal";
 import AlamModal from "../components/modal/AlarmModal";
-import LogoutModal from "../components/modal/LogoutModal";
 import { useEffect, useState } from "react";
 import { menuItems } from "./menu-list.js";
 import HamburgerMenu from "./HamburgerMenu.jsx";
+import ProfileBtnModal from "../components/modal/ProfileBtnModal.jsx";
 
 function Header() {
   const { pathname } = useLocation();
@@ -89,16 +89,22 @@ function Header() {
             <button className="gnb-icon alarm" onClick={() => openModal("alarm")}>
               <img src="/img/gnb/ic_alarm.svg" alt="알림" />
             </button>
-            <NavLink to="/user/profile" className={({ isActive }) => (isActive ? "avatar-wrap border" : "avatar-wrap")}>
+            {/* <NavLink to="/user/profile" className={({ isActive }) => (isActive ? "avatar-wrap border" : "avatar-wrap")}>
               <img src="/img/202301261737390.jpg" alt="프로필" className="avatar" />
               <span className="first-name">김</span>
-            </NavLink>
-            <button className="logout">로그아웃</button>
+            </NavLink> */}
+            <button
+              onClick={() => openModal("profile")}
+              className={pathname.includes("/user/profile") ? "avatar-wrap border" : "avatar-wrap"}
+            >
+              <img src="/img/202301261737390.jpg" alt="프로필" className="avatar" />
+              <span className="first-name">김</span>
+            </button>
           </div>
         </nav>
         {isOpen && modalType === "invite" ? <InviteModal closeFn={closeModal} /> : null}
         {isOpen && modalType === "alarm" ? <AlamModal closeFn={closeModal} /> : null}
-        <LogoutModal />
+        {isOpen && modalType === "profile" ? <ProfileBtnModal closeFn={closeModal} /> : null}
       </header>
     </>
   );

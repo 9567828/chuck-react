@@ -33,19 +33,19 @@ function SideMenu() {
       id: "3",
       name: "근무/휴가 관리",
       submenu: [
-        { id: "1", name: "하위메뉴", to: "/404" },
-        { id: "2", name: "하위메뉴", to: "/404" },
+        { id: "1", name: "하위메뉴", to: "/empty" },
+        { id: "2", name: "하위메뉴", to: "/empty" },
       ],
     },
     {
       id: "4",
       name: "조직원 관리",
       submenu: [
-        { id: "1", name: "하위메뉴", to: "/404" },
-        { id: "2", name: "하위메뉴", to: "/404" },
+        { id: "1", name: "하위메뉴", to: "/empty" },
+        { id: "2", name: "하위메뉴", to: "/empty" },
       ],
     },
-    { id: "5", name: "환경설정", to: "/404" },
+    { id: "5", name: "환경설정", to: "/empty" },
   ];
 
   const toggleMenu = (id) => {

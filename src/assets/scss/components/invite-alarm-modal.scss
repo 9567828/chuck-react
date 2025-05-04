@@ -13,8 +13,8 @@
   z-index: 100;
 }
 
-.invite-modal { margin-right: 207px; }
-.alarm-modal { margin-right: 153px; }
+.invite-modal { margin-right: 130px; }
+.alarm-modal { margin-right: 75px; }
 
 .invite-modal-inner {
   height: 294px;
@@ -63,5 +63,5 @@
 
 
 @media screen and (max-width: 1439px) {
-  .alarm-modal { margin-right: 138px; }
+  .alarm-modal { margin-right: 60px; }
 }

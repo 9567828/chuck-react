@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import Loading from "../components/Loading";
 import joinRouter from "./JoinRouter";
 import loginRouter from "./LoginRouter";
@@ -11,6 +11,7 @@ const NotFound = lazy(() => import("./../pages/NotFound"));
 const HomePage = lazy(() => import("./../pages/HomePage"));
 const ProfilePage = lazy(() => import("../pages/user/ProfilePage"));
 const ProfileEditPage = lazy(() => import("../pages/user/ProfileEditPage"));
+const SchedulePage = lazy(() => import("../pages/schedule/SchedulePage"));
 
 const root = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const root = createBrowserRouter([
         <NotFound />
       </Suspense>
     ),
+  },
+  {
+    path: "*",
+    element: <Navigate to="/404" replace />,
   },
   loginRouter.login,
   loginRouter.findId,
@@ -63,6 +68,14 @@ const root = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/schedule",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <SchedulePage />
+      </Suspense>
+    ),
   },
 ]);
 
